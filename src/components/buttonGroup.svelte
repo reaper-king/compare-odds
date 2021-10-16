@@ -9,10 +9,10 @@ function setRace(raceNo){
 <div class="bGroup flex relative items-center justify-center mb-4">
     
     {#each $race as item}
-    {#if $race[0] == item }
+    {#if $race.length == 1 }
 
     <button
-    class="{$currentRace == item ? 'active' : ''} numB text-white hover:bg-green-300 hover:text-green-900 focus:bg-green-300 focus:text-green-900 font-bold uppercase text-xs px-6 py-3 outline-none focus:outline-none mb-1 ease-linear rounded-l transition-all duration-150"
+    class="{$currentRace == item ? 'active' : ''} numB text-white hover:bg-green-300 hover:text-green-900 focus:bg-green-300 focus:text-green-900 font-bold uppercase text-xs px-6 py-3 outline-none focus:outline-none mb-1 ease-linear rounded transition-all duration-150"
     type="button"
     on:click={setRace(item)}>
     {item}
@@ -29,10 +29,10 @@ function setRace(raceNo){
 
     </button>
 
-  {:else if $race.length == 1}
+  {:else if $race[0] == item }
     
     <button
-    class="{$currentRace == item ? 'active' : ''} numB text-white hover:bg-green-300 hover:text-green-900 focus:bg-green-300 focus:text-green-900 font-bold uppercase text-xs px-6 py-3 outline-none focus:outline-none mb-1 ease-linear rounded transition-all duration-150"
+    class="{$currentRace == item ? 'active' : ''} numB text-white hover:bg-green-300 hover:text-green-900 focus:bg-green-300 focus:text-green-900 font-bold uppercase text-xs px-6 py-3 outline-none focus:outline-none mb-1 ease-linear rounded-l transition-all duration-150"
     type="button"
     on:click={setRace(item)}>
     {item}
@@ -59,7 +59,7 @@ function setRace(raceNo){
  <style>
 
   .active {
-  background-image: linear-gradient(#409C2C 90%, rgb(188, 247, 105) 10%);
+  background-image: linear-gradient(#409C2C 95%, rgb(188, 247, 105) 10%);
     }
   
     

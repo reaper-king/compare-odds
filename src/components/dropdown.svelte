@@ -28,7 +28,9 @@ $: calDate.set(selected)
    {#each rd_options as opt}  
    <option value={opt.r}>{opt.race_date}</option>
    {/each}
-
+   {:else}
+    
+   <option value="">No Meetings</option>
     {/if}
 </select>
 </div>

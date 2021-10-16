@@ -25,7 +25,7 @@
  <style>
 
   .active {
-  background-image: linear-gradient(#409C2C 90%, rgb(188, 247, 105) 10%);
+  background-image: linear-gradient(#409C2C 95%, rgb(188, 247, 105) 10%);
     }
   
     

@@ -1,8 +1,8 @@
 <script>
-        import jsonToPivotjson from "json-to-pivot-json";
-  import { race ,currentRace ,oddsCal } from './store'
+    import jsonToPivotjson from "json-to-pivot-json";
+    import { race ,currentRace ,oddsCal } from './store'
 	import { fade ,blur ,slide} from 'svelte/transition';
-
+    import Bet from "./betCalc.svelte";
     import ButtonGroup from "./buttonGroup.svelte";
     import OddsCal from "./oddsCal.svelte";
     // let output
@@ -20,7 +20,7 @@
 
 $: output = jsonToPivotjson(tableData, options); 
 
-console.log(tableData)
+$: console.log(tableData)
  function horse(hrs_no) {
 
     let hrs =  tableData[tableData.map(function (x) { return x.horse_no; }).indexOf(hrs_no)].horse;
@@ -35,12 +35,16 @@ let wght =  tableData[tableData.map(function (x) { return x.horse_no; }).indexOf
 return jock+ " (" + wght + "kg)"
  
  }
+ let show;
+ let selectedHorse , selectedBookie , selectedOdds
+ $: console.log(show)
 </script>
-
 <!-- <div> class=" overflow-x-auto"> -->
     
     <div class="min-w-screen min-h-screen bg-gray-100 flex items-start justify-center bg-gray-100 font-sans overflow-hidden">
-        
+   {#if show}
+   <Bet bind:show bind:horse={selectedHorse} bind:bookmaker={selectedBookie}  bind:odds={selectedOdds}></Bet>
+   {/if}     
         <div class="relative w-full lg:w-5/6">
             <ButtonGroup></ButtonGroup> 
             <OddsCal></OddsCal>
@@ -63,13 +67,11 @@ return jock+ " (" + wght + "kg)"
 		<tr/>
 	</thead>
     <tbody class="text-gray-600 text-sm font-light">
-		{#each Object.values(output) as row}
-			
-        <tr class="border-b border-gray-200 hover:bg-gray-100">
-           
+		{#each Object.values(output) as row ,  ii }
+        <tr class="border-b border-gray-200 ">
 				{#each Object.values(row) as cell,i}
-                
                 {#if i == 0}
+
                 <th class=" relative py-3 px-6 text-left whitespace-nowrap drop-shadow-lg">
                     <div class="flex items-center">
                         <div class="mr-2" in:blur>
@@ -90,20 +92,31 @@ return jock+ " (" + wght + "kg)"
                     </div>
                 </th>
                 {:else}
-                <td class="py-3 px-6 text-right whitespace-nowrap ">
+                <td class="py-3 px-6 text-right whitespace-nowrap cursor-pointer hover:bg-gray-300" on:click={()=> 
+                                                                                                            {
+                                                                                                            show =true ; 
+                                                                                                            selectedBookie= Object.keys(output[0])[i];
+                                                                                                            selectedOdds = cell
+                                                                                                            selectedHorse = output[ii].horse_no +'. ' +horse(output[ii].horse_no)
+                                                                                                            }
+                                                                                                            }>
                     <div class="block items-center">
-                        <span class="font-medium " in:blur>
-                            {#if $oddsCal == true}
+                        <span class="font-medium 	" in:blur >
+                            <!-- horse  : {tableData[ii].horse_no + '. '+tableData[ii].horse} bookie : {Object.keys(output[0])[i]} -->
+                             {#if $oddsCal == true}
 
                             {#if cell == 0 }
-                                 {cell}
+                               
+                  {cell}
                             {:else}
-                            {(100/(cell/500)).toFixed(2)}
+                         
+                {(100/(cell/500)).toFixed(2)}
                             {/if}
 
                             {:else}
 
-                            {cell}
+                       
+                {cell}
 
                             {/if}    
 

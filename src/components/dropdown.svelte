@@ -4,24 +4,26 @@
 let rd_options;
 let selected;
 const getData = async () => {
-		const response  = await fetch('https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/rd',
-		{
-  headers: {
-    'APP_USER': 'AJAY'
-  }
-});
+		const res = await fetch(`https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/rd`);
+		const text = await res.text();
 
-    let tData = await response.json();
-     rd_options = tData.items;
-     selected = rd_options[0].r
+		if (res.ok) {
+			return JSON.parse(text).items;
+		} else {
+			throw new Error(text);
+		}
+  };
 
-    };
-
-  getData()
+  let promise =  getData()
 
 $: calDate.set(selected)   
 
 </script>
+
+
+{#await promise}
+	<p>...loading</p>
+{:then rd_options}
 <div id="ddown" class="absolute bGroup3">
 <select bind:value={selected} on:change="{() => calDate.set(selected)}"  class="relative block appearance-none  bg-green-100 border border-green-500 hover:border-green-700 px-4 py-3 pr-4 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
     {#if rd_options}
@@ -34,6 +36,13 @@ $: calDate.set(selected)
     {/if}
 </select>
 </div>
+
+{:catch error}
+	<p style="color: red">{error.message}</p>
+{/await}
+
+
 <style>
+
 
 </style>

@@ -20,7 +20,7 @@
 
 $: output = jsonToPivotjson(tableData, options); 
 
-$: console.log(tableData)
+// $: console.log(tableData)
  function horse(hrs_no) {
 
     let hrs =  tableData[tableData.map(function (x) { return x.horse_no; }).indexOf(hrs_no)].horse;
@@ -37,7 +37,7 @@ return jock+ " (" + wght + "kg)"
  }
  let show;
  let selectedHorse , selectedBookie , selectedOdds
- $: console.log(show)
+//  $: console.log(show)
 </script>
 <!-- <div> class=" overflow-x-auto"> -->
     

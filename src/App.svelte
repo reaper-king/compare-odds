@@ -1,35 +1,20 @@
 <script ang="ts" >
   import Table from "./components/table.svelte";
-  import { race ,currentRace ,calDate } from './components/store'
+  import { race ,currentRace ,calDate , getTData , inputs} from './components/store'
   import Dropdown from './components/dropdown.svelte'
-import Test from "./components/test.svelte";
-let calendarDate =0;
+  let calendarDate =0;
 
-calDate.subscribe(value=> 
-{calendarDate = value}
-) ;
+  calDate.subscribe(value=> 
+  {calendarDate = value}
+  ) ;
 
 let input
-let output
-async function getData() {
-  const response = await fetch(`https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/odds?meet=${calendarDate}`);
-  let tData = await response.text();
-  input= JSON.parse(tData).items;
-  race.set(input.map((rc,i)=>{
-      return rc['race_no']
 
-  }))
-
-  race.subscribe(value => {
-		currentRace.set(value[0]);
-	});
-  
-
-}
-let dd = false
-
+$:  inputs.subscribe(v=>{input = v })
+$: console.log(input)
 $: if(calendarDate !== 0 && calendarDate !== undefined){
-    getData(calendarDate) ;  
+  getTData() ;  
+    console.log(calendarDate)
   }
   
 </script>
@@ -42,14 +27,11 @@ $: if(calendarDate !== 0 && calendarDate !== undefined){
 </svelte:head>
 
 <Dropdown/>
-{#if input}
-	 <!-- content here -->
-	 {#each input as item}
-		  <!-- content here -->
-      {#if item.race_no == $race[ $race.indexOf($currentRace)]}
+{#if $inputs}
+	 {#each $inputs as item}
+	    {#if item.race_no == $race[ $race.indexOf($currentRace)]}
       <Table tableData={item.odds_compare} raceNum={item.race_no} startTime={item.start_time}></Table>	
       {/if}
-	<!-- <Table tableData={item.odds_compare}></Table>	 -->
 	 {/each}
 
  {/if}

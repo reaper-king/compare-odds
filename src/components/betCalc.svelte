@@ -186,7 +186,7 @@ C399.729,505.913,505.926,399.705,511.712,267.373z"/>
                 <label for="betAmount" class="text-sm font-medium text-gray-900 block mb-2">Bet</label>
                 <input bind:value={bet} type="number" id="betAmount" class="bg-gray-50 appearance-none border border-green-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5" >
             </div>
-            {#if bet != 0 }
+            {#if payout != 0 }
             <p class="text-xl text-gray-900" transition:fly>Payout:<br> <span in:blur>{payout}</span></p>
             {/if}
           </div>

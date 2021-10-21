@@ -19,7 +19,10 @@
 //   }
   
 </script>
+<svelte:head>
+<style>.oddstable.svelte-1r9s8q9.svelte-1r9s8q9{font-size:125%;white-space:nowrap;margin:0;border:none;border-collapse:separate;border-spacing:0;table-layout:fixed;border:1px solid black;min-width:1500px}.oddstable.svelte-1r9s8q9 td.svelte-1r9s8q9,.oddstable.svelte-1r9s8q9 th.svelte-1r9s8q9{border:1px solid black;padding:0.5rem 1rem}.oddstable.svelte-1r9s8q9 thead th.svelte-1r9s8q9{padding:3px;position:sticky;top:0;z-index:1;width:25vw;background:white}.oddstable.svelte-1r9s8q9 td.svelte-1r9s8q9{background:#fff;padding:4px 5px;text-align:center}.oddstable.svelte-1r9s8q9 tbody th.svelte-1r9s8q9{font-weight:100;font-style:italic;text-align:left;position:relative}.oddstable.svelte-1r9s8q9 thead th.svelte-1r9s8q9:first-child{position:sticky;left:0;z-index:2}.oddstable.svelte-1r9s8q9 tbody th.svelte-1r9s8q9{position:sticky;left:0;background:white;z-index:1}.oddstable.svelte-1r9s8q9 caption.svelte-1r9s8q9{text-align:left;padding:0.25rem;position:sticky;left:0}</style>
 
+</svelte:head>
 <CompareOdds></CompareOdds>
 
 

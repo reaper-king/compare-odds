@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 
+
 export const race = writable([]);
 
 export const currentRace = writable(0);
@@ -12,43 +13,50 @@ export const inputs = writable([]);
 
 export const roptions = writable([]);
 
-export const getData = async() => {
-
-    fetch('https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/rd')
-        .then(response => response.json())
-        .then(resp => {
-            console.log(resp.items)
-            roptions.set(resp.items)
-            calDate.set(resp.items[0].r)
-        })
-
-    .catch(err => {
-        console.error(err);
-    })
-};
 
 
-export async function getTData() {
+
+function Get(theUrl) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", theUrl, false); // false for synchronous request
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
+}
+
+
+
+
+
+export const getData = () => {
+
+    let resp = Get('https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/file/is.json');
+    let resJson = JSON.parse(resp)
+    console.log(resJson)
+    roptions.set(resJson)
+    calDate.set(resJson.r)
+
+}
+
+
+export function getTData() {
     let calendarDate
     calDate.subscribe(v => { calendarDate = v })
     let cRace;
     currentRace.subscribe(v => cRace = v)
-    fetch(`https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/odds?meet=${calendarDate}`)
-        .then(response => response.json())
-        .then(resp => {
-            console.log(resp.items)
-            inputs.set(resp.items)
-            race.set(resp.items.map((rc, i) => {
-                return rc['race_no']
+    let resp = Get(`https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/odds?meet=${calendarDate}`)
+    let resJson = JSON.parse(resp)
 
-            }))
-            if (cRace == 0) {
-                race.subscribe(v => {
-                    currentRace.set(v[0])
-                })
+    console.log(resJson.items)
+    inputs.set(resJson.items)
+    race.set(resJson.items.map((rc, i) => {
+        return rc['race_no']
 
-            }
-
+    }))
+    if (cRace == 0) {
+        race.subscribe(v => {
+            currentRace.set(v[0])
         })
+
+    }
 
 }

@@ -1,24 +1,29 @@
 <script ang="ts" >
-  import Table from "./components/table.svelte";
-  import { race ,currentRace ,calDate , getTData , inputs} from './components/store'
-  import Dropdown from './components/dropdown.svelte'
-  let calendarDate =0;
+  import CompareOdds from "./components/CompareOdds.svelte";
+//   import Table from "./components/table.svelte";
+//   import { race ,currentRace ,calDate , getTData , inputs} from './components/store'
+//   import Dropdown from './components/dropdown.svelte'
+//   let calendarDate =0;
 
-  calDate.subscribe(value=> 
-  {calendarDate = value}
-  ) ;
+//   calDate.subscribe(value=> 
+//   {calendarDate = value}
+//   ) ;
 
-let input
+// let input
 
-$:  inputs.subscribe(v=>{input = v })
-$: console.log(input)
-$: if(calendarDate !== 0 && calendarDate !== undefined){
-  getTData() ;  
-    console.log(calendarDate)
-  }
+// $:  inputs.subscribe(v=>{input = v })
+// $: console.log(input)
+// $: if(calendarDate !== 0 && calendarDate !== undefined){
+//   getTData() ;  
+//     console.log(calendarDate)
+//   }
   
 </script>
 
+<CompareOdds></CompareOdds>
+
+
+<!-- 
 <svelte:head>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -70,4 +75,4 @@ background-color:        #409C2C;
 
 
 
-</style>
+</style> -->

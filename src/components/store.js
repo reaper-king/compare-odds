@@ -33,7 +33,7 @@ export const getData = () => {
     let resJson = JSON.parse(resp)
     console.log(resJson)
     roptions.set(resJson)
-    calDate.set(resJson.r)
+    calDate.set(resJson[0].r)
 
 }
 

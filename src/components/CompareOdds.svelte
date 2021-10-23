@@ -65,23 +65,25 @@ let selectedHorse , selectedBookie , selectedOdds
 
 </script>
 {#if output}
-<table class="oddstable">
-    <caption class="relative h-20 " id="caption"><select bind:value={$calDate} class="absolute  appearance-none border border-green-500 hover:border-green-700 px-4 py-3 pr-4 rounded shadow leading-tight focus:outline-none focus:shadow-outline" >
+<div class="caption" id="caption">
+  <select bind:value={$calDate} class="selectList" >
       
-      {#if $roptions}
-     {#each $roptions as opt}  
-     <option value={opt.r}>{opt.race_date}</option>
-     {/each}
-     {:else}
-      
-     <option value="">No Meetings</option>
-      {/if}
-    </select>
-    <div class="absolute racebut"><ButtonGroup/></div>
-    
-    <div class="absolute oddscal"><OddsCal/></div>
+  {#if $roptions}
+ {#each $roptions as opt}  
+ <option value={opt.r}>{opt.race_date}</option>
+ {/each}
+ {:else}
+  
+ <option value="">No Meetings</option>
+  {/if}
+</select>
+<div class="racebut"><ButtonGroup/></div>
 
-  </caption>
+<div class="oddscal"><OddsCal/></div>
+</div>
+<div class="tWrap">
+<table class="oddstable">
+    
     <thead>
       <tr>
         {#each Object.keys(output[0]) as columnHeading , i}
@@ -161,13 +163,24 @@ let selectedHorse , selectedBookie , selectedOdds
   {/each}
 </tbody>
   </table>
+</div>
 
   {/if}
 
 
   <style>
+    .caption{
+     position: relative;
+     height:50px;
+    }
 
 
+
+
+.tWrap {
+  
+  overflow-x:scroll;
+}
 .oddstable {
   font-size: 125%;
   white-space: nowrap;
@@ -223,11 +236,24 @@ let selectedHorse , selectedBookie , selectedOdds
   left: 0;
 }
 .oddscal{
-  right:20%;
-  transform:translate(50%,0%);}
+  position: absolute;
+  right:6%;
+  transform:translate(-50%,0%);
+} 
 .racebut{
+  position: absolute;
   left:50%;
   transform:translate(-50%,0%);
 }
 
+
+.selectList{
+  position: absolute;
+  appearance:none;
+  padding:10px;
+  border: 1px   solid #409C2C;
+  border-radius: 0.25rem;
+  left: 3%;
+
+}
   </style>

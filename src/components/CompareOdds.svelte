@@ -228,6 +228,7 @@ let selectedHorse , selectedBookie , selectedOdds
   left: 0;
   background: white;
   z-index: 1;
+  max-width: 200px;
 }
 .oddstable caption {
   text-align: left;

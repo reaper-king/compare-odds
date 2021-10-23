@@ -2642,14 +2642,14 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr(select, "class", "selectList svelte-1naw7fa");
+    			attr(select, "class", "selectList svelte-1l7uoj2");
     			if (/*$calDate*/ ctx[5] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[13].call(select));
-    			attr(div0, "class", "racebut svelte-1naw7fa");
-    			attr(div1, "class", "oddscal svelte-1naw7fa");
-    			attr(div2, "class", "caption svelte-1naw7fa");
+    			attr(div0, "class", "racebut svelte-1l7uoj2");
+    			attr(div1, "class", "oddscal svelte-1l7uoj2");
+    			attr(div2, "class", "caption svelte-1l7uoj2");
     			attr(div2, "id", "caption");
-    			attr(table, "class", "oddstable svelte-1naw7fa");
-    			attr(div3, "class", "tWrap svelte-1naw7fa");
+    			attr(table, "class", "oddstable svelte-1l7uoj2");
+    			attr(div3, "class", "tWrap svelte-1l7uoj2");
     		},
     		m(target, anchor) {
     			insert(target, div2, anchor);
@@ -2908,7 +2908,7 @@ var app = (function () {
     		c() {
     			th = element("th");
     			t = text(t_value);
-    			attr(th, "class", "py-3 px-6 text-center svelte-1naw7fa");
+    			attr(th, "class", "py-3 px-6 text-center svelte-1l7uoj2");
     		},
     		m(target, anchor) {
     			insert(target, th, anchor);
@@ -2941,7 +2941,7 @@ var app = (function () {
     		c() {
     			th = element("th");
     			th.textContent = "Horse";
-    			attr(th, "class", "py-3 px-6 text-center svelte-1naw7fa");
+    			attr(th, "class", "py-3 px-6 text-center svelte-1l7uoj2");
     		},
     		m(target, anchor) {
     			insert(target, th, anchor);
@@ -3026,7 +3026,7 @@ var app = (function () {
     			if_block.c();
     			attr(span, "class", "font-medium ");
     			attr(div, "class", "block items-center");
-    			attr(td, "class", "py-3 px-6 text-right whitespace-nowrap cursor-pointer hover:bg-gray-300 svelte-1naw7fa");
+    			attr(td, "class", "py-3 px-6 text-right whitespace-nowrap cursor-pointer hover:bg-gray-300 svelte-1l7uoj2");
     		},
     		m(target, anchor) {
     			insert(target, td, anchor);
@@ -3100,7 +3100,7 @@ var app = (function () {
     			attr(span, "class", "font-medium");
     			attr(div1, "class", "flex flex-col");
     			attr(div2, "class", "flex items-center");
-    			attr(th, "class", "relative py-3 px-6 text-left whitespace-nowrap drop-shadow-lg svelte-1naw7fa");
+    			attr(th, "class", "relative py-3 px-6 text-left whitespace-nowrap drop-shadow-lg svelte-1l7uoj2");
     		},
     		m(target, anchor) {
     			insert(target, th, anchor);

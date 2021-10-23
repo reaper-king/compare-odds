@@ -182,50 +182,61 @@ let selectedHorse , selectedBookie , selectedOdds
   overflow-x:scroll;
 }
 .oddstable {
-  font-size: 125%;
-  white-space: nowrap;
-  margin: 0;
-  border: none;
-  border-collapse: separate;
-  border-spacing: 0;
+  /* font-size: 125%; */
+  /* white-space: nowrap; */
+  /* margin: 0; */
+  /* border: none; */
+  /* border-collapse: separate; */
+  /* border-spacing: 0; */
   table-layout: fixed;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-width: 1140px;
   max-width: 1140px;
 }
-.oddstable td,
+/* .oddstable td,
 .oddstable th {
   border: 1px solid black;
   padding: 0.5rem 1rem;
 
-}
+} */
 .oddstable thead th {
-  padding: 3px;
+  /* padding: 3px; */
   position: sticky;
   top: 0;
   z-index: 1;
-  width: 25vw;
+  /* width: 25vw; */
   background: white;
 }
 .oddstable td {
-  background: #fff;
-  padding: 4px 5px;
-  text-align: center;
-  max-width: 50px !important;
-  width: 50px ;
+  /* background: #fff; */
+  /* padding: 4px 5px; */
+  /* text-align: center; */
+  max-width: 20px !important;
+  width: 20px !important;
 }
+/* 
+.oddstable tbody td:nth-child(2){
+  box-shadow: inset 4px 0 0px 2px rgba(0,0,0,0.30);
+  background-color: red;
+} */
+
 
 .oddstable tbody th {
-  max-height: 30px;
-  font-weight: 100;
-  font-style: italic;
-  text-align: left;
+  /* max-height: 30px; */
+  /* font-weight: 100; */
+  /* font-style: italic; */
+  /* text-align: left; */
   position: relative;
+
 }
 .oddstable thead th:first-child {
   position: sticky;
   left: 0;
   z-index: 2;
+  -webkit-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
+  box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
+  
 }
 .oddstable tbody th {
   position: sticky;
@@ -233,6 +244,9 @@ let selectedHorse , selectedBookie , selectedOdds
   background: white;
   z-index: 1;
   max-width: 200px;
+  -webkit-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
+  box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
 }
 
 .oddscal{

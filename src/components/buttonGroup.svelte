@@ -12,7 +12,7 @@ function setRace(raceNo){
     {#if $race.length == 1 }
 
     <button
-    class="{$currentRace == item ? 'active' : ''} numB text-white hover:bg-green-300 hover:text-green-900 focus:bg-green-300 focus:text-green-900 font-bold uppercase text-sm px-6 py-3 outline-none focus:outline-none mb-1 ease-linear rounded transition-all duration-150"
+    class="{$currentRace == item ? 'active' : ''} rounded "
     type="button"
     on:click={setRace(item)}>
     {item}
@@ -42,7 +42,7 @@ function setRace(raceNo){
     {:else}
 
     <button
-        class="{$currentRace == item ? 'active' : ''} rounded"
+        class="{$currentRace == item ? 'active' : ''} roundeds"
         type="button"
         on:click={setRace(item)}>
         {item}
@@ -116,6 +116,32 @@ border: none;
 
 
 .rounded {
+    background-color: #409C2C; 
+    box-shadow: 0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);
+    transition-timing-function: linear;
+    transition-duration: 150ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4,0,0.2,1);
+    transition-duration: 150ms;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    
+border: none;
+    border-radius:  4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    
+
+}
+
+.roundeds {
     background-color: #409C2C; 
     box-shadow: 0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);
     transition-timing-function: linear;

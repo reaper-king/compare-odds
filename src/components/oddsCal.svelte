@@ -44,17 +44,17 @@
     color: white;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
     
 border: none;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-    margin-bottom: 0.25rem;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-bottom: 4px;
     cursor: pointer;
     
 
@@ -71,17 +71,17 @@ border: none;
     color: white;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
     
 border: none;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-    margin-bottom: 0.25rem;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin-bottom: 4px;
     cursor: pointer;
     
 

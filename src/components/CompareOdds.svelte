@@ -234,12 +234,7 @@ let selectedHorse , selectedBookie , selectedOdds
   z-index: 1;
   max-width: 200px;
 }
-.oddstable caption {
-  text-align: left;
-  padding: 0.25rem;
-  position: sticky;
-  left: 0;
-}
+
 .oddscal{
   position: absolute;
   right:1%;

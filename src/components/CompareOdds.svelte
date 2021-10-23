@@ -190,12 +190,14 @@ let selectedHorse , selectedBookie , selectedOdds
   border-spacing: 0;
   table-layout: fixed;
   border: 1px solid black;
-  min-width: 1500px;
+  min-width: 1140px;
+  max-width: 1140px;
 }
 .oddstable td,
 .oddstable th {
   border: 1px solid black;
   padding: 0.5rem 1rem;
+
 }
 .oddstable thead th {
   padding: 3px;
@@ -209,6 +211,8 @@ let selectedHorse , selectedBookie , selectedOdds
   background: #fff;
   padding: 4px 5px;
   text-align: center;
+  max-width: 50px !important;
+  width: 50px ;
 }
 
 .oddstable tbody th {
@@ -238,8 +242,8 @@ let selectedHorse , selectedBookie , selectedOdds
 }
 .oddscal{
   position: absolute;
-  right:6%;
-  transform:translate(-50%,0%);
+  right:1%;
+  /* transform:translate(-50%,0%); */
 } 
 .racebut{
   position: absolute;
@@ -254,7 +258,7 @@ let selectedHorse , selectedBookie , selectedOdds
   padding:10px;
   border: 1px   solid #409C2C;
   border-radius: 0.25rem;
-  left: 3%;
+  left: 1%;
 
 }
   </style>

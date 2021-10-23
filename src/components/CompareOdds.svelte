@@ -60,10 +60,15 @@ $: if(tableData){ output = jsonToPivotjson(tableData.odds_compare, options)};
 
 // }
 
-let show;
+let show = false;
 let selectedHorse , selectedBookie , selectedOdds
 
 </script>
+{#if show}
+<div class="overlay" on:click={()=>show = false}>
+  <div class="betCalc"></div> </div>
+{/if}
+
 {#if output}
 <div class="caption" id="caption">
   <select bind:value={$calDate} class="selectList" >
@@ -126,9 +131,9 @@ let selectedHorse , selectedBookie , selectedOdds
               <td class="py-3 px-6 text-right whitespace-nowrap cursor-pointer hover:bg-gray-300" on:click={()=> 
                                                                                                           {
                                                                                                           show =true ; 
-                                                                                                          selectedBookie= Object.keys(output[0])[i];
-                                                                                                          selectedOdds = cell
-                                                                                                          selectedHorse = output[ii].horse_no +'. ' +horse(output[ii].horse_no)
+                                                                                                          // selectedBookie= Object.keys(output[0])[i];
+                                                                                                          // selectedOdds = cell
+                                                                                                          // selectedHorse = output[ii].horse_no +'. ' +horse(output[ii].horse_no)
                                                                                                           }
                                                                                                           }>
                   <div class="block items-center">
@@ -271,4 +276,28 @@ let selectedHorse , selectedBookie , selectedOdds
   left: 1%;
 
 }
+
+
+
+.overlay { 
+    z-index: 101;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    }
+  .betCalc {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: white;
+    width: 350px;
+    height: 600px;
+    border-radius: 50px;
+    transform: translate(-50%,-50%);
+  }
   </style>

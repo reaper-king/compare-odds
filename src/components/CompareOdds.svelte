@@ -213,6 +213,7 @@ let selectedHorse , selectedBookie , selectedOdds
   /* text-align: center; */
   max-width: 20px !important;
   width: 20px !important;
+  cursor: pointer;
 }
 /* 
 .oddstable tbody td:nth-child(2){
@@ -233,8 +234,8 @@ let selectedHorse , selectedBookie , selectedOdds
   position: sticky;
   left: 0;
   z-index: 2;
-  -webkit-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
+  -webkit-box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow:7px 0px 4px rgba(57, 63, 72, 0.3);
   box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
   
 }
@@ -243,9 +244,9 @@ let selectedHorse , selectedBookie , selectedOdds
   left: 0;
   background: white;
   z-index: 1;
-  max-width: 200px;
-  -webkit-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow: 5px 0px 2px rgba(57, 63, 72, 0.3);
+  max-width: 100px;
+  -webkit-box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
   box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
 }
 

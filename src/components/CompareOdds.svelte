@@ -19,7 +19,7 @@ getTData() ;
   import jsonToPivotjson from "json-to-pivot-json";
   
   import { calDate , getData  , roptions , race , getTData , inputs , currentRace,oddsCal } from './store';
-  import { fade ,blur ,slide} from 'svelte/transition';
+  import { fly, fade ,blur ,slide} from 'svelte/transition';
   import Bet from "./betCalc.svelte";
   import ButtonGroup from "./buttonGroup.svelte";
   import OddsCal from "./oddsCal.svelte";
@@ -65,8 +65,8 @@ let selectedHorse , selectedBookie , selectedOdds
 
 </script>
 {#if show}
-<div class="overlay" on:click={()=>show = false}>
-  <div class="betCalc"></div> </div>
+<div class="overlay"  on:click={()=>show = false} in:blur="{{ y: 50, duration: 1000 }}">
+  <div class="betCalc" in:fly="{{ y: 100, duration: 1000 }}"></div> </div>
 {/if}
 
 {#if output}
@@ -239,9 +239,10 @@ let selectedHorse , selectedBookie , selectedOdds
   position: sticky;
   left: 0;
   z-index: 2;
-  -webkit-box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow:7px 0px 4px rgba(57, 63, 72, 0.3);
-  box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
+  -webkit-box-shadow: 10px 0px 10px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 10px 0px 10px rgba(57, 63, 72, 0.3);
+  box-shadow: 10px 0px 10px rgba(57, 63, 72, 0.3);
+  border-right:black solid 2px ;
   
 }
 .oddstable tbody th {
@@ -250,9 +251,10 @@ let selectedHorse , selectedBookie , selectedOdds
   background: white;
   z-index: 1;
   max-width: 100px;
-  -webkit-box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
-  box-shadow: 7px 0px 4px rgba(57, 63, 72, 0.3);
+  -webkit-box-shadow: 10px 0px 10px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 10px 0px 10px rgba(57, 63, 72, 0.3);
+  box-shadow: 10px 0px 10px rgba(57, 63, 72, 0.3);
+  border-right:black solid 2px ;
 }
 
 .oddscal{
@@ -296,8 +298,8 @@ let selectedHorse , selectedBookie , selectedOdds
     top: 50%;
     background: white;
     width: 350px;
-    height: 600px;
-    border-radius: 50px;
+    height: 400px;
+    border-radius: 20px;
     transform: translate(-50%,-50%);
   }
   </style>

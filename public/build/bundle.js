@@ -1,2 +1,4224 @@
-var app=function(){"use strict";function t(){}const e=t=>t;function n(t,e,n,o,r){t.__svelte_meta={loc:{file:e,line:n,column:o,char:r}}}function o(t){return t()}function r(){return Object.create(null)}function i(t){t.forEach(o)}function c(t){return"function"==typeof t}function s(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}function l(t,e){if(null!=t&&"function"!=typeof t.subscribe)throw new Error(`'${e}' is not a store with a 'subscribe' method`)}function a(e,n,o){e.$$.on_destroy.push(function(e,...n){if(null==e)return t;const o=e.subscribe(...n);return o.unsubscribe?()=>o.unsubscribe():o}(n,o))}const u="undefined"!=typeof window;let f=u?()=>window.performance.now():()=>Date.now(),d=u?t=>requestAnimationFrame(t):t;const p=new Set;function g(t){p.forEach((e=>{e.c(t)||(p.delete(e),e.f())})),0!==p.size&&d(g)}function h(t){let e;return 0===p.size&&d(g),{promise:new Promise((n=>{p.add(e={c:t,f:n})})),abort(){p.delete(e)}}}function m(t,e){t.appendChild(e)}function v(t){if(!t)return document;const e=t.getRootNode?t.getRootNode():t.ownerDocument;return e&&e.host?e:t.ownerDocument}function b(t){const e=w("style");return function(t,e){m(t.head||t,e)}(v(t),e),e}function x(t){t.parentNode.removeChild(t)}function y(t,e){for(let n=0;n<t.length;n+=1)t[n]&&t[n].d(e)}function w(t){return document.createElement(t)}function F(t){return document.createElementNS("http://www.w3.org/2000/svg",t)}function k(t){return document.createTextNode(t)}function $(){return k(" ")}function C(){return k("")}function _(t){return function(e){return e.preventDefault(),t.call(this,e)}}function S(t){return function(e){return e.stopPropagation(),t.call(this,e)}}function B(t){return""===t?null:+t}function O(t,e){t.value=null==e?"":e}function z(t,e,n,o){t.style.setProperty(e,n,o?"important":"")}function j(t,e){for(let n=0;n<t.options.length;n+=1){const o=t.options[n];if(o.__value===e)return void(o.selected=!0)}t.selectedIndex=-1}function M(t,e,n=!1){const o=document.createEvent("CustomEvent");return o.initCustomEvent(t,n,!1,e),o}const E=new Set;let R,A=0;function N(t,e,n,o,r,i,c,s=0){const l=16.666/o;let a="{\n";for(let t=0;t<=1;t+=l){const o=e+(n-e)*i(t);a+=100*t+`%{${c(o,1-o)}}\n`}const u=a+`100% {${c(n,1-n)}}\n}`,f=`__svelte_${function(t){let e=5381,n=t.length;for(;n--;)e=(e<<5)-e^t.charCodeAt(n);return e>>>0}(u)}_${s}`,d=v(t);E.add(d);const p=d.__svelte_stylesheet||(d.__svelte_stylesheet=b(t).sheet),g=d.__svelte_rules||(d.__svelte_rules={});g[f]||(g[f]=!0,p.insertRule(`@keyframes ${f} ${u}`,p.cssRules.length));const h=t.style.animation||"";return t.style.animation=`${h?`${h}, `:""}${f} ${o}ms linear ${r}ms 1 both`,A+=1,f}function D(t,e){const n=(t.style.animation||"").split(", "),o=n.filter(e?t=>t.indexOf(e)<0:t=>-1===t.indexOf("__svelte")),r=n.length-o.length;r&&(t.style.animation=o.join(", "),A-=r,A||d((()=>{A||(E.forEach((t=>{const e=t.__svelte_stylesheet;let n=e.cssRules.length;for(;n--;)e.deleteRule(n);t.__svelte_rules={}})),E.clear())})))}function P(t){R=t}function q(t){(function(){if(!R)throw new Error("Function called outside component initialization");return R})().$$.on_mount.push(t)}function T(t,e){const n=t.$$.callbacks[e.type];n&&n.slice().forEach((t=>t.call(this,e)))}const L=[],G=[],H=[],U=[],W=Promise.resolve();let I=!1;function V(t){H.push(t)}let J=!1;const X=new Set;function Y(){if(!J){J=!0;do{for(let t=0;t<L.length;t+=1){const e=L[t];P(e),K(e.$$)}for(P(null),L.length=0;G.length;)G.pop()();for(let t=0;t<H.length;t+=1){const e=H[t];X.has(e)||(X.add(e),e())}H.length=0}while(L.length);for(;U.length;)U.pop()();I=!1,J=!1,X.clear()}}function K(t){if(null!==t.fragment){t.update(),i(t.before_update);const e=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,e),t.after_update.forEach(V)}}let Q;function Z(){return Q||(Q=Promise.resolve(),Q.then((()=>{Q=null}))),Q}function tt(t,e,n){t.dispatchEvent(M(`${e?"intro":"outro"}${n}`))}const et=new Set;let nt;function ot(){nt={r:0,c:[],p:nt}}function rt(){nt.r||i(nt.c),nt=nt.p}function it(t,e){t&&t.i&&(et.delete(t),t.i(e))}function ct(t,e,n,o){if(t&&t.o){if(et.has(t))return;et.add(t),nt.c.push((()=>{et.delete(t),o&&(n&&t.d(1),o())})),t.o(e)}}const st={duration:0};function lt(n,o,r){let i,s,l=o(n,r),a=!1,u=0;function d(){i&&D(n,i)}function p(){const{delay:o=0,duration:r=300,easing:c=e,tick:p=t,css:g}=l||st;g&&(i=N(n,0,1,r,o,c,g,u++)),p(0,1);const m=f()+o,v=m+r;s&&s.abort(),a=!0,V((()=>tt(n,!0,"start"))),s=h((t=>{if(a){if(t>=v)return p(1,0),tt(n,!0,"end"),d(),a=!1;if(t>=m){const e=c((t-m)/r);p(e,1-e)}}return a}))}let g=!1;return{start(){g||(g=!0,D(n),c(l)?(l=l(),Z().then(p)):p())},invalidate(){g=!1},end(){a&&(d(),a=!1)}}}function at(n,o,r,s){let l=o(n,r),a=s?0:1,u=null,d=null,p=null;function g(){p&&D(n,p)}function m(t,e){const n=t.b-a;return e*=Math.abs(n),{a:a,b:t.b,d:n,duration:e,start:t.start,end:t.start+e,group:t.group}}function v(o){const{delay:r=0,duration:c=300,easing:s=e,tick:v=t,css:b}=l||st,x={start:f()+r,b:o};o||(x.group=nt,nt.r+=1),u||d?d=x:(b&&(g(),p=N(n,a,o,c,r,s,b)),o&&v(0,1),u=m(x,c),V((()=>tt(n,o,"start"))),h((t=>{if(d&&t>d.start&&(u=m(d,c),d=null,tt(n,u.b,"start"),b&&(g(),p=N(n,a,u.b,u.duration,0,s,l.css))),u)if(t>=u.end)v(a=u.b,1-a),tt(n,u.b,"end"),d||(u.b?g():--u.group.r||i(u.group.c)),u=null;else if(t>=u.start){const e=t-u.start;a=u.a+u.d*s(e/u.duration),v(a,1-a)}return!(!u&&!d)})))}return{run(t){c(l)?Z().then((()=>{l=l(),v(t)})):v(t)},end(){g(),u=d=null}}}const ut="undefined"!=typeof window?window:"undefined"!=typeof globalThis?globalThis:global;function ft(t){t&&t.c()}function dt(t,e,n,r){const{fragment:s,on_mount:l,on_destroy:a,after_update:u}=t.$$;s&&s.m(e,n),r||V((()=>{const e=l.map(o).filter(c);a?a.push(...e):i(e),t.$$.on_mount=[]})),u.forEach(V)}function pt(t,e){const n=t.$$;null!==n.fragment&&(i(n.on_destroy),n.fragment&&n.fragment.d(e),n.on_destroy=n.fragment=null,n.ctx=[])}function gt(t,e){-1===t.$$.dirty[0]&&(L.push(t),I||(I=!0,W.then(Y)),t.$$.dirty.fill(0)),t.$$.dirty[e/31|0]|=1<<e%31}function ht(e,n,o,c,s,l,a,u=[-1]){const f=R;P(e);const d=e.$$={fragment:null,ctx:null,props:l,update:t,not_equal:s,bound:r(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(n.context||(f?f.$$.context:[])),callbacks:r(),dirty:u,skip_bound:!1,root:n.target||f.$$.root};a&&a(d.root);let p=!1;if(d.ctx=o?o(e,n.props||{},((t,n,...o)=>{const r=o.length?o[0]:n;return d.ctx&&s(d.ctx[t],d.ctx[t]=r)&&(!d.skip_bound&&d.bound[t]&&d.bound[t](r),p&&gt(e,t)),n})):[],d.update(),p=!0,i(d.before_update),d.fragment=!!c&&c(d.ctx),n.target){if(n.hydrate){const t=function(t){return Array.from(t.childNodes)}(n.target);d.fragment&&d.fragment.l(t),t.forEach(x)}else d.fragment&&d.fragment.c();n.intro&&it(e.$$.fragment),dt(e,n.target,n.anchor,n.customElement),Y()}P(f)}function mt(t,e){document.dispatchEvent(M(t,Object.assign({version:"3.43.1"},e),!0))}function vt(t,e){mt("SvelteDOMInsert",{target:t,node:e}),m(t,e)}function bt(t,e,n){mt("SvelteDOMInsert",{target:t,node:e,anchor:n}),function(t,e,n){t.insertBefore(e,n||null)}(t,e,n)}function xt(t){mt("SvelteDOMRemove",{node:t}),x(t)}function yt(t,e,n,o,r,i){const c=!0===o?["capture"]:o?Array.from(Object.keys(o)):[];r&&c.push("preventDefault"),i&&c.push("stopPropagation"),mt("SvelteDOMAddEventListener",{node:t,event:e,handler:n,modifiers:c});const s=function(t,e,n,o){return t.addEventListener(e,n,o),()=>t.removeEventListener(e,n,o)}(t,e,n,o);return()=>{mt("SvelteDOMRemoveEventListener",{node:t,event:e,handler:n,modifiers:c}),s()}}function wt(t,e,n){!function(t,e,n){null==n?t.removeAttribute(e):t.getAttribute(e)!==n&&t.setAttribute(e,n)}(t,e,n),null==n?mt("SvelteDOMRemoveAttribute",{node:t,attribute:e}):mt("SvelteDOMSetAttribute",{node:t,attribute:e,value:n})}function Ft(t,e){e=""+e,t.wholeText!==e&&(mt("SvelteDOMSetData",{node:t,data:e}),t.data=e)}function kt(t){if(!("string"==typeof t||t&&"object"==typeof t&&"length"in t)){let e="{#each} only iterates over array-like objects.";throw"function"==typeof Symbol&&t&&Symbol.iterator in t&&(e+=" You can use a spread to convert this iterable into an array."),new Error(e)}}function $t(t,e,n){for(const o of Object.keys(e))~n.indexOf(o)||console.warn(`<${t}> received an unexpected slot "${o}".`)}class Ct extends class{$destroy(){pt(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(t){var e;this.$$set&&(e=t,0!==Object.keys(e).length)&&(this.$$.skip_bound=!0,this.$$set(t),this.$$.skip_bound=!1)}}{constructor(t){if(!t||!t.target&&!t.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=()=>{console.warn("Component was already destroyed")}}$capture_state(){}$inject_state(){}}var _t="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};var St,Bt,Ot=(St=function(t,e){!function(t){function e(t){return t}function n(t,e){for(var n=0,o=e.length,r=new Array(o);n<o;++n)r[n]=t[e[n]];return r}C.version="1.3.12",C.permute=n;var o=C.bisect=r(e);function r(t){function e(e,n,o,r){for(;o<r;){var i=o+r>>>1;n<t(e[i])?r=i:o=i+1}return o}return e.right=e,e.left=function(e,n,o,r){for(;o<r;){var i=o+r>>>1;t(e[i])<n?o=i+1:r=i}return o},e}function i(t){function e(t,e,o){for(var r=o-e,i=1+(r>>>1);--i>0;)n(t,i,r,e);return t}function n(e,n,o,r){for(var i,c=e[--r+n],s=t(c);(i=n<<1)<=o&&(i<o&&t(e[r+i])>t(e[r+i+1])&&i++,!(s<=t(e[r+i])));)e[r+n]=e[r+i],n=i;e[r+n]=c}return e.sort=function(t,e,o){for(var r,i=o-e;--i>0;)r=t[e],t[e]=t[e+i],t[e+i]=r,n(t,1,i,e);return t},e}function c(t){var e=i(t);return function(n,o,r,i){var c,s,l,a=new Array(i=Math.min(r-o,i));for(s=0;s<i;++s)a[s]=n[o++];if(e(a,0,i),o<r){c=t(a[0]);do{t(l=n[o])>c&&(a[0]=l,c=t(e(a,0,i)[0]))}while(++o<r)}return a}}function s(t){return function(e,n,o){for(var r=n+1;r<o;++r){for(var i=r,c=e[r],s=t(c);i>n&&t(e[i-1])>s;--i)e[i]=e[i-1];e[i]=c}return e}}function l(t){var e=s(t);function n(t,n,r){return(r-n<a?e:o)(t,n,r)}function o(e,o,r){var i,c=(r-o)/6|0,s=o+c,l=r-1-c,a=o+r-1>>1,u=a-c,f=a+c,d=e[s],p=t(d),g=e[u],h=t(g),m=e[a],v=t(m),b=e[f],x=t(b),y=e[l],w=t(y);p>h&&(i=d,d=g,g=i,i=p,p=h,h=i),x>w&&(i=b,b=y,y=i,i=x,x=w,w=i),p>v&&(i=d,d=m,m=i,i=p,p=v,v=i),h>v&&(i=g,g=m,m=i,i=h,h=v,v=i),p>x&&(i=d,d=b,b=i,i=p,p=x,x=i),v>x&&(i=m,m=b,b=i,i=v,v=x,x=i),h>w&&(i=g,g=y,y=i,i=h,h=w,w=i),h>v&&(i=g,g=m,m=i,i=h,h=v,v=i),x>w&&(i=b,b=y,y=i,i=x,x=w,w=i);var F=g,k=h,$=b,C=x;e[s]=d,e[u]=e[o],e[a]=m,e[f]=e[r-1],e[l]=y;var _=o+1,S=r-2,B=k<=C&&k>=C;if(B)for(var O=_;O<=S;++O){var z=e[O];if((M=t(z))<k)O!==_&&(e[O]=e[_],e[_]=z),++_;else if(M>k)for(;;){if(!((E=t(e[S]))>k)){if(E<k){e[O]=e[_],e[_++]=e[S],e[S--]=z;break}e[O]=e[S],e[S--]=z;break}S--}}else for(O=_;O<=S;O++)if(z=e[O],(M=t(z))<k)O!==_&&(e[O]=e[_],e[_]=z),++_;else if(M>C)for(;;){if(!((E=t(e[S]))>C)){E<k?(e[O]=e[_],e[_++]=e[S],e[S--]=z):(e[O]=e[S],e[S--]=z);break}if(--S<O)break}if(e[o]=e[_-1],e[_-1]=F,e[r-1]=e[S+1],e[S+1]=$,n(e,o,_-1),n(e,S+2,r),B)return e;if(_<s&&S>l){for(var j;(j=t(e[_]))<=k&&j>=k;)++_;for(;(E=t(e[S]))<=C&&E>=C;)--S;for(O=_;O<=S;O++){var M;if(z=e[O],(M=t(z))<=k&&M>=k)O!==_&&(e[O]=e[_],e[_]=z),_++;else if(M<=C&&M>=C)for(;;){var E;if(!((E=t(e[S]))<=C&&E>=C)){E<k?(e[O]=e[_],e[_++]=e[S],e[S--]=z):(e[O]=e[S],e[S--]=z);break}if(--S<O)break}}}return n(e,_,S+1)}return n}o.by=r,(C.heap=i(e)).by=i,(C.heapselect=c(e)).by=c,(C.insertionsort=s(e)).by=s,(C.quicksort=l(e)).by=l;var a=32,u=h,f=h,d=h,p=function(t,e){for(var n=t.length;n<e;)t[n++]=0;return t},g=function(t,e){if(e>32)throw new Error("invalid array width!");return t};function h(t){for(var e=new Array(t),n=-1;++n<t;)e[n]=0;return e}function m(t,e){return function(n){var o=n.length;return[t.left(n,e,0,o),t.right(n,e,0,o)]}}function v(t,e){var n=e[0],o=e[1];return function(e){var r=e.length;return[t.left(e,n,0,r),t.left(e,o,0,r)]}}function b(t){return[0,t.length]}function x(){return null}function y(){return 0}function w(t){return t+1}function F(t){return t-1}function k(t){return function(e,n){return e+ +t(n)}}function $(t){return function(e,n){return e-t(n)}}function C(){var t={add:z,remove:j,dimension:M,groupAll:E,size:R},r=[],s=0,a=0,f=8,d=u(0),h=[],C=[],O=[];function z(e){var n=s,o=e.length;return o&&(r=r.concat(e),d=p(d,s+=o),C.forEach((function(t){t(e,n,o)}))),t}function j(){for(var t=_(s,s),e=[],n=0,o=0;n<s;++n)d[n]?t[n]=o++:e.push(n);var i;for(h.forEach((function(t){t(0,[],e)})),O.forEach((function(e){e(t)})),n=0,o=0;n<s;++n)(i=d[n])&&(n!==o&&(d[o]=i,r[o]=r[n]),++o);for(r.length=o;s>o;)d[--s]=0}function M(t){var u,z,j,M,E,R={filter:function(t){return null==t?X():Array.isArray(t)?J(t):"function"==typeof t?Y(t):V(t)},filterExact:V,filterRange:J,filterFunction:Y,filterAll:X,top:function(t){for(var e,n=[],o=G;--o>=L&&t>0;)d[e=z[o]]||(n.push(r[e]),--t);return n},bottom:function(t){for(var e,n=[],o=L;o<G&&t>0;)d[e=z[o]]||(n.push(r[e]),--t),o++;return n},group:Q,groupAll:function(){var t=Q(x),e=t.all;return delete t.all,delete t.top,delete t.order,delete t.orderNatural,delete t.size,t.value=function(){return e()[0].value},t},dispose:Z,remove:Z},A=~a&-~a,N=~A,D=l((function(t){return j[t]})),P=b,q=[],T=[],L=0,G=0;function H(e,o,r){j=e.map(t),M=D(S(r),0,r),j=n(j,M);var i,c=P(j),l=c[0],a=c[1];if(E)for(i=0;i<r;++i)E(j[i],i)||(d[M[i]+o]|=A);else{for(i=0;i<l;++i)d[M[i]+o]|=A;for(i=a;i<r;++i)d[M[i]+o]|=A}if(!o)return u=j,z=M,L=l,void(G=a);var f=u,p=z,g=0,h=0;for(u=new Array(s),z=_(s,s),i=0;g<o&&h<r;++i)f[g]<j[h]?(u[i]=f[g],z[i]=p[g++]):(u[i]=j[h],z[i]=M[h++]+o);for(;g<o;++g,++i)u[i]=f[g],z[i]=p[g];for(;h<r;++h,++i)u[i]=j[h],z[i]=M[h]+o;c=P(u),L=c[0],G=c[1]}function U(t,e,n){q.forEach((function(t){t(j,M,e,n)})),j=M=null}function W(t){for(var e,n=0,o=0;n<s;++n)d[e=z[n]]&&(n!==o&&(u[o]=u[n]),z[o]=t[e],++o);for(u.length=o;o<s;)z[o++]=0;var r=P(u);L=r[0],G=r[1]}function I(t){var e=t[0],n=t[1];if(E)return E=null,K((function(t,o){return e<=o&&o<n})),L=e,G=n,R;var o,r,i,c=[],s=[];if(e<L)for(o=e,r=Math.min(L,n);o<r;++o)d[i=z[o]]^=A,c.push(i);else if(e>L)for(o=L,r=Math.min(e,G);o<r;++o)d[i=z[o]]^=A,s.push(i);if(n>G)for(o=Math.max(e,G),r=n;o<r;++o)d[i=z[o]]^=A,c.push(i);else if(n<G)for(o=Math.max(L,n),r=G;o<r;++o)d[i=z[o]]^=A,s.push(i);return L=e,G=n,h.forEach((function(t){t(A,c,s)})),R}function V(t){return I((P=m(o,t))(u))}function J(t){return I((P=v(o,t))(u))}function X(){return I((P=b)(u))}function Y(t){return P=b,K(E=t),L=0,G=s,R}function K(t){var e,n,o,r=[],i=[];for(e=0;e<s;++e)!(d[n=z[e]]&A)^!!(o=t(u[e],e))&&(o?(d[n]&=N,r.push(n)):(d[n]|=A,i.push(n)));h.forEach((function(t){t(A,r,i)}))}function Q(t){var n={top:V,all:I,reduce:J,reduceCount:X,reduceSum:Y,order:K,orderNatural:Q,size:Z,dispose:tt,remove:tt};T.push(n);var o,l,a,f,m,v,b,C=8,S=B(C),j=0,M=x,E=x,R=!0,D=t===x;function P(e,n,i,c){var a,u,f,v,y,w,F=o,k=_(j,S),$=m,O=b,z=j,A=0,P=0;for(R&&($=O=x),o=new Array(j),j=0,l=z>1?p(l,s):_(s,S),z&&(f=(u=F[0]).key);P<c&&!((v=t(e[P]))>=v);)++P;for(;P<c;){for(u&&f<=v?(y=u,w=f,k[A]=j,(u=F[++A])&&(f=u.key)):(y={key:v,value:O()},w=v),o[j]=y;!(v>w||(l[a=n[P]+i]=j,d[a]&N||(y.value=$(y.value,r[a])),++P>=c));)v=t(e[P]);q()}for(;A<z;)o[k[A]=j]=F[A++],q();if(j>A)for(A=0;A<i;++A)l[A]=k[l[A]];function q(){++j===S&&(k=g(k,C<<=1),l=g(l,C),S=B(C))}a=h.indexOf(M),j>1?(M=G,E=U):(!j&&D&&(j=1,o=[{key:null,value:O()}]),1===j?(M=H,E=W):(M=x,E=x),l=null),h[a]=M}function L(){if(j>1){for(var t=j,e=o,n=_(t,t),r=0,i=0;r<s;++r)d[r]&&(n[l[i]=l[r]]=1,++i);for(o=[],j=0,r=0;r<t;++r)n[r]&&(n[r]=j++,o.push(e[r]));if(j>1)for(r=0;r<i;++r)l[r]=n[l[r]];else l=null;h[h.indexOf(M)]=j>1?(E=U,M=G):1===j?(E=W,M=H):E=M=x}else if(1===j){if(D)return;for(r=0;r<s;++r)if(d[r])return;o=[],j=0,h[h.indexOf(M)]=M=E=x}}function G(t,e,n){if(t!==A&&!R){var i,c,s,a;for(i=0,s=e.length;i<s;++i)d[c=e[i]]&N||((a=o[l[c]]).value=m(a.value,r[c]));for(i=0,s=n.length;i<s;++i)(d[c=n[i]]&N)===t&&((a=o[l[c]]).value=v(a.value,r[c]))}}function H(t,e,n){if(t!==A&&!R){var i,c,s,l=o[0];for(i=0,s=e.length;i<s;++i)d[c=e[i]]&N||(l.value=m(l.value,r[c]));for(i=0,s=n.length;i<s;++i)(d[c=n[i]]&N)===t&&(l.value=v(l.value,r[c]))}}function U(){var t,e;for(t=0;t<j;++t)o[t].value=b();for(t=0;t<s;++t)d[t]&N||((e=o[l[t]]).value=m(e.value,r[t]))}function W(){var t,e=o[0];for(e.value=b(),t=0;t<s;++t)d[t]&N||(e.value=m(e.value,r[t]))}function I(){return R&&(E(),R=!1),o}function V(t){var e=a(I(),0,o.length,t);return f.sort(e,0,e.length)}function J(t,e,o){return m=t,v=e,b=o,R=!0,n}function X(){return J(w,F,y)}function Y(t){return J(k(t),$(t),y)}function K(t){function e(e){return t(e.value)}return a=c(e),f=i(e),n}function Q(){return K(e)}function Z(){return j}function tt(){var t=h.indexOf(M);return t>=0&&h.splice(t,1),(t=q.indexOf(P))>=0&&q.splice(t,1),(t=O.indexOf(L))>=0&&O.splice(t,1),n}return arguments.length<1&&(t=e),h.push(M),q.push(P),O.push(L),P(u,z,0,s),X().orderNatural()}function Z(){T.forEach((function(t){t.dispose()}));var t=C.indexOf(H);return t>=0&&C.splice(t,1),(t=C.indexOf(U))>=0&&C.splice(t,1),(t=O.indexOf(W))>=0&&O.splice(t,1),a&=N,X()}return C.unshift(H),C.push(U),O.push(W),a|=A,(f>=32?!A:a&-(1<<f))&&(d=g(d,f<<=1)),H(r,0,s),U(0,0,s),R}function E(){var t,e,n,o,i={reduce:u,reduceCount:f,reduceSum:function(t){return u(k(t),$(t),y)},value:function(){return c&&(function(){var n;for(t=o(),n=0;n<s;++n)d[n]||(t=e(t,r[n]))}(),c=!1),t},dispose:p,remove:p},c=!0;function l(n,o){var i;if(!c)for(i=o;i<s;++i)d[i]||(t=e(t,r[i]))}function a(o,i,s){var l,a,u;if(!c){for(l=0,u=i.length;l<u;++l)d[a=i[l]]||(t=e(t,r[a]));for(l=0,u=s.length;l<u;++l)d[a=s[l]]===o&&(t=n(t,r[a]))}}function u(t,r,s){return e=t,n=r,o=s,c=!0,i}function f(){return u(w,F,y)}function p(){var t=h.indexOf(a);return t>=0&&h.splice(t),(t=C.indexOf(l))>=0&&C.splice(t),i}return h.push(a),C.push(l),l(0,0),f()}function R(){return s}return arguments.length?z(arguments[0]):t}function _(t,e){return(e<257?u:e<65537?f:d)(t)}function S(t){for(var e=_(t,t),n=-1;++n<t;)e[n]=n;return e}function B(t){return 8===t?256:16===t?65536:4294967296}"undefined"!=typeof Uint8Array&&(u=function(t){return new Uint8Array(t)},f=function(t){return new Uint16Array(t)},d=function(t){return new Uint32Array(t)},p=function(t,e){if(t.length>=e)return t;var n=new t.constructor(e);return n.set(t),n},g=function(t,e){var n;switch(e){case 16:n=f(t.length);break;case 32:n=d(t.length);break;default:throw new Error("invalid array width!")}return n.set(t),n}),t.crossfilter=C}(e||_t)},St(Bt={exports:{}},Bt.exports),Bt.exports),zt=Ot.crossfilter,jt=function(t,e){var n=zt(t),o=e.column,r=e.value,i=e.row,c=[],s=n.dimension((function(t){return t[i]})),l=n.dimension((function(t){return t[o]}));return s.group().reduceSum((function(t){return t[r]})).all().forEach((function(t){s.filter(),s.filter(t.key);var e=l.group().reduceSum((function(t){return t[r]})).all(),n={};n[i]=t.key,e.forEach((function(t){n[t.key]=t.value})),c.push(n)})),c};const Mt=[];function Et(e,n=t){let o;const r=new Set;function i(t){if(s(e,t)&&(e=t,o)){const t=!Mt.length;for(const t of r)t[1](),Mt.push(t,e);if(t){for(let t=0;t<Mt.length;t+=2)Mt[t][0](Mt[t+1]);Mt.length=0}}}return{set:i,update:function(t){i(t(e))},subscribe:function(c,s=t){const l=[c,s];return r.add(l),1===r.size&&(o=n(i)||t),c(e),()=>{r.delete(l),0===r.size&&(o(),o=null)}}}}const Rt=Et([]),At=Et(0),Nt=Et(0),Dt=Et(0),Pt=Et([]),qt=Et([]);function Tt(t){var e=new XMLHttpRequest;return e.open("GET",t,!1),e.send(null),e.responseText}const Lt=()=>{let t=Tt("https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/file/is.json"),e=JSON.parse(t);console.log(e),qt.set(e),Dt.set(e[0].r)};function Gt(){let t,e;Dt.subscribe((e=>{t=e})),At.subscribe((t=>e=t));let n=Tt(`https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/odds?meet=${t}`),o=JSON.parse(n);console.log(o.items),Pt.set(o.items),Rt.set(o.items.map(((t,e)=>t.race_no))),0==e&&Rt.subscribe((t=>{At.set(t[0])}))}function Ht(t){return t<.5?4*t*t*t:.5*Math.pow(2*t-2,3)+1}function Ut(t){const e=t-1;return e*e*e+1}function Wt(t,{delay:e=0,duration:n=400,easing:o=Ht,amount:r=5,opacity:i=0}={}){const c=getComputedStyle(t),s=+c.opacity,l="none"===c.filter?"":c.filter,a=s*(1-i);return{delay:e,duration:n,easing:o,css:(t,e)=>`opacity: ${s-a*e}; filter: ${l} blur(${e*r}px);`}}function It(t,{delay:n=0,duration:o=400,easing:r=e}={}){const i=+getComputedStyle(t).opacity;return{delay:n,duration:o,easing:r,css:t=>"opacity: "+t*i}}function Vt(t,{delay:e=0,duration:n=400,easing:o=Ut,x:r=0,y:i=0,opacity:c=0}={}){const s=getComputedStyle(t),l=+s.opacity,a="none"===s.transform?"":s.transform,u=l*(1-c);return{delay:e,duration:n,easing:o,css:(t,e)=>`\n\t\t\ttransform: ${a} translate(${(1-t)*r}px, ${(1-t)*i}px);\n\t\t\topacity: ${l-u*e}`}}function Jt(t,{delay:e=0,duration:n=400,easing:o=Ut}={}){const r=getComputedStyle(t),i=+r.opacity,c=parseFloat(r.height),s=parseFloat(r.paddingTop),l=parseFloat(r.paddingBottom),a=parseFloat(r.marginTop),u=parseFloat(r.marginBottom),f=parseFloat(r.borderTopWidth),d=parseFloat(r.borderBottomWidth);return{delay:e,duration:n,easing:o,css:t=>`overflow: hidden;opacity: ${Math.min(20*t,1)*i};height: ${t*c}px;padding-top: ${t*s}px;padding-bottom: ${t*l}px;margin-top: ${t*a}px;margin-bottom: ${t*u}px;border-top-width: ${t*f}px;border-bottom-width: ${t*d}px;`}}const Xt="src\\components\\betCalc.svelte";function Yt(t){let e,o,r,c,s,l,a,u,f,d,p,g,h,m,v,b,x,y,C,_,S,j,M,E,R,A,N,D,P,q,T,L,G,H,U,W,I,V,J,X,Y,K,Q,Z,tt,et,nt,st,lt,at,ut,ft,dt,pt,gt,ht,kt,$t,Ct,_t,St,Bt,Ot,zt,jt,Mt,Et,Rt,At,Nt,Dt,Pt,qt,Tt,Lt,Gt,Ht,Ut,Wt=0!=t[5]&&Qt(t);const It={c:function(){e=w("div"),o=w("div"),r=F("svg"),c=F("path"),s=$(),l=w("div"),a=w("div"),u=w("div"),f=F("svg"),d=F("g"),p=F("circle"),g=F("path"),h=F("polygon"),m=F("polygon"),v=F("polygon"),b=F("path"),x=F("path"),y=F("path"),C=F("path"),_=F("path"),S=F("path"),j=F("path"),M=F("path"),E=F("ellipse"),R=F("polygon"),A=F("polygon"),N=F("polygon"),D=F("path"),P=F("path"),q=F("path"),T=F("path"),L=F("path"),G=F("path"),H=F("path"),U=F("path"),W=F("ellipse"),I=F("g"),V=F("g"),J=F("g"),X=F("g"),Y=F("g"),K=F("g"),Q=F("g"),Z=F("g"),tt=F("g"),et=F("g"),nt=F("g"),st=F("g"),lt=F("g"),at=F("g"),ut=F("g"),ft=$(),dt=w("div"),pt=w("h3"),pt.textContent="Betting Calculator",gt=$(),ht=w("div"),kt=w("p"),$t=k(t[1]),Ct=$(),_t=w("p"),St=k(t[2]),Bt=$(),Ot=w("p"),zt=k(t[3]),jt=$(),Mt=w("div"),Et=w("label"),Et.textContent="Bet",Rt=$(),At=w("input"),Nt=$(),Wt&&Wt.c(),Dt=$(),Pt=w("div"),qt=w("button"),qt.textContent="Place Bet",Tt=$(),Lt=w("button"),Lt.textContent="Cancel",wt(c,"strokelinecap","round"),wt(c,"strokelinejoin","round"),wt(c,"strokewidth",10),wt(c,"d","M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"),n(c,Xt,87,8,4202),wt(r,"xmlns","http://www.w3.org/2000/svg"),wt(r,"class","h-6 w-6"),wt(r,"fill","#409C2C"),wt(r,"viewBox","0 0 24 24"),wt(r,"stroke","currentColor"),n(r,Xt,86,48,4079),wt(o,"class","x svelte-4euwfi"),n(o,Xt,86,4,4035),z(p,"fill","none"),wt(p,"cx","256"),wt(p,"cy","256"),wt(p,"r","256"),n(p,Xt,96,9,4916),z(g,"fill","rgba(98, 126, 105,0.5)"),wt(g,"d","M493.297,352.061l-0.553-0.276L289.065,135.808l-96.123-48.061l-96.123,48.061V259.2\r\n             l120.909,119.711l8.54,24.94l90.788,100.772C397.348,484.961,462.74,427.459,493.297,352.061z"),n(g,Xt,97,9,4981),z(h,"fill","#04ad0c"),wt(h,"points","289.065,135.808 192.942,183.875 96.819,135.808 192.942,87.747 \t"),n(h,Xt,99,9,5227),z(m,"fill","#04ad0c"),wt(m,"points","192.942,306.278 96.819,259.2 96.819,135.808 192.942,183.875 \t"),n(m,Xt,100,9,5343),z(v,"fill","#006b05"),wt(v,"points","192.942,306.278 289.065,259.2 289.065,135.808 192.942,183.875 \t"),n(v,Xt,101,9,5457),z(b,"fill","#FFFFFF"),wt(b,"d","M153.882,221.379c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n             c0-6.733,4.029-10.706,9.001-8.873C149.852,207.703,153.882,214.646,153.882,221.379z"),n(b,Xt,102,9,5573),z(x,"fill","#FFFFFF"),wt(x,"d","M234.813,222.74c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n             c0-6.733-4.029-10.706-9.001-8.873C238.843,209.065,234.813,216.008,234.813,222.74z"),n(x,Xt,104,9,5802),z(y,"fill","#FFFFFF"),wt(y,"d","M205.553,205.768c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514\r\n             s-4.029-10.706-9.001-8.873S205.553,199.035,205.553,205.768z"),n(y,Xt,106,9,6028),z(C,"fill","#FFFFFF"),wt(C,"d","M205.553,272.256c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n             s-4.029-10.706-9.001-8.873S205.553,265.523,205.553,272.256z"),n(C,Xt,108,9,6221),z(_,"fill","#FFFFFF"),wt(_,"d","M260.465,178.693c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514\r\n             c0-6.733-4.029-10.706-9.001-8.873C264.499,165.012,260.465,171.955,260.465,178.693z"),n(_,Xt,110,9,6426),z(S,"fill","#FFFFFF"),wt(S,"d","M260.465,245.181c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n             s-4.029-10.706-9.001-8.873S260.465,238.449,260.465,245.181z"),n(S,Xt,112,9,6642),z(j,"fill","#FFFFFF"),wt(j,"d","M123.571,176.292c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n             c0-6.733,4.029-10.706,9.001-8.873C119.542,162.611,123.571,169.559,123.571,176.292z"),n(j,Xt,114,9,6847),z(M,"fill","#FFFFFF"),wt(M,"d","M180.122,270.459c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n             c0-6.733,4.029-10.706,9.001-8.873C176.092,256.783,180.122,263.726,180.122,270.459z"),n(M,Xt,116,9,7076),z(E,"fill","#FFFFFF"),wt(E,"cx","192.942"),wt(E,"cy","135.808"),wt(E,"rx","12.611"),wt(E,"ry","8.53"),n(E,Xt,118,9,7305),z(R,"fill","#009708"),wt(R,"points","414.776,351.278 312.822,317.292 278.835,215.337 380.79,249.324 \t"),n(R,Xt,119,9,7396),z(A,"fill","#04ad0c"),wt(A,"points","226.263,403.845 191.585,302.587 278.835,215.337 312.822,317.292 \t"),n(A,Xt,120,9,7513),z(N,"fill","#006b05"),wt(N,"points","226.263,403.845 327.526,438.528 414.776,351.278 312.822,317.292 \t"),n(N,Xt,121,9,7631),z(D,"fill","#FFFFFF"),wt(D,"d","M306.253,341.693c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n             c4.762-4.762,4.721-10.419-0.092-12.641S311.014,336.932,306.253,341.693z"),n(D,Xt,122,9,7749),z(P,"fill","#FFFFFF"),wt(P,"d","M259.236,388.705c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n             c4.762-4.762,4.721-10.419-0.092-12.641C271.759,381.88,263.997,383.944,259.236,388.705z"),n(P,Xt,124,9,7973),z(q,"fill","#FFFFFF"),wt(q,"d","M336.599,351.862c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.222,12.575,0.159,17.336-4.603\r\n             s4.721-10.419-0.092-12.641C349.123,345.037,341.361,347.1,336.599,351.862z"),n(q,Xt,126,9,8212),z(T,"fill","#FFFFFF"),wt(T,"d","M289.582,398.879c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n             c4.762-4.762,4.721-10.419-0.092-12.641S294.344,394.117,289.582,398.879z"),n(T,Xt,128,9,8438),z(L,"fill","#FFFFFF"),wt(L,"d","M364.232,361.375c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n             s4.721-10.419-0.092-12.641C376.755,354.555,368.993,356.613,364.232,361.375z"),n(L,Xt,130,9,8662),z(G,"fill","#FFFFFF"),wt(G,"d","M317.215,408.392c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n             c4.762-4.762,4.721-10.419-0.092-12.641C329.738,401.567,321.976,403.63,317.215,408.392z"),n(G,Xt,132,9,8890),z(H,"fill","#FFFFFF"),wt(H,"d","M269.128,262.881c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336\r\n             c4.762-4.762,10.419-4.721,12.641,0.092C275.953,250.358,273.889,258.12,269.128,262.881z"),n(H,Xt,134,9,9129),z(U,"fill","#FFFFFF"),wt(U,"d","M242.529,369.454c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336\r\n             s10.419-4.721,12.641,0.092S247.291,364.692,242.529,369.454z"),n(U,Xt,136,9,9369),wt(W,"transform","matrix(0.7071 -0.7071 0.7071 0.7071 -98.7293 328.1921)"),z(W,"fill","#FFFFFF"),wt(W,"cx","346.798"),wt(W,"cy","283.273"),wt(W,"rx","8.53"),wt(W,"ry","12.61"),n(W,Xt,139,13,9597),n(d,Xt,95,5,4902),n(I,Xt,141,5,9761),n(V,Xt,143,5,9782),n(J,Xt,145,5,9803),n(X,Xt,147,5,9824),n(Y,Xt,149,5,9845),n(K,Xt,151,5,9866),n(Q,Xt,153,5,9887),n(Z,Xt,155,5,9908),n(tt,Xt,157,5,9929),n(et,Xt,159,5,9950),n(nt,Xt,161,5,9971),n(st,Xt,163,5,9992),n(lt,Xt,165,5,10013),n(at,Xt,167,5,10034),n(ut,Xt,169,5,10055),wt(f,"version","1.1"),wt(f,"id","Layer_1"),wt(f,"xmlns","http://www.w3.org/2000/svg"),wt(f,"xmlns:xlink","http://www.w3.org/1999/xlink"),wt(f,"x","0px"),wt(f,"y","0px"),wt(f,"viewBox","0 0 512 512"),z(f,"enable-background","new 0 0 512 512"),wt(f,"xml:space","preserve"),n(f,Xt,93,10,4672),wt(u,"class","mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10"),n(u,Xt,91,8,4477),wt(pt,"class","text-lg leading-6 font-medium text-gray-900"),wt(pt,"id","modal-title"),n(pt,Xt,174,10,10179),wt(kt,"class","text-xl text-gray-900"),n(kt,Xt,181,12,10560),wt(_t,"class","text-xl text-gray-900"),n(_t,Xt,182,12,10618),wt(Ot,"class","text-xl text-gray-900"),n(Ot,Xt,183,12,10680),wt(Et,"for","betAmount"),wt(Et,"class","text-sm font-medium text-gray-900 block mb-2"),n(Et,Xt,185,16,10773),wt(At,"type","number"),wt(At,"id","betAmount"),wt(At,"class","bg-gray-50 appearance-none border border-green-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block p-2.5"),n(At,Xt,186,16,10878),wt(Mt,"class","mb-6"),n(Mt,Xt,184,12,10737),wt(ht,"class","mb-6"),n(ht,Xt,177,10,10313),wt(dt,"class","mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"),n(dt,Xt,173,8,10108),wt(a,"class","sm:flex sm:items-start"),n(a,Xt,90,6,4431),wt(l,"class","bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"),n(l,Xt,89,4,4371),wt(qt,"id","placeBet"),wt(qt,"type","button"),wt(qt,"class","placeBet w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-200 sm:ml-3 sm:w-auto sm:text-sm svelte-4euwfi"),n(qt,Xt,196,6,11425),wt(Lt,"type","button"),wt(Lt,"class","mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"),n(Lt,Xt,199,6,11768),wt(Pt,"class","buttonBar absolute bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse  svelte-4euwfi"),n(Pt,Xt,195,4,11327),wt(e,"class","h-3/5 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"),n(e,Xt,85,2,3857)},m:function(n,i){bt(n,e,i),vt(e,o),vt(o,r),vt(r,c),vt(e,s),vt(e,l),vt(l,a),vt(a,u),vt(u,f),vt(f,d),vt(d,p),vt(d,g),vt(d,h),vt(d,m),vt(d,v),vt(d,b),vt(d,x),vt(d,y),vt(d,C),vt(d,_),vt(d,S),vt(d,j),vt(d,M),vt(d,E),vt(d,R),vt(d,A),vt(d,N),vt(d,D),vt(d,P),vt(d,q),vt(d,T),vt(d,L),vt(d,G),vt(d,H),vt(d,U),vt(d,W),vt(f,I),vt(f,V),vt(f,J),vt(f,X),vt(f,Y),vt(f,K),vt(f,Q),vt(f,Z),vt(f,tt),vt(f,et),vt(f,nt),vt(f,st),vt(f,lt),vt(f,at),vt(f,ut),vt(a,ft),vt(a,dt),vt(dt,pt),vt(dt,gt),vt(dt,ht),vt(ht,kt),vt(kt,$t),vt(ht,Ct),vt(ht,_t),vt(_t,St),vt(ht,Bt),vt(ht,Ot),vt(Ot,zt),vt(ht,jt),vt(ht,Mt),vt(Mt,Et),vt(Mt,Rt),vt(Mt,At),O(At,t[4]),vt(ht,Nt),Wt&&Wt.m(ht,null),vt(e,Dt),vt(e,Pt),vt(Pt,qt),vt(Pt,Tt),vt(Pt,Lt),Gt=!0,Ht||(Ut=[yt(o,"click",t[7],!1,!1,!1),yt(At,"input",t[8]),yt(Lt,"click",t[9],!1,!1,!1)],Ht=!0)},p:function(t,e){(!Gt||2&e)&&Ft($t,t[1]),(!Gt||4&e)&&Ft(St,t[2]),(!Gt||8&e)&&Ft(zt,t[3]),16&e&&B(At.value)!==t[4]&&O(At,t[4]),0!=t[5]?Wt?(Wt.p(t,e),32&e&&it(Wt,1)):(Wt=Qt(t),Wt.c(),it(Wt,1),Wt.m(ht,null)):Wt&&(ot(),ct(Wt,1,1,(()=>{Wt=null})),rt())},i:function(t){Gt||(it(Wt),Gt=!0)},o:function(t){ct(Wt),Gt=!1},d:function(t){t&&xt(e),Wt&&Wt.d(),Ht=!1,i(Ut)}};return mt("SvelteRegisterBlock",{block:It,id:Yt.name,type:"else",source:"(84:0) {:else}",ctx:t}),It}function Kt(e){let o,r,i,c,s,l,a,u,f,d,p,g,h,m,v,b,x,y,C,_,S,B,O,j,M,E,R,A,N,D,P,q,T,L,G,H,U,W,I;const V={c:function(){o=w("div"),r=F("svg"),i=F("path"),c=F("path"),s=F("g"),l=F("polygon"),a=F("path"),u=F("path"),f=F("path"),d=F("g"),p=F("g"),g=F("g"),h=F("g"),m=F("g"),v=F("g"),b=F("g"),x=F("g"),y=F("g"),C=F("g"),_=F("g"),S=F("g"),B=F("g"),O=F("g"),j=F("g"),M=$(),E=w("p"),R=k("Sorry! Selected Bookmaker: "),A=w("strong"),N=k(e[2]),D=k("'s"),P=k(" Odds for horse "),q=w("strong"),T=k(e[1]),L=k(", is not enough. Please try again selecting different odds."),G=$(),H=w("div"),U=w("button"),U.textContent="Ok",z(i,"fill","#47CEAC"),wt(i,"d","M512,256.006C512,397.402,397.394,512.004,256.004,512C114.606,512.004,0,397.402,0,256.006\r\nC-0.007,114.61,114.606,0,256.004,0C397.394,0,512,114.614,512,256.006z"),n(i,Xt,17,0,767),z(c,"fill","#36BB9A"),wt(c,"d","M511.712,267.373c-0.119-0.137-0.238-0.274-0.368-0.402\r\nc-0.223-0.221-132.713-132.715-132.993-132.992c-0.222-0.22-0.47-0.403-0.693-0.621c-0.281-0.282-0.518-0.594-0.801-0.874\r\nc-32.27-31.934-75.417-49.161-120.981-48.268c-46.031,0.791-89.349,19.387-121.969,52.361\r\nc-32.838,33.193-50.485,76.668-49.694,122.415c0.799,46.023,18.887,88.827,50.934,120.528c0.226,0.223,0.477,0.41,0.703,0.631\r\nc0.276,0.277,0.512,0.587,0.791,0.863c0.226,0.223,130.481,130.414,130.707,130.636c0.02,0.02,0.037,0.043,0.058,0.063\r\nC399.729,505.913,505.926,399.705,511.712,267.373z"),n(c,Xt,19,0,962),z(l,"fill","#F4F6F9"),wt(l,"points","427.788,253.013 427.788,253.017 427.788,253.017 \t"),n(l,Xt,26,0,1553),z(a,"fill","#F4F6F9"),wt(a,"d","M255.876,84.217c-46.032,0.791-89.349,19.387-121.969,52.361\r\n   c-32.838,33.193-50.485,76.668-49.694,122.415c0.799,46.025,18.886,88.828,50.934,120.529\r\n   c31.558,31.216,73.338,48.297,117.947,48.297c1.01,0,2.028-0.007,3.042-0.026c46.032-0.799,89.346-19.397,121.963-52.371\r\n   c32.842-33.191,50.484-76.661,49.691-122.404c-0.799-46.028-18.883-88.831-50.93-120.532\r\n   C344.588,100.55,301.441,83.323,255.876,84.217z M412.847,253.276c0.73,41.68-15.386,81.329-45.367,111.639\r\n   c-29.862,30.179-69.497,47.206-111.606,47.936c-41.633,0.828-80.833-14.885-110.218-43.953\r\n   c-29.261-28.94-45.773-68.066-46.502-110.166c-0.725-41.687,15.389-81.34,45.375-111.65\r\n   c29.862-30.179,69.497-47.202,111.606-47.924c0.933-0.018,1.868-0.026,2.798-0.026c40.641,0,78.691,15.553,107.42,43.971\r\n   c29.253,28.943,45.765,68.07,46.495,110.17C412.847,253.276,412.847,253.276,412.847,253.276z"),n(a,Xt,27,0,1646),z(u,"fill","#F4F6F9"),wt(u,"d","M256,285.885c4.126,0,7.47-3.345,7.47-7.47V158.892c0-4.126-3.345-7.47-7.47-7.47\r\n   c-4.126,0-7.47,3.345-7.47,7.47v119.522C248.53,282.54,251.874,285.885,256,285.885z"),n(u,Xt,36,0,2547),z(f,"fill","#F4F6F9"),wt(f,"d","M256.007,315.765h-0.27c-8.241,0-14.821,6.954-14.675,15.195c0.139,8.17,6.798,14.686,14.93,14.686\r\n   h0.27c8.241,0,14.821-6.954,14.675-15.195C270.791,322.281,264.14,315.765,256.007,315.765z"),n(f,Xt,38,0,2747),n(s,Xt,25,0,1548),n(d,Xt,41,0,2977),n(p,Xt,43,0,2988),n(g,Xt,45,0,2999),n(h,Xt,47,0,3010),n(m,Xt,49,0,3021),n(v,Xt,51,0,3032),n(b,Xt,53,0,3043),n(x,Xt,55,0,3054),n(y,Xt,57,0,3065),n(C,Xt,59,0,3076),n(_,Xt,61,0,3087),n(S,Xt,63,0,3098),n(B,Xt,65,0,3109),n(O,Xt,67,0,3120),n(j,Xt,69,0,3131),wt(r,"version","1.1"),wt(r,"class","h-1/5 w-1/5 -mt-0"),wt(r,"id","Layer_1"),wt(r,"xmlns","http://www.w3.org/2000/svg"),wt(r,"xmlns:xlink","http://www.w3.org/1999/xlink"),wt(r,"x","0px"),wt(r,"y","0px"),wt(r,"viewBox","0 0 512 512"),z(r,"enable-background","new 0 0 512 512"),wt(r,"xml:space","preserve"),n(r,Xt,15,8,525),n(A,Xt,73,31,3220),n(q,Xt,73,77,3266),wt(E,"class","p-8 text-lg text-gray-500"),n(E,Xt,72,0,3150),wt(U,"type","button"),wt(U,"class","w-1/5 placeBet w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-200 sm:ml-3 sm:w-auto sm:text-sm svelte-4euwfi"),n(U,Xt,76,8,3458),wt(H,"class","buttonBar relative px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse  svelte-4euwfi"),n(H,Xt,75,4,3368),wt(o,"class","h-1/3 w-2/6 my-20 flex flex-col items-center align-center justify-center inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all"),n(o,Xt,14,0,332)},m:function(t,n){bt(t,o,n),vt(o,r),vt(r,i),vt(r,c),vt(r,s),vt(s,l),vt(s,a),vt(s,u),vt(s,f),vt(r,d),vt(r,p),vt(r,g),vt(r,h),vt(r,m),vt(r,v),vt(r,b),vt(r,x),vt(r,y),vt(r,C),vt(r,_),vt(r,S),vt(r,B),vt(r,O),vt(r,j),vt(o,M),vt(o,E),vt(E,R),vt(E,A),vt(A,N),vt(A,D),vt(E,P),vt(E,q),vt(q,T),vt(E,L),vt(o,G),vt(o,H),vt(H,U),W||(I=yt(U,"click",e[6],!1,!1,!1),W=!0)},p:function(t,e){4&e&&Ft(N,t[2]),2&e&&Ft(T,t[1])},i:t,o:t,d:function(t){t&&xt(o),W=!1,I()}};return mt("SvelteRegisterBlock",{block:V,id:Kt.name,type:"if",source:"(13:0) {#if odds == 0 }",ctx:e}),V}function Qt(t){let e,o,r,i,c,s,l,a,u;const f={c:function(){e=w("p"),o=k("Payout:"),r=w("br"),i=$(),c=w("span"),s=k(t[5]),n(r,Xt,189,67,11204),n(c,Xt,189,72,11209),wt(e,"class","text-xl text-gray-900"),n(e,Xt,189,12,11149)},m:function(t,n){bt(t,e,n),vt(e,o),vt(e,r),vt(e,i),vt(e,c),vt(c,s),u=!0},p:function(t,e){(!u||32&e)&&Ft(s,t[5])},i:function(t){u||(l||V((()=>{l=lt(c,Wt,{}),l.start()})),V((()=>{a||(a=at(e,Vt,{},!0)),a.run(1)})),u=!0)},o:function(t){a||(a=at(e,Vt,{},!1)),a.run(0),u=!1},d:function(t){t&&xt(e),t&&a&&a.end()}};return mt("SvelteRegisterBlock",{block:f,id:Qt.name,type:"if",source:"(189:12) {#if payout != 0 }",ctx:t}),f}function Zt(t){let e,o,r,i,c;const s=[Kt,Yt],l=[];function a(t,e){return 0==t[3]?0:1}o=a(t),r=l[o]=s[o](t);const u={c:function(){e=w("div"),r.c(),wt(e,"class","overlay flex align-center justify-center svelte-4euwfi"),n(e,Xt,11,0,241)},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,n){bt(t,e,n),l[o].m(e,null),c=!0},p:function(t,[n]){let i=o;o=a(t),o===i?l[o].p(t,n):(ot(),ct(l[i],1,1,(()=>{l[i]=null})),rt(),r=l[o],r?r.p(t,n):(r=l[o]=s[o](t),r.c()),it(r,1),r.m(e,null))},i:function(t){c||(it(r),V((()=>{i||(i=at(e,Vt,{},!0)),i.run(1)})),c=!0)},o:function(t){ct(r),i||(i=at(e,Vt,{},!1)),i.run(0),c=!1},d:function(t){t&&xt(e),l[o].d(),t&&i&&i.end()}};return mt("SvelteRegisterBlock",{block:u,id:Zt.name,type:"component",source:"",ctx:t}),u}function te(t,e,n){let o,{$$slots:r={},$$scope:i}=e;$t("BetCalc",r,[]);let{show:c=!1}=e,{horse:s}=e,{bookmaker:l}=e,{odds:a}=e,u=0;const f=["show","horse","bookmaker","odds"];Object.keys(e).forEach((t=>{~f.indexOf(t)||"$$"===t.slice(0,2)||"slot"===t||console.warn(`<BetCalc> was created with unknown prop '${t}'`)}));return t.$$set=t=>{"show"in t&&n(0,c=t.show),"horse"in t&&n(1,s=t.horse),"bookmaker"in t&&n(2,l=t.bookmaker),"odds"in t&&n(3,a=t.odds)},t.$capture_state=()=>({show:c,horse:s,bookmaker:l,odds:a,fly:Vt,blur:Wt,bet:u,payout:o}),t.$inject_state=t=>{"show"in t&&n(0,c=t.show),"horse"in t&&n(1,s=t.horse),"bookmaker"in t&&n(2,l=t.bookmaker),"odds"in t&&n(3,a=t.odds),"bet"in t&&n(4,u=t.bet),"payout"in t&&n(5,o=t.payout)},e&&"$$inject"in e&&t.$inject_state(e.$$inject),t.$$.update=()=>{24&t.$$.dirty&&n(5,o=u*a/100)},[c,s,l,a,u,o,()=>n(0,c=!1),()=>n(0,c=!1),function(){u=B(this.value),n(4,u)},()=>n(0,c=!1)]}class ee extends Ct{constructor(t){super(t),ht(this,t,te,Zt,s,{show:0,horse:1,bookmaker:2,odds:3}),mt("SvelteRegisterComponent",{component:this,tagName:"BetCalc",options:t,id:Zt.name});const{ctx:e}=this.$$,n=t.props||{};void 0!==e[1]||"horse"in n||console.warn("<BetCalc> was created without expected prop 'horse'"),void 0!==e[2]||"bookmaker"in n||console.warn("<BetCalc> was created without expected prop 'bookmaker'"),void 0!==e[3]||"odds"in n||console.warn("<BetCalc> was created without expected prop 'odds'")}get show(){throw new Error("<BetCalc>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set show(t){throw new Error("<BetCalc>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get horse(){throw new Error("<BetCalc>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set horse(t){throw new Error("<BetCalc>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get bookmaker(){throw new Error("<BetCalc>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set bookmaker(t){throw new Error("<BetCalc>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}get odds(){throw new Error("<BetCalc>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}set odds(t){throw new Error("<BetCalc>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'")}}const ne="src\\components\\buttonGroup.svelte";function oe(t,e,n){const o=t.slice();return o[3]=e[n],o}function re(t){let e,o,r,i,s,l,a=t[3]+"";const u={c:function(){e=w("button"),o=k(a),r=$(),wt(e,"class",i=(t[1]==t[3]?"active":"")+" roundeds svelte-w7ftnj"),wt(e,"type","button"),n(e,ne,43,4,850)},m:function(n,i){bt(n,e,i),vt(e,o),vt(e,r),s||(l=yt(e,"click",(function(){c(t[2](t[3]))&&t[2](t[3]).apply(this,arguments)}),!1,!1,!1),s=!0)},p:function(n,r){t=n,1&r&&a!==(a=t[3]+"")&&Ft(o,a),3&r&&i!==(i=(t[1]==t[3]?"active":"")+" roundeds svelte-w7ftnj")&&wt(e,"class",i)},d:function(t){t&&xt(e),s=!1,l()}};return mt("SvelteRegisterBlock",{block:u,id:re.name,type:"else",source:"(42:4) {:else}",ctx:t}),u}function ie(t){let e,o,r,i,s,l,a=t[3]+"";const u={c:function(){e=w("button"),o=k(a),r=$(),wt(e,"class",i=(t[1]==t[3]?"active":"")+" rounded-l svelte-w7ftnj"),wt(e,"type","button"),n(e,ne,33,4,678)},m:function(n,i){bt(n,e,i),vt(e,o),vt(e,r),s||(l=yt(e,"click",(function(){c(t[2](t[3]))&&t[2](t[3]).apply(this,arguments)}),!1,!1,!1),s=!0)},p:function(n,r){t=n,1&r&&a!==(a=t[3]+"")&&Ft(o,a),3&r&&i!==(i=(t[1]==t[3]?"active":"")+" rounded-l svelte-w7ftnj")&&wt(e,"class",i)},d:function(t){t&&xt(e),s=!1,l()}};return mt("SvelteRegisterBlock",{block:u,id:ie.name,type:"if",source:"(32:30) ",ctx:t}),u}function ce(t){let e,o,r,i,s,l,a=t[3]+"";const u={c:function(){e=w("button"),o=k(a),r=$(),wt(e,"class",i=(t[1]==t[3]?"active":"")+" rounded-r svelte-w7ftnj"),wt(e,"type","button"),n(e,ne,23,4,484)},m:function(n,i){bt(n,e,i),vt(e,o),vt(e,r),s||(l=yt(e,"click",(function(){c(t[2](t[3]))&&t[2](t[3]).apply(this,arguments)}),!1,!1,!1),s=!0)},p:function(n,r){t=n,1&r&&a!==(a=t[3]+"")&&Ft(o,a),3&r&&i!==(i=(t[1]==t[3]?"active":"")+" rounded-r svelte-w7ftnj")&&wt(e,"class",i)},d:function(t){t&&xt(e),s=!1,l()}};return mt("SvelteRegisterBlock",{block:u,id:ce.name,type:"if",source:"(21:36) ",ctx:t}),u}function se(t){let e,o,r,i,s,l,a=t[3]+"";const u={c:function(){e=w("button"),o=k(a),r=$(),wt(e,"class",i=(t[1]==t[3]?"active":"")+" rounded svelte-w7ftnj"),wt(e,"type","button"),n(e,ne,13,4,282)},m:function(n,i){bt(n,e,i),vt(e,o),vt(e,r),s||(l=yt(e,"click",(function(){c(t[2](t[3]))&&t[2](t[3]).apply(this,arguments)}),!1,!1,!1),s=!0)},p:function(n,r){t=n,1&r&&a!==(a=t[3]+"")&&Ft(o,a),3&r&&i!==(i=(t[1]==t[3]?"active":"")+" rounded svelte-w7ftnj")&&wt(e,"class",i)},d:function(t){t&&xt(e),s=!1,l()}};return mt("SvelteRegisterBlock",{block:u,id:se.name,type:"if",source:"(12:4) {#if $race.length == 1 }",ctx:t}),u}function le(t){let e,n;function o(t,n){return 1==t[0].length?se:((null==e||1&n)&&(e=!(t[0].at(-1)!=t[3])),e?ce:t[0][0]==t[3]?ie:re)}let r=o(t,-1),i=r(t);const c={c:function(){i.c(),n=C()},m:function(t,e){i.m(t,e),bt(t,n,e)},p:function(t,e){r===(r=o(t,e))&&i?i.p(t,e):(i.d(1),i=r(t),i&&(i.c(),i.m(n.parentNode,n)))},d:function(t){i.d(t),t&&xt(n)}};return mt("SvelteRegisterBlock",{block:c,id:le.name,type:"each",source:"(11:4) {#each $race as item}",ctx:t}),c}function ae(e){let n,o=e[0];kt(o);let r=[];for(let t=0;t<o.length;t+=1)r[t]=le(oe(e,o,t));const i={c:function(){for(let t=0;t<r.length;t+=1)r[t].c();n=C()},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,e){for(let n=0;n<r.length;n+=1)r[n].m(t,e);bt(t,n,e)},p:function(t,[e]){if(7&e){let i;for(o=t[0],kt(o),i=0;i<o.length;i+=1){const c=oe(t,o,i);r[i]?r[i].p(c,e):(r[i]=le(c),r[i].c(),r[i].m(n.parentNode,n))}for(;i<r.length;i+=1)r[i].d(1);r.length=o.length}},i:t,o:t,d:function(t){y(r,t),t&&xt(n)}};return mt("SvelteRegisterBlock",{block:i,id:ae.name,type:"component",source:"",ctx:e}),i}function ue(t,e,n){let o,r;l(Rt,"race"),a(t,Rt,(t=>n(0,o=t))),l(At,"currentRace"),a(t,At,(t=>n(1,r=t)));let{$$slots:i={},$$scope:c}=e;function s(t){At.set(t)}$t("ButtonGroup",i,[]);const u=[];return Object.keys(e).forEach((t=>{~u.indexOf(t)||"$$"===t.slice(0,2)||"slot"===t||console.warn(`<ButtonGroup> was created with unknown prop '${t}'`)})),t.$capture_state=()=>({race:Rt,currentRace:At,setRace:s,$race:o,$currentRace:r}),[o,r,s]}class fe extends Ct{constructor(t){super(t),ht(this,t,ue,ae,s,{}),mt("SvelteRegisterComponent",{component:this,tagName:"ButtonGroup",options:t,id:ae.name})}}const de="src\\components\\oddsCal.svelte";function pe(e){let o,r,c,s,l,a,u,f,d,p;const g={c:function(){o=w("div"),r=w("button"),c=k("f100"),l=$(),a=w("button"),u=k("f500"),wt(r,"class",s=(0==e[0]?"active":"")+" rounded-l svelte-12qrkab"),wt(r,"type","button"),n(r,de,7,4,146),wt(a,"class",f=(1==e[0]?"active":"")+" rounded-r svelte-12qrkab"),wt(a,"type","button"),n(a,de,14,4,306),wt(o,"class","bGroup2 flex relative items-center justify-center mb-4"),n(o,de,5,0,70)},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,n){bt(t,o,n),vt(o,r),vt(r,c),vt(o,l),vt(o,a),vt(a,u),d||(p=[yt(r,"click",e[1],!1,!1,!1),yt(a,"click",e[2],!1,!1,!1)],d=!0)},p:function(t,[e]){1&e&&s!==(s=(0==t[0]?"active":"")+" rounded-l svelte-12qrkab")&&wt(r,"class",s),1&e&&f!==(f=(1==t[0]?"active":"")+" rounded-r svelte-12qrkab")&&wt(a,"class",f)},i:t,o:t,d:function(t){t&&xt(o),d=!1,i(p)}};return mt("SvelteRegisterBlock",{block:g,id:pe.name,type:"component",source:"",ctx:e}),g}function ge(t,e,n){let o;l(Nt,"oddsCal"),a(t,Nt,(t=>n(0,o=t)));let{$$slots:r={},$$scope:i}=e;$t("OddsCal",r,[]);const c=[];Object.keys(e).forEach((t=>{~c.indexOf(t)||"$$"===t.slice(0,2)||"slot"===t||console.warn(`<OddsCal> was created with unknown prop '${t}'`)}));return t.$capture_state=()=>({oddsCal:Nt,$oddsCal:o}),[o,()=>Nt.set(!1),()=>Nt.set(!0)]}class he extends Ct{constructor(t){super(t),ht(this,t,ge,pe,s,{}),mt("SvelteRegisterComponent",{component:this,tagName:"OddsCal",options:t,id:pe.name})}}const{Object:me,console:ve}=ut,be="src\\components\\CompareOdds.svelte";function xe(t,e,n){const o=t.slice();return o[22]=e[n],o[24]=n,o}function ye(t,e,n){const o=t.slice();return o[25]=e[n],o[27]=n,o}function we(t,e,n){const o=t.slice();return o[28]=e[n],o[27]=n,o}function Fe(t,e,n){const o=t.slice();return o[30]=e[n],o}function ke(e){let o,r,c,s,l,a,u,f,d,p,g,h,m,v,b,x,y,C,j,M,E,R,A,N,D,P,q,T,L,G,H,U,W,I,J,X,Y,K,Q,Z,tt,et,nt,ot,rt,it,ct,st,at,ut,ft,dt,pt,gt,ht,kt,$t,Ct,_t,St,Bt,Ot,zt,jt,Mt,Et;function Rt(t,e){return(null==Ot||34&e[0])&&(Ot=!!isNaN(t[1]*t[5]/100)),Ot?Ce:$e}let At=Rt(e,[-1,-1]),Nt=At(e);const Dt={c:function(){o=w("div"),r=w("div"),c=w("h3"),c.textContent="Betting Calculator",l=$(),a=F("svg"),u=F("g"),f=F("circle"),d=F("path"),p=F("polygon"),g=F("polygon"),h=F("polygon"),m=F("path"),v=F("path"),b=F("path"),x=F("path"),y=F("path"),C=F("path"),j=F("path"),M=F("path"),E=F("ellipse"),R=F("polygon"),A=F("polygon"),N=F("polygon"),D=F("path"),P=F("path"),q=F("path"),T=F("path"),L=F("path"),G=F("path"),H=F("path"),U=F("path"),W=F("ellipse"),I=F("g"),J=F("g"),X=F("g"),Y=F("g"),K=F("g"),Q=F("g"),Z=F("g"),tt=F("g"),et=F("g"),nt=F("g"),ot=F("g"),rt=F("g"),it=F("g"),ct=F("g"),st=F("g"),ut=$(),ft=w("h4"),dt=k(e[4]),pt=$(),gt=w("h4"),ht=k(e[3]),kt=$(),$t=w("input"),Ct=$(),_t=w("h5"),_t.textContent="Payout:",St=$(),Bt=w("h5"),Nt.c(),wt(c,"class","svelte-vd35iy"),n(c,be,75,0,1869),z(f,"fill","#419c2c21"),wt(f,"cx","256"),wt(f,"cy","256"),wt(f,"r","256"),n(f,be,81,0,2198),z(d,"fill","rgba(98, 126, 105,0.5)"),wt(d,"d","M493.297,352.061l-0.553-0.276L289.065,135.808l-96.123-48.061l-96.123,48.061V259.2\r\n   l120.909,119.711l8.54,24.94l90.788,100.772C397.348,484.961,462.74,427.459,493.297,352.061z"),n(d,be,82,0,2259),z(p,"fill","#04ad0c"),wt(p,"points","289.065,135.808 192.942,183.875 96.819,135.808 192.942,87.747 \t"),n(p,be,84,0,2486),z(g,"fill","#04ad0c"),wt(g,"points","192.942,306.278 96.819,259.2 96.819,135.808 192.942,183.875 \t"),n(g,be,85,0,2593),z(h,"fill","#006b05"),wt(h,"points","192.942,306.278 289.065,259.2 289.065,135.808 192.942,183.875 \t"),n(h,be,86,0,2698),z(m,"fill","#FFFFFF"),wt(m,"d","M153.882,221.379c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n   c0-6.733,4.029-10.706,9.001-8.873C149.852,207.703,153.882,214.646,153.882,221.379z"),n(m,be,87,0,2805),z(v,"fill","#FFFFFF"),wt(v,"d","M234.813,222.74c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n   c0-6.733-4.029-10.706-9.001-8.873C238.843,209.065,234.813,216.008,234.813,222.74z"),n(v,be,89,0,3015),z(b,"fill","#FFFFFF"),wt(b,"d","M205.553,205.768c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514\r\n   s-4.029-10.706-9.001-8.873S205.553,199.035,205.553,205.768z"),n(b,be,91,0,3222),z(x,"fill","#FFFFFF"),wt(x,"d","M205.553,272.256c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n   s-4.029-10.706-9.001-8.873S205.553,265.523,205.553,272.256z"),n(x,be,93,0,3396),z(y,"fill","#FFFFFF"),wt(y,"d","M260.465,178.693c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514\r\n   c0-6.733-4.029-10.706-9.001-8.873C264.499,165.012,260.465,171.955,260.465,178.693z"),n(y,be,95,0,3582),z(C,"fill","#FFFFFF"),wt(C,"d","M260.465,245.181c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n   s-4.029-10.706-9.001-8.873S260.465,238.449,260.465,245.181z"),n(C,be,97,0,3779),z(j,"fill","#FFFFFF"),wt(j,"d","M123.571,176.292c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n   c0-6.733,4.029-10.706,9.001-8.873C119.542,162.611,123.571,169.559,123.571,176.292z"),n(j,be,99,0,3965),z(M,"fill","#FFFFFF"),wt(M,"d","M180.122,270.459c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n   c0-6.733,4.029-10.706,9.001-8.873C176.092,256.783,180.122,263.726,180.122,270.459z"),n(M,be,101,0,4175),z(E,"fill","#FFFFFF"),wt(E,"cx","192.942"),wt(E,"cy","135.808"),wt(E,"rx","12.611"),wt(E,"ry","8.53"),n(E,be,103,0,4385),z(R,"fill","#009708"),wt(R,"points","414.776,351.278 312.822,317.292 278.835,215.337 380.79,249.324 \t"),n(R,be,104,0,4467),z(A,"fill","#04ad0c"),wt(A,"points","226.263,403.845 191.585,302.587 278.835,215.337 312.822,317.292 \t"),n(A,be,105,0,4575),z(N,"fill","#006b05"),wt(N,"points","226.263,403.845 327.526,438.528 414.776,351.278 312.822,317.292 \t"),n(N,be,106,0,4684),z(D,"fill","#FFFFFF"),wt(D,"d","M306.253,341.693c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641S311.014,336.932,306.253,341.693z"),n(D,be,107,0,4793),z(P,"fill","#FFFFFF"),wt(P,"d","M259.236,388.705c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641C271.759,381.88,263.997,383.944,259.236,388.705z"),n(P,be,109,0,4998),z(q,"fill","#FFFFFF"),wt(q,"d","M336.599,351.862c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.222,12.575,0.159,17.336-4.603\r\n   s4.721-10.419-0.092-12.641C349.123,345.037,341.361,347.1,336.599,351.862z"),n(q,be,111,0,5218),z(T,"fill","#FFFFFF"),wt(T,"d","M289.582,398.879c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641S294.344,394.117,289.582,398.879z"),n(T,be,113,0,5425),z(L,"fill","#FFFFFF"),wt(L,"d","M364.232,361.375c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   s4.721-10.419-0.092-12.641C376.755,354.555,368.993,356.613,364.232,361.375z"),n(L,be,115,0,5630),z(G,"fill","#FFFFFF"),wt(G,"d","M317.215,408.392c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641C329.738,401.567,321.976,403.63,317.215,408.392z"),n(G,be,117,0,5839),z(H,"fill","#FFFFFF"),wt(H,"d","M269.128,262.881c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336\r\n   c4.762-4.762,10.419-4.721,12.641,0.092C275.953,250.358,273.889,258.12,269.128,262.881z"),n(H,be,119,0,6059),z(U,"fill","#FFFFFF"),wt(U,"d","M242.529,369.454c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336\r\n   s10.419-4.721,12.641,0.092S247.291,364.692,242.529,369.454z"),n(U,be,121,0,6280),wt(W,"transform","matrix(0.7071 -0.7071 0.7071 0.7071 -98.7293 328.1921)"),z(W,"fill","#FFFFFF"),wt(W,"cx","346.798"),wt(W,"cy","283.273"),wt(W,"rx","8.53"),wt(W,"ry","12.61"),n(W,be,124,3,6479),n(u,be,80,0,2193),n(I,be,126,0,6633),n(J,be,128,0,6644),n(X,be,130,0,6655),n(Y,be,132,0,6666),n(K,be,134,0,6677),n(Q,be,136,0,6688),n(Z,be,138,0,6699),n(tt,be,140,0,6710),n(et,be,142,0,6721),n(nt,be,144,0,6732),n(ot,be,146,0,6743),n(rt,be,148,0,6754),n(it,be,150,0,6765),n(ct,be,152,0,6776),n(st,be,154,0,6787),wt(a,"version","1.1"),wt(a,"id","Layer_1"),wt(a,"xmlns","http://www.w3.org/2000/svg"),wt(a,"xmlns:xlink","http://www.w3.org/1999/xlink"),wt(a,"x","0px"),wt(a,"y","0px"),wt(a,"viewBox","0 0 512 512"),z(a,"enable-background","new 0 0 512 512"),wt(a,"xml:space","preserve"),wt(a,"class","svelte-vd35iy"),n(a,be,78,0,1942),n(ft,be,158,0,6808),n(gt,be,159,0,6835),wt($t,"class","bet svelte-vd35iy"),wt($t,"type","number"),wt($t,"placeholder","Bet"),n($t,be,160,0,6861),n(_t,be,161,0,6931),n(Bt,be,163,0,6951),wt(r,"class","betCalc svelte-vd35iy"),n(r,be,70,2,1764),wt(o,"class","overlay svelte-vd35iy"),n(o,be,69,0,1641)},m:function(t,n){bt(t,o,n),vt(o,r),vt(r,c),vt(r,l),vt(r,a),vt(a,u),vt(u,f),vt(u,d),vt(u,p),vt(u,g),vt(u,h),vt(u,m),vt(u,v),vt(u,b),vt(u,x),vt(u,y),vt(u,C),vt(u,j),vt(u,M),vt(u,E),vt(u,R),vt(u,A),vt(u,N),vt(u,D),vt(u,P),vt(u,q),vt(u,T),vt(u,L),vt(u,G),vt(u,H),vt(u,U),vt(u,W),vt(a,I),vt(a,J),vt(a,X),vt(a,Y),vt(a,K),vt(a,Q),vt(a,Z),vt(a,tt),vt(a,et),vt(a,nt),vt(a,ot),vt(a,rt),vt(a,it),vt(a,ct),vt(a,st),vt(r,ut),vt(r,ft),vt(ft,dt),vt(r,pt),vt(r,gt),vt(gt,ht),vt(r,kt),vt(r,$t),O($t,e[1]),vt(r,Ct),vt(r,_t),vt(r,St),vt(r,Bt),Nt.m(Bt,null),Mt||(Et=[yt($t,"input",e[17]),yt(r,"click",S(e[16]),!1,!1,!0),yt(o,"click",S(_(e[18])),!1,!0,!0)],Mt=!0)},p:function(t,e){16&e[0]&&Ft(dt,t[4]),8&e[0]&&Ft(ht,t[3]),2&e[0]&&B($t.value)!==t[1]&&O($t,t[1]),At===(At=Rt(t,e))&&Nt?Nt.p(t,e):(Nt.d(1),Nt=At(t),Nt&&(Nt.c(),Nt.m(Bt,null)))},i:function(t){s||V((()=>{s=lt(c,Vt,{y:-50,duration:2300}),s.start()})),at||V((()=>{at=lt(a,Vt,{y:-50,duration:2500}),at.start()})),zt||V((()=>{zt=lt(r,Vt,{y:100,duration:1e3}),zt.start()})),jt||V((()=>{jt=lt(o,Wt,{y:50,duration:1e3}),jt.start()}))},o:t,d:function(t){t&&xt(o),Nt.d(),Mt=!1,i(Et)}};return mt("SvelteRegisterBlock",{block:Dt,id:ke.name,type:"if",source:"(69:0) {#if show}",ctx:e}),Dt}function $e(t){let e,n=t[1]*t[5]/100+"";const o={c:function(){e=k(n)},m:function(t,n){bt(t,e,n)},p:function(t,o){34&o[0]&&n!==(n=t[1]*t[5]/100+"")&&Ft(e,n)},d:function(t){t&&xt(e)}};return mt("SvelteRegisterBlock",{block:o,id:$e.name,type:"else",source:"(168:5) {:else}",ctx:t}),o}function Ce(e){let n;const o={c:function(){n=k("0")},m:function(t,e){bt(t,n,e)},p:t,d:function(t){t&&xt(n)}};return mt("SvelteRegisterBlock",{block:o,id:Ce.name,type:"if",source:"(165:2) {#if isNaN( (bet * selectedOdds) / 100) }",ctx:e}),o}function _e(t){let e,o,r,i,c,s,l,a,u,f,d,p,g,h,m,v,b,x;function F(t,e){return t[7]?Be:Se}let k=F(t),C=k(t);c=new fe({$$inline:!0}),a=new he({$$inline:!0});let _=Object.keys(t[0][0]);kt(_);let S=[];for(let e=0;e<_.length;e+=1)S[e]=Me(we(t,_,e));let B=Object.values(t[0]);kt(B);let O=[];for(let e=0;e<B.length;e+=1)O[e]=Te(xe(t,B,e));const z={c:function(){e=w("div"),o=w("select"),C.c(),r=$(),i=w("div"),ft(c.$$.fragment),s=$(),l=w("div"),ft(a.$$.fragment),u=$(),f=w("div"),d=w("table"),p=w("thead"),g=w("tr");for(let t=0;t<S.length;t+=1)S[t].c();h=$(),m=w("tbody");for(let t=0;t<O.length;t+=1)O[t].c();wt(o,"class","selectList svelte-vd35iy"),void 0===t[6]&&V((()=>t[19].call(o))),n(o,be,181,2,7177),wt(i,"class","racebut svelte-vd35iy"),n(i,be,192,0,7418),wt(l,"class","oddscal svelte-vd35iy"),n(l,be,194,0,7463),wt(e,"class","caption svelte-vd35iy"),wt(e,"id","caption"),n(e,be,180,0,7139),n(g,be,200,6,7583),n(p,be,199,4,7568),n(m,be,212,4,7938),wt(d,"class","oddstable svelte-vd35iy"),n(d,be,197,0,7531),wt(f,"class","tWrap svelte-vd35iy"),n(f,be,196,0,7510)},m:function(n,y){bt(n,e,y),vt(e,o),C.m(o,null),j(o,t[6]),vt(e,r),vt(e,i),dt(c,i,null),vt(e,s),vt(e,l),dt(a,l,null),bt(n,u,y),bt(n,f,y),vt(f,d),vt(d,p),vt(p,g);for(let t=0;t<S.length;t+=1)S[t].m(g,null);vt(d,h),vt(d,m);for(let t=0;t<O.length;t+=1)O[t].m(m,null);v=!0,b||(x=yt(o,"change",t[19]),b=!0)},p:function(t,e){if(k===(k=F(t))&&C?C.p(t,e):(C.d(1),C=k(t),C&&(C.c(),C.m(o,null))),192&e[0]&&j(o,t[6]),1&e[0]){let n;for(_=Object.keys(t[0][0]),kt(_),n=0;n<_.length;n+=1){const o=we(t,_,n);S[n]?(S[n].p(o,e),it(S[n],1)):(S[n]=Me(o),S[n].c(),it(S[n],1),S[n].m(g,null))}for(;n<S.length;n+=1)S[n].d(1);S.length=_.length}if(1853&e[0]){let n;for(B=Object.values(t[0]),kt(B),n=0;n<B.length;n+=1){const o=xe(t,B,n);O[n]?(O[n].p(o,e),it(O[n],1)):(O[n]=Te(o),O[n].c(),it(O[n],1),O[n].m(m,null))}for(;n<O.length;n+=1)O[n].d(1);O.length=B.length}},i:function(t){if(!v){it(c.$$.fragment,t),it(a.$$.fragment,t);for(let t=0;t<_.length;t+=1)it(S[t]);for(let t=0;t<B.length;t+=1)it(O[t]);v=!0}},o:function(t){ct(c.$$.fragment,t),ct(a.$$.fragment,t),v=!1},d:function(t){t&&xt(e),C.d(),pt(c),pt(a),t&&xt(u),t&&xt(f),y(S,t),y(O,t),b=!1,x()}};return mt("SvelteRegisterBlock",{block:z,id:_e.name,type:"if",source:"(180:0) {#if output}",ctx:t}),z}function Se(e){let o;const r={c:function(){o=w("option"),o.textContent="No Meetings",o.__value="",o.value=o.__value,n(o,be,189,1,7359)},m:function(t,e){bt(t,o,e)},p:t,d:function(t){t&&xt(o)}};return mt("SvelteRegisterBlock",{block:r,id:Se.name,type:"else",source:"(188:1) {:else}",ctx:e}),r}function Be(t){let e,n=t[7];kt(n);let o=[];for(let e=0;e<n.length;e+=1)o[e]=Oe(Fe(t,n,e));const r={c:function(){for(let t=0;t<o.length;t+=1)o[t].c();e=C()},m:function(t,n){for(let e=0;e<o.length;e+=1)o[e].m(t,n);bt(t,e,n)},p:function(t,r){if(128&r[0]){let i;for(n=t[7],kt(n),i=0;i<n.length;i+=1){const c=Fe(t,n,i);o[i]?o[i].p(c,r):(o[i]=Oe(c),o[i].c(),o[i].m(e.parentNode,e))}for(;i<o.length;i+=1)o[i].d(1);o.length=n.length}},d:function(t){y(o,t),t&&xt(e)}};return mt("SvelteRegisterBlock",{block:r,id:Be.name,type:"if",source:"(184:2) {#if $roptions}",ctx:t}),r}function Oe(t){let e,o,r,i=t[30].race_date+"";const c={c:function(){e=w("option"),o=k(i),e.__value=r=t[30].r,e.value=e.__value,n(e,be,185,1,7286)},m:function(t,n){bt(t,e,n),vt(e,o)},p:function(t,n){var c,s,l;128&n[0]&&i!==(i=t[30].race_date+"")&&Ft(o,i),128&n[0]&&r!==(r=t[30].r)&&(l=r,(c=e)[s="__value"]=l,mt("SvelteDOMSetProperty",{node:c,property:s,value:l}),e.value=e.__value)},d:function(t){t&&xt(e)}};return mt("SvelteRegisterBlock",{block:c,id:Oe.name,type:"each",source:"(185:1) {#each $roptions as opt}",ctx:t}),c}function ze(e){let o,r,i,c=e[28]+"";const s={c:function(){o=w("th"),r=k(c),wt(o,"class","py-3 px-6 text-center svelte-vd35iy"),n(o,be,207,14,7804)},m:function(t,e){bt(t,o,e),vt(o,r)},p:function(t,e){1&e[0]&&c!==(c=t[28]+"")&&Ft(r,c)},i:function(t){i||V((()=>{i=lt(o,Wt,{}),i.start()}))},o:t,d:function(t){t&&xt(o)}};return mt("SvelteRegisterBlock",{block:s,id:ze.name,type:"else",source:"(206:14) {:else}",ctx:e}),s}function je(e){let o,r;const i={c:function(){o=w("th"),o.textContent="Horse",wt(o,"class","py-3 px-6 text-center svelte-vd35iy"),n(o,be,204,14,7708)},m:function(t,e){bt(t,o,e)},p:t,i:function(t){r||V((()=>{r=lt(o,Wt,{}),r.start()}))},o:t,d:function(t){t&&xt(o)}};return mt("SvelteRegisterBlock",{block:i,id:je.name,type:"if",source:"(204:14) {#if i == 0}",ctx:e}),i}function Me(e){let n;let o=function(t,e){return 0==t[27]?je:ze}(e),r=o(e);const i={c:function(){r.c(),n=C()},m:function(t,e){r.m(t,e),bt(t,n,e)},p:function(t,e){r.p(t,e)},i:function(t){it(r)},o:t,d:function(t){r.d(t),t&&xt(n)}};return mt("SvelteRegisterBlock",{block:i,id:Me.name,type:"each",source:"(202:8) {#each Object.keys(output[0]) as columnHeading , i}",ctx:e}),i}function Ee(e){let o,r,i,c,s,l;function a(t,e){return 1==t[8]?Ne:Ae}let u=a(e),f=u(e);function d(){return e[20](e[27],e[25],e[24])}const p={c:function(){o=w("td"),r=w("div"),i=w("span"),f.c(),wt(i,"class","font-medium "),n(i,be,246,22,11925),wt(r,"class","block items-center"),n(r,be,245,18,11869),wt(o,"class","py-3 px-6 text-right whitespace-nowrap cursor-pointer hover:bg-gray-300 svelte-vd35iy"),n(o,be,237,14,10847)},m:function(t,e){bt(t,o,e),vt(o,r),vt(r,i),f.m(i,null),s||(l=yt(o,"click",d,!1,!1,!1),s=!0)},p:function(t,n){u===(u=a(e=t))&&f?f.p(e,n):(f.d(1),f=u(e),f&&(f.c(),f.m(i,null)))},i:function(t){c||V((()=>{c=lt(i,Wt,{}),c.start()}))},o:t,d:function(t){t&&xt(o),f.d(),s=!1,l()}};return mt("SvelteRegisterBlock",{block:p,id:Ee.name,type:"else",source:"(237:14) {:else}",ctx:e}),p}function Re(e){let o,r,i,c,s,l,a,u,f,d,p,g,h,m,v,b=e[25]+"",x=e[9](e[25])+"",y=e[10](e[25])+"";const F={c:function(){o=w("th"),r=w("div"),i=w("div"),s=$(),l=w("div"),a=w("span"),u=k(b),f=k(". "),d=k(x),g=$(),h=w("span"),m=k(y),wt(i,"class","mr-2"),n(i,be,219,22,8275),wt(a,"class","font-medium svelte-vd35iy"),n(a,be,230,26,10547),wt(h,"class","font-black text-xs mx-4 svelte-vd35iy"),n(h,be,231,26,10639),wt(l,"class","horse svelte-vd35iy"),n(l,be,228,22,10473),wt(r,"class","flex items-center"),n(r,be,218,18,8220),wt(o,"class","relative py-3 px-6 text-left whitespace-nowrap drop-shadow-lg svelte-vd35iy"),n(o,be,217,14,8125)},m:function(t,e){bt(t,o,e),vt(o,r),vt(r,i),vt(r,s),vt(r,l),vt(l,a),vt(a,u),vt(a,f),vt(a,d),vt(l,g),vt(l,h),vt(h,m)},p:function(t,e){1&e[0]&&b!==(b=t[25]+"")&&Ft(u,b),1&e[0]&&x!==(x=t[9](t[25])+"")&&Ft(d,x),1&e[0]&&y!==(y=t[10](t[25])+"")&&Ft(m,y)},i:function(t){c||V((()=>{c=lt(i,Wt,{}),c.start()})),p||V((()=>{p=lt(a,Wt,{}),p.start()})),v||V((()=>{v=lt(h,Wt,{}),v.start()}))},o:t,d:function(t){t&&xt(o)}};return mt("SvelteRegisterBlock",{block:F,id:Re.name,type:"if",source:"(216:14) {#if i == 0}",ctx:e}),F}function Ae(t){let e,n=t[25]+"";const o={c:function(){e=k(n)},m:function(t,n){bt(t,e,n)},p:function(t,o){1&o[0]&&n!==(n=t[25]+"")&&Ft(e,n)},d:function(t){t&&xt(e)}};return mt("SvelteRegisterBlock",{block:o,id:Ae.name,type:"else",source:"(259:26) {:else}",ctx:t}),o}function Ne(t){let e;function n(t,e){return 0==t[25]?Pe:De}let o=n(t),r=o(t);const i={c:function(){r.c(),e=C()},m:function(t,n){r.m(t,n),bt(t,e,n)},p:function(t,i){o===(o=n(t))&&r?r.p(t,i):(r.d(1),r=o(t),r&&(r.c(),r.m(e.parentNode,e)))},d:function(t){r.d(t),t&&xt(e)}};return mt("SvelteRegisterBlock",{block:i,id:Ne.name,type:"if",source:"(249:27) {#if $oddsCal == true}",ctx:t}),i}function De(t){let e,n=(100/(t[25]/500)).toFixed(2)+"";const o={c:function(){e=k(n)},m:function(t,n){bt(t,e,n)},p:function(t,o){1&o[0]&&n!==(n=(100/(t[25]/500)).toFixed(2)+"")&&Ft(e,n)},d:function(t){t&&xt(e)}};return mt("SvelteRegisterBlock",{block:o,id:De.name,type:"else",source:"(254:26) {:else}",ctx:t}),o}function Pe(t){let e,n=t[25]+"";const o={c:function(){e=k(n)},m:function(t,n){bt(t,e,n)},p:function(t,o){1&o[0]&&n!==(n=t[25]+"")&&Ft(e,n)},d:function(t){t&&xt(e)}};return mt("SvelteRegisterBlock",{block:o,id:Pe.name,type:"if",source:"(251:26) {#if cell == 0 }",ctx:t}),o}function qe(e){let n;let o=function(t,e){return 0==t[27]?Re:Ee}(e),r=o(e);const i={c:function(){r.c(),n=C()},m:function(t,e){r.m(t,e),bt(t,n,e)},p:function(t,e){r.p(t,e)},i:function(t){it(r)},o:t,d:function(t){r.d(t),t&&xt(n)}};return mt("SvelteRegisterBlock",{block:i,id:qe.name,type:"each",source:"(215:6) {#each Object.values(row) as cell,i}",ctx:e}),i}function Te(e){let o,r,i=Object.values(e[22]);kt(i);let c=[];for(let t=0;t<i.length;t+=1)c[t]=qe(ye(e,i,t));const s={c:function(){o=w("tr");for(let t=0;t<c.length;t+=1)c[t].c();r=$(),wt(o,"class","border-b border-gray-200 "),n(o,be,213,6,7997)},m:function(t,e){bt(t,o,e);for(let t=0;t<c.length;t+=1)c[t].m(o,null);vt(o,r)},p:function(t,e){if(1853&e[0]){let n;for(i=Object.values(t[22]),kt(i),n=0;n<i.length;n+=1){const s=ye(t,i,n);c[n]?(c[n].p(s,e),it(c[n],1)):(c[n]=qe(s),c[n].c(),it(c[n],1),c[n].m(o,r))}for(;n<c.length;n+=1)c[n].d(1);c.length=i.length}},i:function(t){for(let t=0;t<i.length;t+=1)it(c[t])},o:t,d:function(t){t&&xt(o),y(c,t)}};return mt("SvelteRegisterBlock",{block:s,id:Te.name,type:"each",source:"(213:12) {#each Object.values(output) as row ,  ii }",ctx:e}),s}function Le(t){let e,n,o,r=t[2]&&ke(t),i=t[0]&&_e(t);const c={c:function(){r&&r.c(),e=$(),i&&i.c(),n=C()},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,c){r&&r.m(t,c),bt(t,e,c),i&&i.m(t,c),bt(t,n,c),o=!0},p:function(t,o){t[2]?r?(r.p(t,o),4&o[0]&&it(r,1)):(r=ke(t),r.c(),it(r,1),r.m(e.parentNode,e)):r&&(r.d(1),r=null),t[0]?i?(i.p(t,o),1&o[0]&&it(i,1)):(i=_e(t),i.c(),it(i,1),i.m(n.parentNode,n)):i&&(ot(),ct(i,1,1,(()=>{i=null})),rt())},i:function(t){o||(it(r),it(i),o=!0)},o:function(t){ct(i),o=!1},d:function(t){r&&r.d(t),t&&xt(e),i&&i.d(t),t&&xt(n)}};return mt("SvelteRegisterBlock",{block:c,id:Le.name,type:"component",source:"",ctx:t}),c}function Ge(t,e,n){let o,r,i;l(Dt,"calDate"),a(t,Dt,(t=>n(6,o=t))),l(qt,"roptions"),a(t,qt,(t=>n(7,r=t))),l(Nt,"oddsCal"),a(t,Nt,(t=>n(8,i=t)));let{$$slots:c={},$$scope:s}=e;$t("CompareOdds",c,[]),q((()=>{Lt()}));let u,f,d,p,g=0;Dt.subscribe((t=>{n(11,g=t)})),Pt.subscribe((t=>n(12,u=t))),At.subscribe((t=>n(14,d=t))),Rt.subscribe((t=>n(13,f=t)));var h={row:"horse_no",column:"bookmaker",value:"amount"};let m,v;function b(t){return p.odds_compare[p.odds_compare.map((function(t){return t.horse_no})).indexOf(t)].horse}function x(t){return p.odds_compare[p.odds_compare.map((function(t){return t.horse_no})).indexOf(t)].jockey+" ("+p.odds_compare[p.odds_compare.map((function(t){return t.horse_no})).indexOf(t)].weight+"kg)"}let y,w,F,k=!1;const $=[];me.keys(e).forEach((t=>{~$.indexOf(t)||"$$"===t.slice(0,2)||"slot"===t||ve.warn(`<CompareOdds> was created with unknown prop '${t}'`)}));return t.$capture_state=()=>({onMount:q,calendarDate:g,jsonToPivotjson:jt,calDate:Dt,getData:Lt,roptions:qt,race:Rt,getTData:Gt,inputs:Pt,currentRace:At,oddsCal:Nt,fly:Vt,fade:It,blur:Wt,slide:Jt,Bet:ee,ButtonGroup:fe,OddsCal:he,input:u,races:f,currRace:d,tableData:p,options:h,output:m,horse:b,jockey:x,bet:v,show:k,selectedHorse:y,selectedBookie:w,selectedOdds:F,$calDate:o,$roptions:r,$oddsCal:i}),t.$inject_state=t=>{"calendarDate"in t&&n(11,g=t.calendarDate),"input"in t&&n(12,u=t.input),"races"in t&&n(13,f=t.races),"currRace"in t&&n(14,d=t.currRace),"tableData"in t&&n(15,p=t.tableData),"options"in t&&n(21,h=t.options),"output"in t&&n(0,m=t.output),"bet"in t&&n(1,v=t.bet),"show"in t&&n(2,k=t.show),"selectedHorse"in t&&n(3,y=t.selectedHorse),"selectedBookie"in t&&n(4,w=t.selectedBookie),"selectedOdds"in t&&n(5,F=t.selectedOdds)},e&&"$$inject"in e&&t.$inject_state(e.$$inject),t.$$.update=()=>{2048&t.$$.dirty[0]&&0!==g&&void 0!==g&&Gt(),28672&t.$$.dirty[0]&&n(15,p=u[f.indexOf(d)]),32768&t.$$.dirty[0]&&p&&(n(0,m=jt(p.odds_compare,h)),console.log(p))},[m,v,k,y,w,F,o,r,i,b,x,g,u,f,d,p,function(e){T.call(this,t,e)},function(){v=B(this.value),n(1,v)},()=>n(2,k=!1),function(){o=function(t){const e=t.querySelector(":checked")||t.options[0];return e&&e.__value}(this),Dt.set(o)},(t,e,o)=>{n(2,k=!0),n(4,w=Object.keys(m[0])[t]),n(5,F=e),n(3,y=m[o].horse_no+". "+b(m[o].horse_no))}]}class He extends Ct{constructor(t){super(t),ht(this,t,Ge,Le,s,{},null,[-1,-1]),mt("SvelteRegisterComponent",{component:this,tagName:"CompareOdds",options:t,id:Le.name})}}function Ue(e){let o,r,i,c;i=new He({$$inline:!0});const s={c:function(){o=w("style"),o.textContent=".caption.svelte-vd35iy.svelte-vd35iy{position:relative;height:50px}.tWrap.svelte-vd35iy.svelte-vd35iy{overflow-x:scroll}.oddstable.svelte-vd35iy.svelte-vd35iy{table-layout:fixed;min-width:1140px;max-width:1140px}.oddstable.svelte-vd35iy thead th.svelte-vd35iy{position:sticky;top:0;z-index:1;background:white}.oddstable.svelte-vd35iy td.svelte-vd35iy{max-width:20px !important;width:20px !important;cursor:pointer}.oddstable.svelte-vd35iy tbody th.svelte-vd35iy{position:relative}.oddstable.svelte-vd35iy thead th.svelte-vd35iy:first-child{position:sticky;left:0;z-index:2;-webkit-box-shadow:10px 0px 10px rgb(57 63 72);-moz-box-shadow:10px 0px 10px rgb(57 63 72);box-shadow:10px 0px 10px rgb(57 63 72);border-right:black solid 1px }.oddstable.svelte-vd35iy tbody th.svelte-vd35iy{position:sticky;left:0;background:white;z-index:1;max-width:100px;-webkit-box-shadow:10px 0px 10px rgb(57 63 72);-moz-box-shadow:10px 0px 10px rgb(57 63 72);box-shadow:10px 0px 10px rgb(57 63 72);border-right:black solid 1px }.oddscal.svelte-vd35iy.svelte-vd35iy{position:absolute;right:1%}.racebut.svelte-vd35iy.svelte-vd35iy{position:absolute;left:50%;transform:translate(-50%,0%)}.selectList.svelte-vd35iy.svelte-vd35iy{position:absolute;appearance:none;padding:10px;border:1px   solid rgba(65, 156, 44, 0.13);border-radius:0.25rem;left:1%}.overlay.svelte-vd35iy.svelte-vd35iy{z-index:101;position:fixed;top:0;right:0;bottom:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0.4)}.betCalc.svelte-vd35iy.svelte-vd35iy{position:absolute;left:50%;top:50%;background:white;width:350px;height:400px;border-radius:10px;transform:translate(-50%,-50%);display:flex;flex-direction:column;justify-content:center;align-items:center}.horse.svelte-vd35iy.svelte-vd35iy{display:flex;flex-direction:column}.horse.svelte-vd35iy span.svelte-vd35iy{align-self:flex-start}.betCalc.svelte-vd35iy svg.svelte-vd35iy{width:100px}.betCalc.svelte-vd35iy h3.svelte-vd35iy{font-weight:bolder}.bet.svelte-vd35iy.svelte-vd35iy{width:100px;height:40px;border-radius:5px}.overlay.svelte-4euwfi{z-index:101;position:fixed;top:0;right:0;bottom:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0.4)}.x.svelte-4euwfi{position:absolute;right:1%;font-weight:bolder;color:floralwhite;cursor:pointer;font-size:10px;text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black}.placeBet.svelte-4euwfi{background-color:#409C2C}.buttonBar.svelte-4euwfi{bottom:0;right:0;left:0}.active.svelte-12qrkab{background-image:linear-gradient(#409C2C 95%, rgb(188, 247, 105) 10%)}.rounded-r.svelte-12qrkab{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-right-radius:4px;border-bottom-right-radius:4px;margin-bottom:4px;cursor:pointer}.rounded-l.svelte-12qrkab{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-left-radius:4px;border-bottom-left-radius:4px;margin-bottom:4px;cursor:pointer}.rounded-l.svelte-12qrkab:hover,.rounded-r.svelte-12qrkab:hover{background-color:rgb(255, 255, 255);color:rgb(104, 104, 104);background-image:linear-gradient(rgb(255, 255, 255) 95%, rgb(104, 104, 104) 20%)}.rounded-l.svelte-w7ftnj{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-left-radius:4px;border-bottom-left-radius:4px;margin-bottom:4px;cursor:pointer}.rounded-r.svelte-w7ftnj{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-right-radius:4px;border-bottom-right-radius:4px;margin-bottom:4px;cursor:pointer}.rounded.svelte-w7ftnj{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-radius:4px;margin-bottom:4px;cursor:pointer}.roundeds.svelte-w7ftnj{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;margin-bottom:4px;cursor:pointer}.rounded.svelte-w7ftnj:hover,.rounded-l.svelte-w7ftnj:hover,.rounded-r.svelte-w7ftnj:hover{background-color:rgb(255, 255, 255);color:rgb(104, 104, 104);background-image:linear-gradient(rgb(255, 255, 255) 95%, rgb(104, 104, 104) 20%)}.active.svelte-w7ftnj{background-image:linear-gradient(#409C2C 95%, rgb(188, 247, 105) 20%);border-color:white !important}",r=$(),ft(i.$$.fragment),n(o,"src\\App.svelte",7,1,204)},l:function(t){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(t,e){vt(document.head,o),bt(t,r,e),dt(i,t,e),c=!0},p:t,i:function(t){c||(it(i.$$.fragment,t),c=!0)},o:function(t){ct(i.$$.fragment,t),c=!1},d:function(t){xt(o),t&&xt(r),pt(i,t)}};return mt("SvelteRegisterBlock",{block:s,id:Ue.name,type:"component",source:"",ctx:e}),s}function We(t,e,n){let{$$slots:o={},$$scope:r}=e;$t("App",o,[]);const i=[];return Object.keys(e).forEach((t=>{~i.indexOf(t)||"$$"===t.slice(0,2)||"slot"===t||console.warn(`<App> was created with unknown prop '${t}'`)})),t.$capture_state=()=>({CompareOdds:He}),[]}return new class extends Ct{constructor(t){super(t),ht(this,t,We,Ue,s,{}),mt("SvelteRegisterComponent",{component:this,tagName:"App",options:t,id:Ue.name})}}({target:document.querySelector("#odds-compare")})}();
+
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    const identity = x => x;
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+    function subscribe(store, ...callbacks) {
+        if (store == null) {
+            return noop;
+        }
+        const unsub = store.subscribe(...callbacks);
+        return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+    }
+    function component_subscribe(component, store, callback) {
+        component.$$.on_destroy.push(subscribe(store, callback));
+    }
+
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function get_root_for_style(node) {
+        if (!node)
+            return document;
+        const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+        if (root && root.host) {
+            return root;
+        }
+        return node.ownerDocument;
+    }
+    function append_empty_stylesheet(node) {
+        const style_element = element('style');
+        append_stylesheet(get_root_for_style(node), style_element);
+        return style_element;
+    }
+    function append_stylesheet(node, style) {
+        append(node.head || node, style);
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        node.parentNode.removeChild(node);
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function svg_element(name) {
+        return document.createElementNS('http://www.w3.org/2000/svg', name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function empty() {
+        return text('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function prevent_default(fn) {
+        return function (event) {
+            event.preventDefault();
+            // @ts-ignore
+            return fn.call(this, event);
+        };
+    }
+    function stop_propagation(fn) {
+        return function (event) {
+            event.stopPropagation();
+            // @ts-ignore
+            return fn.call(this, event);
+        };
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function to_number(value) {
+        return value === '' ? null : +value;
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function set_data(text, data) {
+        data = '' + data;
+        if (text.wholeText !== data)
+            text.data = data;
+    }
+    function set_input_value(input, value) {
+        input.value = value == null ? '' : value;
+    }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
+    function select_option(select, value) {
+        for (let i = 0; i < select.options.length; i += 1) {
+            const option = select.options[i];
+            if (option.__value === value) {
+                option.selected = true;
+                return;
+            }
+        }
+        select.selectedIndex = -1; // no option should be selected
+    }
+    function select_value(select) {
+        const selected_option = select.querySelector(':checked') || select.options[0];
+        return selected_option && selected_option.__value;
+    }
+    function custom_event(type, detail, bubbles = false) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, bubbles, false, detail);
+        return e;
+    }
+
+    const active_docs = new Set();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = get_root_for_style(node);
+        active_docs.add(doc);
+        const stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = append_empty_stylesheet(node).sheet);
+        const current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
+        if (!current_rules[name]) {
+            current_rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            active_docs.forEach(doc => {
+                const stylesheet = doc.__svelte_stylesheet;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                doc.__svelte_rules = {};
+            });
+            active_docs.clear();
+        });
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
+    // TODO figure out if we still want to support
+    // shorthand events, or if we want to implement
+    // a real bubbling mechanism
+    function bubble(component, event) {
+        const callbacks = component.$$.callbacks[event.type];
+        if (callbacks) {
+            // @ts-ignore
+            callbacks.slice().forEach(fn => fn.call(this, event));
+        }
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    let flushing = false;
+    const seen_callbacks = new Set();
+    function flush() {
+        if (flushing)
+            return;
+        flushing = true;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            for (let i = 0; i < dirty_components.length; i += 1) {
+                const component = dirty_components[i];
+                set_current_component(component);
+                update(component.$$);
+            }
+            set_current_component(null);
+            dirty_components.length = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        flushing = false;
+        seen_callbacks.clear();
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+    const null_transition = { duration: 0 };
+    function create_in_transition(node, fn, params) {
+        let config = fn(node, params);
+        let running = false;
+        let animation_name;
+        let task;
+        let uid = 0;
+        function cleanup() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function go() {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            if (css)
+                animation_name = create_rule(node, 0, 1, duration, delay, easing, css, uid++);
+            tick(0, 1);
+            const start_time = now() + delay;
+            const end_time = start_time + duration;
+            if (task)
+                task.abort();
+            running = true;
+            add_render_callback(() => dispatch(node, true, 'start'));
+            task = loop(now => {
+                if (running) {
+                    if (now >= end_time) {
+                        tick(1, 0);
+                        dispatch(node, true, 'end');
+                        cleanup();
+                        return running = false;
+                    }
+                    if (now >= start_time) {
+                        const t = easing((now - start_time) / duration);
+                        tick(t, 1 - t);
+                    }
+                }
+                return running;
+            });
+        }
+        let started = false;
+        return {
+            start() {
+                if (started)
+                    return;
+                started = true;
+                delete_rule(node);
+                if (is_function(config)) {
+                    config = config();
+                    wait().then(go);
+                }
+                else {
+                    go();
+                }
+            },
+            invalidate() {
+                started = false;
+            },
+            end() {
+                if (running) {
+                    cleanup();
+                    running = false;
+                }
+            }
+        };
+    }
+    function create_out_transition(node, fn, params) {
+        let config = fn(node, params);
+        let running = true;
+        let animation_name;
+        const group = outros;
+        group.r += 1;
+        function go() {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            if (css)
+                animation_name = create_rule(node, 1, 0, duration, delay, easing, css);
+            const start_time = now() + delay;
+            const end_time = start_time + duration;
+            add_render_callback(() => dispatch(node, false, 'start'));
+            loop(now => {
+                if (running) {
+                    if (now >= end_time) {
+                        tick(0, 1);
+                        dispatch(node, false, 'end');
+                        if (!--group.r) {
+                            // this will result in `end()` being called,
+                            // so we don't need to clean up here
+                            run_all(group.c);
+                        }
+                        return false;
+                    }
+                    if (now >= start_time) {
+                        const t = easing((now - start_time) / duration);
+                        tick(1 - t, t);
+                    }
+                }
+                return running;
+            });
+        }
+        if (is_function(config)) {
+            wait().then(() => {
+                // @ts-ignore
+                config = config();
+                go();
+            });
+        }
+        else {
+            go();
+        }
+        return {
+            end(reset) {
+                if (reset && config.tick) {
+                    config.tick(1, 0);
+                }
+                if (running) {
+                    if (animation_name)
+                        delete_rule(node, animation_name);
+                    running = false;
+                }
+            }
+        };
+    }
+    function create_component(block) {
+        block && block.c();
+    }
+    function mount_component(component, target, anchor, customElement) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        if (!customElement) {
+            // onMount happens before the initial afterUpdate
+            add_render_callback(() => {
+                const new_on_destroy = on_mount.map(run).filter(is_function);
+                if (on_destroy) {
+                    on_destroy.push(...new_on_destroy);
+                }
+                else {
+                    // Edge case - component was destroyed immediately,
+                    // most likely as a result of a binding initialising
+                    run_all(new_on_destroy);
+                }
+                component.$$.on_mount = [];
+            });
+        }
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, append_styles, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            on_disconnect: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+            // everything else
+            callbacks: blank_object(),
+            dirty,
+            skip_bound: false,
+            root: options.target || parent_component.$$.root
+        };
+        append_styles && append_styles($$.root);
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, options.props || {}, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor, options.customElement);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    /**
+     * Base class for Svelte components. Used when dev=false.
+     */
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+    function createCommonjsModule(fn) {
+      var module = { exports: {} };
+    	return fn(module, module.exports), module.exports;
+    }
+
+    var crossfilter$1 = createCommonjsModule(function (module, exports) {
+    (function(exports){
+    crossfilter.version = "1.3.12";
+    function crossfilter_identity(d) {
+      return d;
+    }
+    crossfilter.permute = permute;
+
+    function permute(array, index) {
+      for (var i = 0, n = index.length, copy = new Array(n); i < n; ++i) {
+        copy[i] = array[index[i]];
+      }
+      return copy;
+    }
+    var bisect = crossfilter.bisect = bisect_by(crossfilter_identity);
+
+    bisect.by = bisect_by;
+
+    function bisect_by(f) {
+
+      // Locate the insertion point for x in a to maintain sorted order. The
+      // arguments lo and hi may be used to specify a subset of the array which
+      // should be considered; by default the entire array is used. If x is already
+      // present in a, the insertion point will be before (to the left of) any
+      // existing entries. The return value is suitable for use as the first
+      // argument to `array.splice` assuming that a is already sorted.
+      //
+      // The returned insertion point i partitions the array a into two halves so
+      // that all v < x for v in a[lo:i] for the left side and all v >= x for v in
+      // a[i:hi] for the right side.
+      function bisectLeft(a, x, lo, hi) {
+        while (lo < hi) {
+          var mid = lo + hi >>> 1;
+          if (f(a[mid]) < x) lo = mid + 1;
+          else hi = mid;
+        }
+        return lo;
+      }
+
+      // Similar to bisectLeft, but returns an insertion point which comes after (to
+      // the right of) any existing entries of x in a.
+      //
+      // The returned insertion point i partitions the array into two halves so that
+      // all v <= x for v in a[lo:i] for the left side and all v > x for v in
+      // a[i:hi] for the right side.
+      function bisectRight(a, x, lo, hi) {
+        while (lo < hi) {
+          var mid = lo + hi >>> 1;
+          if (x < f(a[mid])) hi = mid;
+          else lo = mid + 1;
+        }
+        return lo;
+      }
+
+      bisectRight.right = bisectRight;
+      bisectRight.left = bisectLeft;
+      return bisectRight;
+    }
+    var heap = crossfilter.heap = heap_by(crossfilter_identity);
+
+    heap.by = heap_by;
+
+    function heap_by(f) {
+
+      // Builds a binary heap within the specified array a[lo:hi]. The heap has the
+      // property such that the parent a[lo+i] is always less than or equal to its
+      // two children: a[lo+2*i+1] and a[lo+2*i+2].
+      function heap(a, lo, hi) {
+        var n = hi - lo,
+            i = (n >>> 1) + 1;
+        while (--i > 0) sift(a, i, n, lo);
+        return a;
+      }
+
+      // Sorts the specified array a[lo:hi] in descending order, assuming it is
+      // already a heap.
+      function sort(a, lo, hi) {
+        var n = hi - lo,
+            t;
+        while (--n > 0) t = a[lo], a[lo] = a[lo + n], a[lo + n] = t, sift(a, 1, n, lo);
+        return a;
+      }
+
+      // Sifts the element a[lo+i-1] down the heap, where the heap is the contiguous
+      // slice of array a[lo:lo+n]. This method can also be used to update the heap
+      // incrementally, without incurring the full cost of reconstructing the heap.
+      function sift(a, i, n, lo) {
+        var d = a[--lo + i],
+            x = f(d),
+            child;
+        while ((child = i << 1) <= n) {
+          if (child < n && f(a[lo + child]) > f(a[lo + child + 1])) child++;
+          if (x <= f(a[lo + child])) break;
+          a[lo + i] = a[lo + child];
+          i = child;
+        }
+        a[lo + i] = d;
+      }
+
+      heap.sort = sort;
+      return heap;
+    }
+    var heapselect = crossfilter.heapselect = heapselect_by(crossfilter_identity);
+
+    heapselect.by = heapselect_by;
+
+    function heapselect_by(f) {
+      var heap = heap_by(f);
+
+      // Returns a new array containing the top k elements in the array a[lo:hi].
+      // The returned array is not sorted, but maintains the heap property. If k is
+      // greater than hi - lo, then fewer than k elements will be returned. The
+      // order of elements in a is unchanged by this operation.
+      function heapselect(a, lo, hi, k) {
+        var queue = new Array(k = Math.min(hi - lo, k)),
+            min,
+            i,
+            d;
+
+        for (i = 0; i < k; ++i) queue[i] = a[lo++];
+        heap(queue, 0, k);
+
+        if (lo < hi) {
+          min = f(queue[0]);
+          do {
+            if (f(d = a[lo]) > min) {
+              queue[0] = d;
+              min = f(heap(queue, 0, k)[0]);
+            }
+          } while (++lo < hi);
+        }
+
+        return queue;
+      }
+
+      return heapselect;
+    }
+    var insertionsort = crossfilter.insertionsort = insertionsort_by(crossfilter_identity);
+
+    insertionsort.by = insertionsort_by;
+
+    function insertionsort_by(f) {
+
+      function insertionsort(a, lo, hi) {
+        for (var i = lo + 1; i < hi; ++i) {
+          for (var j = i, t = a[i], x = f(t); j > lo && f(a[j - 1]) > x; --j) {
+            a[j] = a[j - 1];
+          }
+          a[j] = t;
+        }
+        return a;
+      }
+
+      return insertionsort;
+    }
+    // Algorithm designed by Vladimir Yaroslavskiy.
+    // Implementation based on the Dart project; see lib/dart/LICENSE for details.
+
+    var quicksort = crossfilter.quicksort = quicksort_by(crossfilter_identity);
+
+    quicksort.by = quicksort_by;
+
+    function quicksort_by(f) {
+      var insertionsort = insertionsort_by(f);
+
+      function sort(a, lo, hi) {
+        return (hi - lo < quicksort_sizeThreshold
+            ? insertionsort
+            : quicksort)(a, lo, hi);
+      }
+
+      function quicksort(a, lo, hi) {
+        // Compute the two pivots by looking at 5 elements.
+        var sixth = (hi - lo) / 6 | 0,
+            i1 = lo + sixth,
+            i5 = hi - 1 - sixth,
+            i3 = lo + hi - 1 >> 1,  // The midpoint.
+            i2 = i3 - sixth,
+            i4 = i3 + sixth;
+
+        var e1 = a[i1], x1 = f(e1),
+            e2 = a[i2], x2 = f(e2),
+            e3 = a[i3], x3 = f(e3),
+            e4 = a[i4], x4 = f(e4),
+            e5 = a[i5], x5 = f(e5);
+
+        var t;
+
+        // Sort the selected 5 elements using a sorting network.
+        if (x1 > x2) t = e1, e1 = e2, e2 = t, t = x1, x1 = x2, x2 = t;
+        if (x4 > x5) t = e4, e4 = e5, e5 = t, t = x4, x4 = x5, x5 = t;
+        if (x1 > x3) t = e1, e1 = e3, e3 = t, t = x1, x1 = x3, x3 = t;
+        if (x2 > x3) t = e2, e2 = e3, e3 = t, t = x2, x2 = x3, x3 = t;
+        if (x1 > x4) t = e1, e1 = e4, e4 = t, t = x1, x1 = x4, x4 = t;
+        if (x3 > x4) t = e3, e3 = e4, e4 = t, t = x3, x3 = x4, x4 = t;
+        if (x2 > x5) t = e2, e2 = e5, e5 = t, t = x2, x2 = x5, x5 = t;
+        if (x2 > x3) t = e2, e2 = e3, e3 = t, t = x2, x2 = x3, x3 = t;
+        if (x4 > x5) t = e4, e4 = e5, e5 = t, t = x4, x4 = x5, x5 = t;
+
+        var pivot1 = e2, pivotValue1 = x2,
+            pivot2 = e4, pivotValue2 = x4;
+
+        // e2 and e4 have been saved in the pivot variables. They will be written
+        // back, once the partitioning is finished.
+        a[i1] = e1;
+        a[i2] = a[lo];
+        a[i3] = e3;
+        a[i4] = a[hi - 1];
+        a[i5] = e5;
+
+        var less = lo + 1,   // First element in the middle partition.
+            great = hi - 2;  // Last element in the middle partition.
+
+        // Note that for value comparison, <, <=, >= and > coerce to a primitive via
+        // Object.prototype.valueOf; == and === do not, so in order to be consistent
+        // with natural order (such as for Date objects), we must do two compares.
+        var pivotsEqual = pivotValue1 <= pivotValue2 && pivotValue1 >= pivotValue2;
+        if (pivotsEqual) {
+
+          // Degenerated case where the partitioning becomes a dutch national flag
+          // problem.
+          //
+          // [ |  < pivot  | == pivot | unpartitioned | > pivot  | ]
+          //  ^             ^          ^             ^            ^
+          // left         less         k           great         right
+          //
+          // a[left] and a[right] are undefined and are filled after the
+          // partitioning.
+          //
+          // Invariants:
+          //   1) for x in ]left, less[ : x < pivot.
+          //   2) for x in [less, k[ : x == pivot.
+          //   3) for x in ]great, right[ : x > pivot.
+          for (var k = less; k <= great; ++k) {
+            var ek = a[k], xk = f(ek);
+            if (xk < pivotValue1) {
+              if (k !== less) {
+                a[k] = a[less];
+                a[less] = ek;
+              }
+              ++less;
+            } else if (xk > pivotValue1) {
+
+              // Find the first element <= pivot in the range [k - 1, great] and
+              // put [:ek:] there. We know that such an element must exist:
+              // When k == less, then el3 (which is equal to pivot) lies in the
+              // interval. Otherwise a[k - 1] == pivot and the search stops at k-1.
+              // Note that in the latter case invariant 2 will be violated for a
+              // short amount of time. The invariant will be restored when the
+              // pivots are put into their final positions.
+              while (true) {
+                var greatValue = f(a[great]);
+                if (greatValue > pivotValue1) {
+                  great--;
+                  // This is the only location in the while-loop where a new
+                  // iteration is started.
+                  continue;
+                } else if (greatValue < pivotValue1) {
+                  // Triple exchange.
+                  a[k] = a[less];
+                  a[less++] = a[great];
+                  a[great--] = ek;
+                  break;
+                } else {
+                  a[k] = a[great];
+                  a[great--] = ek;
+                  // Note: if great < k then we will exit the outer loop and fix
+                  // invariant 2 (which we just violated).
+                  break;
+                }
+              }
+            }
+          }
+        } else {
+
+          // We partition the list into three parts:
+          //  1. < pivot1
+          //  2. >= pivot1 && <= pivot2
+          //  3. > pivot2
+          //
+          // During the loop we have:
+          // [ | < pivot1 | >= pivot1 && <= pivot2 | unpartitioned  | > pivot2  | ]
+          //  ^            ^                        ^              ^             ^
+          // left         less                     k              great        right
+          //
+          // a[left] and a[right] are undefined and are filled after the
+          // partitioning.
+          //
+          // Invariants:
+          //   1. for x in ]left, less[ : x < pivot1
+          //   2. for x in [less, k[ : pivot1 <= x && x <= pivot2
+          //   3. for x in ]great, right[ : x > pivot2
+          for (var k = less; k <= great; k++) {
+            var ek = a[k], xk = f(ek);
+            if (xk < pivotValue1) {
+              if (k !== less) {
+                a[k] = a[less];
+                a[less] = ek;
+              }
+              ++less;
+            } else {
+              if (xk > pivotValue2) {
+                while (true) {
+                  var greatValue = f(a[great]);
+                  if (greatValue > pivotValue2) {
+                    great--;
+                    if (great < k) break;
+                    // This is the only location inside the loop where a new
+                    // iteration is started.
+                    continue;
+                  } else {
+                    // a[great] <= pivot2.
+                    if (greatValue < pivotValue1) {
+                      // Triple exchange.
+                      a[k] = a[less];
+                      a[less++] = a[great];
+                      a[great--] = ek;
+                    } else {
+                      // a[great] >= pivot1.
+                      a[k] = a[great];
+                      a[great--] = ek;
+                    }
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // Move pivots into their final positions.
+        // We shrunk the list from both sides (a[left] and a[right] have
+        // meaningless values in them) and now we move elements from the first
+        // and third partition into these locations so that we can store the
+        // pivots.
+        a[lo] = a[less - 1];
+        a[less - 1] = pivot1;
+        a[hi - 1] = a[great + 1];
+        a[great + 1] = pivot2;
+
+        // The list is now partitioned into three partitions:
+        // [ < pivot1   | >= pivot1 && <= pivot2   |  > pivot2   ]
+        //  ^            ^                        ^             ^
+        // left         less                     great        right
+
+        // Recursive descent. (Don't include the pivot values.)
+        sort(a, lo, less - 1);
+        sort(a, great + 2, hi);
+
+        if (pivotsEqual) {
+          // All elements in the second partition are equal to the pivot. No
+          // need to sort them.
+          return a;
+        }
+
+        // In theory it should be enough to call _doSort recursively on the second
+        // partition.
+        // The Android source however removes the pivot elements from the recursive
+        // call if the second partition is too large (more than 2/3 of the list).
+        if (less < i1 && great > i5) {
+          var lessValue, greatValue;
+          while ((lessValue = f(a[less])) <= pivotValue1 && lessValue >= pivotValue1) ++less;
+          while ((greatValue = f(a[great])) <= pivotValue2 && greatValue >= pivotValue2) --great;
+
+          // Copy paste of the previous 3-way partitioning with adaptions.
+          //
+          // We partition the list into three parts:
+          //  1. == pivot1
+          //  2. > pivot1 && < pivot2
+          //  3. == pivot2
+          //
+          // During the loop we have:
+          // [ == pivot1 | > pivot1 && < pivot2 | unpartitioned  | == pivot2 ]
+          //              ^                      ^              ^
+          //            less                     k              great
+          //
+          // Invariants:
+          //   1. for x in [ *, less[ : x == pivot1
+          //   2. for x in [less, k[ : pivot1 < x && x < pivot2
+          //   3. for x in ]great, * ] : x == pivot2
+          for (var k = less; k <= great; k++) {
+            var ek = a[k], xk = f(ek);
+            if (xk <= pivotValue1 && xk >= pivotValue1) {
+              if (k !== less) {
+                a[k] = a[less];
+                a[less] = ek;
+              }
+              less++;
+            } else {
+              if (xk <= pivotValue2 && xk >= pivotValue2) {
+                while (true) {
+                  var greatValue = f(a[great]);
+                  if (greatValue <= pivotValue2 && greatValue >= pivotValue2) {
+                    great--;
+                    if (great < k) break;
+                    // This is the only location inside the loop where a new
+                    // iteration is started.
+                    continue;
+                  } else {
+                    // a[great] < pivot2.
+                    if (greatValue < pivotValue1) {
+                      // Triple exchange.
+                      a[k] = a[less];
+                      a[less++] = a[great];
+                      a[great--] = ek;
+                    } else {
+                      // a[great] == pivot1.
+                      a[k] = a[great];
+                      a[great--] = ek;
+                    }
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // The second partition has now been cleared of pivot elements and looks
+        // as follows:
+        // [  *  |  > pivot1 && < pivot2  | * ]
+        //        ^                      ^
+        //       less                  great
+        // Sort the second partition using recursive descent.
+
+        // The second partition looks as follows:
+        // [  *  |  >= pivot1 && <= pivot2  | * ]
+        //        ^                        ^
+        //       less                    great
+        // Simply sort it by recursive descent.
+
+        return sort(a, less, great + 1);
+      }
+
+      return sort;
+    }
+
+    var quicksort_sizeThreshold = 32;
+    var crossfilter_array8 = crossfilter_arrayUntyped,
+        crossfilter_array16 = crossfilter_arrayUntyped,
+        crossfilter_array32 = crossfilter_arrayUntyped,
+        crossfilter_arrayLengthen = crossfilter_arrayLengthenUntyped,
+        crossfilter_arrayWiden = crossfilter_arrayWidenUntyped;
+
+    if (typeof Uint8Array !== "undefined") {
+      crossfilter_array8 = function(n) { return new Uint8Array(n); };
+      crossfilter_array16 = function(n) { return new Uint16Array(n); };
+      crossfilter_array32 = function(n) { return new Uint32Array(n); };
+
+      crossfilter_arrayLengthen = function(array, length) {
+        if (array.length >= length) return array;
+        var copy = new array.constructor(length);
+        copy.set(array);
+        return copy;
+      };
+
+      crossfilter_arrayWiden = function(array, width) {
+        var copy;
+        switch (width) {
+          case 16: copy = crossfilter_array16(array.length); break;
+          case 32: copy = crossfilter_array32(array.length); break;
+          default: throw new Error("invalid array width!");
+        }
+        copy.set(array);
+        return copy;
+      };
+    }
+
+    function crossfilter_arrayUntyped(n) {
+      var array = new Array(n), i = -1;
+      while (++i < n) array[i] = 0;
+      return array;
+    }
+
+    function crossfilter_arrayLengthenUntyped(array, length) {
+      var n = array.length;
+      while (n < length) array[n++] = 0;
+      return array;
+    }
+
+    function crossfilter_arrayWidenUntyped(array, width) {
+      if (width > 32) throw new Error("invalid array width!");
+      return array;
+    }
+    function crossfilter_filterExact(bisect, value) {
+      return function(values) {
+        var n = values.length;
+        return [bisect.left(values, value, 0, n), bisect.right(values, value, 0, n)];
+      };
+    }
+
+    function crossfilter_filterRange(bisect, range) {
+      var min = range[0],
+          max = range[1];
+      return function(values) {
+        var n = values.length;
+        return [bisect.left(values, min, 0, n), bisect.left(values, max, 0, n)];
+      };
+    }
+
+    function crossfilter_filterAll(values) {
+      return [0, values.length];
+    }
+    function crossfilter_null() {
+      return null;
+    }
+    function crossfilter_zero() {
+      return 0;
+    }
+    function crossfilter_reduceIncrement(p) {
+      return p + 1;
+    }
+
+    function crossfilter_reduceDecrement(p) {
+      return p - 1;
+    }
+
+    function crossfilter_reduceAdd(f) {
+      return function(p, v) {
+        return p + +f(v);
+      };
+    }
+
+    function crossfilter_reduceSubtract(f) {
+      return function(p, v) {
+        return p - f(v);
+      };
+    }
+    exports.crossfilter = crossfilter;
+
+    function crossfilter() {
+      var crossfilter = {
+        add: add,
+        remove: removeData,
+        dimension: dimension,
+        groupAll: groupAll,
+        size: size
+      };
+
+      var data = [], // the records
+          n = 0, // the number of records; data.length
+          m = 0, // a bit mask representing which dimensions are in use
+          M = 8, // number of dimensions that can fit in `filters`
+          filters = crossfilter_array8(0), // M bits per record; 1 is filtered out
+          filterListeners = [], // when the filters change
+          dataListeners = [], // when data is added
+          removeDataListeners = []; // when data is removed
+
+      // Adds the specified new records to this crossfilter.
+      function add(newData) {
+        var n0 = n,
+            n1 = newData.length;
+
+        // If there's actually new data to add…
+        // Merge the new data into the existing data.
+        // Lengthen the filter bitset to handle the new records.
+        // Notify listeners (dimensions and groups) that new data is available.
+        if (n1) {
+          data = data.concat(newData);
+          filters = crossfilter_arrayLengthen(filters, n += n1);
+          dataListeners.forEach(function(l) { l(newData, n0, n1); });
+        }
+
+        return crossfilter;
+      }
+
+      // Removes all records that match the current filters.
+      function removeData() {
+        var newIndex = crossfilter_index(n, n),
+            removed = [];
+        for (var i = 0, j = 0; i < n; ++i) {
+          if (filters[i]) newIndex[i] = j++;
+          else removed.push(i);
+        }
+
+        // Remove all matching records from groups.
+        filterListeners.forEach(function(l) { l(0, [], removed); });
+
+        // Update indexes.
+        removeDataListeners.forEach(function(l) { l(newIndex); });
+
+        // Remove old filters and data by overwriting.
+        for (var i = 0, j = 0, k; i < n; ++i) {
+          if (k = filters[i]) {
+            if (i !== j) filters[j] = k, data[j] = data[i];
+            ++j;
+          }
+        }
+        data.length = j;
+        while (n > j) filters[--n] = 0;
+      }
+
+      // Adds a new dimension with the specified value accessor function.
+      function dimension(value) {
+        var dimension = {
+          filter: filter,
+          filterExact: filterExact,
+          filterRange: filterRange,
+          filterFunction: filterFunction,
+          filterAll: filterAll,
+          top: top,
+          bottom: bottom,
+          group: group,
+          groupAll: groupAll,
+          dispose: dispose,
+          remove: dispose // for backwards-compatibility
+        };
+
+        var one = ~m & -~m, // lowest unset bit as mask, e.g., 00001000
+            zero = ~one, // inverted one, e.g., 11110111
+            values, // sorted, cached array
+            index, // value rank ↦ object id
+            newValues, // temporary array storing newly-added values
+            newIndex, // temporary array storing newly-added index
+            sort = quicksort_by(function(i) { return newValues[i]; }),
+            refilter = crossfilter_filterAll, // for recomputing filter
+            refilterFunction, // the custom filter function in use
+            indexListeners = [], // when data is added
+            dimensionGroups = [],
+            lo0 = 0,
+            hi0 = 0;
+
+        // Updating a dimension is a two-stage process. First, we must update the
+        // associated filters for the newly-added records. Once all dimensions have
+        // updated their filters, the groups are notified to update.
+        dataListeners.unshift(preAdd);
+        dataListeners.push(postAdd);
+
+        removeDataListeners.push(removeData);
+
+        // Incorporate any existing data into this dimension, and make sure that the
+        // filter bitset is wide enough to handle the new dimension.
+        m |= one;
+        if (M >= 32 ? !one : m & -(1 << M)) {
+          filters = crossfilter_arrayWiden(filters, M <<= 1);
+        }
+        preAdd(data, 0, n);
+        postAdd(data, 0, n);
+
+        // Incorporates the specified new records into this dimension.
+        // This function is responsible for updating filters, values, and index.
+        function preAdd(newData, n0, n1) {
+
+          // Permute new values into natural order using a sorted index.
+          newValues = newData.map(value);
+          newIndex = sort(crossfilter_range(n1), 0, n1);
+          newValues = permute(newValues, newIndex);
+
+          // Bisect newValues to determine which new records are selected.
+          var bounds = refilter(newValues), lo1 = bounds[0], hi1 = bounds[1], i;
+          if (refilterFunction) {
+            for (i = 0; i < n1; ++i) {
+              if (!refilterFunction(newValues[i], i)) filters[newIndex[i] + n0] |= one;
+            }
+          } else {
+            for (i = 0; i < lo1; ++i) filters[newIndex[i] + n0] |= one;
+            for (i = hi1; i < n1; ++i) filters[newIndex[i] + n0] |= one;
+          }
+
+          // If this dimension previously had no data, then we don't need to do the
+          // more expensive merge operation; use the new values and index as-is.
+          if (!n0) {
+            values = newValues;
+            index = newIndex;
+            lo0 = lo1;
+            hi0 = hi1;
+            return;
+          }
+
+          var oldValues = values,
+              oldIndex = index,
+              i0 = 0,
+              i1 = 0;
+
+          // Otherwise, create new arrays into which to merge new and old.
+          values = new Array(n);
+          index = crossfilter_index(n, n);
+
+          // Merge the old and new sorted values, and old and new index.
+          for (i = 0; i0 < n0 && i1 < n1; ++i) {
+            if (oldValues[i0] < newValues[i1]) {
+              values[i] = oldValues[i0];
+              index[i] = oldIndex[i0++];
+            } else {
+              values[i] = newValues[i1];
+              index[i] = newIndex[i1++] + n0;
+            }
+          }
+
+          // Add any remaining old values.
+          for (; i0 < n0; ++i0, ++i) {
+            values[i] = oldValues[i0];
+            index[i] = oldIndex[i0];
+          }
+
+          // Add any remaining new values.
+          for (; i1 < n1; ++i1, ++i) {
+            values[i] = newValues[i1];
+            index[i] = newIndex[i1] + n0;
+          }
+
+          // Bisect again to recompute lo0 and hi0.
+          bounds = refilter(values), lo0 = bounds[0], hi0 = bounds[1];
+        }
+
+        // When all filters have updated, notify index listeners of the new values.
+        function postAdd(newData, n0, n1) {
+          indexListeners.forEach(function(l) { l(newValues, newIndex, n0, n1); });
+          newValues = newIndex = null;
+        }
+
+        function removeData(reIndex) {
+          for (var i = 0, j = 0, k; i < n; ++i) {
+            if (filters[k = index[i]]) {
+              if (i !== j) values[j] = values[i];
+              index[j] = reIndex[k];
+              ++j;
+            }
+          }
+          values.length = j;
+          while (j < n) index[j++] = 0;
+
+          // Bisect again to recompute lo0 and hi0.
+          var bounds = refilter(values);
+          lo0 = bounds[0], hi0 = bounds[1];
+        }
+
+        // Updates the selected values based on the specified bounds [lo, hi].
+        // This implementation is used by all the public filter methods.
+        function filterIndexBounds(bounds) {
+          var lo1 = bounds[0],
+              hi1 = bounds[1];
+
+          if (refilterFunction) {
+            refilterFunction = null;
+            filterIndexFunction(function(d, i) { return lo1 <= i && i < hi1; });
+            lo0 = lo1;
+            hi0 = hi1;
+            return dimension;
+          }
+
+          var i,
+              j,
+              k,
+              added = [],
+              removed = [];
+
+          // Fast incremental update based on previous lo index.
+          if (lo1 < lo0) {
+            for (i = lo1, j = Math.min(lo0, hi1); i < j; ++i) {
+              filters[k = index[i]] ^= one;
+              added.push(k);
+            }
+          } else if (lo1 > lo0) {
+            for (i = lo0, j = Math.min(lo1, hi0); i < j; ++i) {
+              filters[k = index[i]] ^= one;
+              removed.push(k);
+            }
+          }
+
+          // Fast incremental update based on previous hi index.
+          if (hi1 > hi0) {
+            for (i = Math.max(lo1, hi0), j = hi1; i < j; ++i) {
+              filters[k = index[i]] ^= one;
+              added.push(k);
+            }
+          } else if (hi1 < hi0) {
+            for (i = Math.max(lo0, hi1), j = hi0; i < j; ++i) {
+              filters[k = index[i]] ^= one;
+              removed.push(k);
+            }
+          }
+
+          lo0 = lo1;
+          hi0 = hi1;
+          filterListeners.forEach(function(l) { l(one, added, removed); });
+          return dimension;
+        }
+
+        // Filters this dimension using the specified range, value, or null.
+        // If the range is null, this is equivalent to filterAll.
+        // If the range is an array, this is equivalent to filterRange.
+        // Otherwise, this is equivalent to filterExact.
+        function filter(range) {
+          return range == null
+              ? filterAll() : Array.isArray(range)
+              ? filterRange(range) : typeof range === "function"
+              ? filterFunction(range)
+              : filterExact(range);
+        }
+
+        // Filters this dimension to select the exact value.
+        function filterExact(value) {
+          return filterIndexBounds((refilter = crossfilter_filterExact(bisect, value))(values));
+        }
+
+        // Filters this dimension to select the specified range [lo, hi].
+        // The lower bound is inclusive, and the upper bound is exclusive.
+        function filterRange(range) {
+          return filterIndexBounds((refilter = crossfilter_filterRange(bisect, range))(values));
+        }
+
+        // Clears any filters on this dimension.
+        function filterAll() {
+          return filterIndexBounds((refilter = crossfilter_filterAll)(values));
+        }
+
+        // Filters this dimension using an arbitrary function.
+        function filterFunction(f) {
+          refilter = crossfilter_filterAll;
+
+          filterIndexFunction(refilterFunction = f);
+
+          lo0 = 0;
+          hi0 = n;
+
+          return dimension;
+        }
+
+        function filterIndexFunction(f) {
+          var i,
+              k,
+              x,
+              added = [],
+              removed = [];
+
+          for (i = 0; i < n; ++i) {
+            if (!(filters[k = index[i]] & one) ^ !!(x = f(values[i], i))) {
+              if (x) filters[k] &= zero, added.push(k);
+              else filters[k] |= one, removed.push(k);
+            }
+          }
+          filterListeners.forEach(function(l) { l(one, added, removed); });
+        }
+
+        // Returns the top K selected records based on this dimension's order.
+        // Note: observes this dimension's filter, unlike group and groupAll.
+        function top(k) {
+          var array = [],
+              i = hi0,
+              j;
+
+          while (--i >= lo0 && k > 0) {
+            if (!filters[j = index[i]]) {
+              array.push(data[j]);
+              --k;
+            }
+          }
+
+          return array;
+        }
+
+        // Returns the bottom K selected records based on this dimension's order.
+        // Note: observes this dimension's filter, unlike group and groupAll.
+        function bottom(k) {
+          var array = [],
+              i = lo0,
+              j;
+
+          while (i < hi0 && k > 0) {
+            if (!filters[j = index[i]]) {
+              array.push(data[j]);
+              --k;
+            }
+            i++;
+          }
+
+          return array;
+        }
+
+        // Adds a new group to this dimension, using the specified key function.
+        function group(key) {
+          var group = {
+            top: top,
+            all: all,
+            reduce: reduce,
+            reduceCount: reduceCount,
+            reduceSum: reduceSum,
+            order: order,
+            orderNatural: orderNatural,
+            size: size,
+            dispose: dispose,
+            remove: dispose // for backwards-compatibility
+          };
+
+          // Ensure that this group will be removed when the dimension is removed.
+          dimensionGroups.push(group);
+
+          var groups, // array of {key, value}
+              groupIndex, // object id ↦ group id
+              groupWidth = 8,
+              groupCapacity = crossfilter_capacity(groupWidth),
+              k = 0, // cardinality
+              select,
+              heap,
+              reduceAdd,
+              reduceRemove,
+              reduceInitial,
+              update = crossfilter_null,
+              reset = crossfilter_null,
+              resetNeeded = true,
+              groupAll = key === crossfilter_null;
+
+          if (arguments.length < 1) key = crossfilter_identity;
+
+          // The group listens to the crossfilter for when any dimension changes, so
+          // that it can update the associated reduce values. It must also listen to
+          // the parent dimension for when data is added, and compute new keys.
+          filterListeners.push(update);
+          indexListeners.push(add);
+          removeDataListeners.push(removeData);
+
+          // Incorporate any existing data into the grouping.
+          add(values, index, 0, n);
+
+          // Incorporates the specified new values into this group.
+          // This function is responsible for updating groups and groupIndex.
+          function add(newValues, newIndex, n0, n1) {
+            var oldGroups = groups,
+                reIndex = crossfilter_index(k, groupCapacity),
+                add = reduceAdd,
+                initial = reduceInitial,
+                k0 = k, // old cardinality
+                i0 = 0, // index of old group
+                i1 = 0, // index of new record
+                j, // object id
+                g0, // old group
+                x0, // old key
+                x1, // new key
+                g, // group to add
+                x; // key of group to add
+
+            // If a reset is needed, we don't need to update the reduce values.
+            if (resetNeeded) add = initial = crossfilter_null;
+
+            // Reset the new groups (k is a lower bound).
+            // Also, make sure that groupIndex exists and is long enough.
+            groups = new Array(k), k = 0;
+            groupIndex = k0 > 1 ? crossfilter_arrayLengthen(groupIndex, n) : crossfilter_index(n, groupCapacity);
+
+            // Get the first old key (x0 of g0), if it exists.
+            if (k0) x0 = (g0 = oldGroups[0]).key;
+
+            // Find the first new key (x1), skipping NaN keys.
+            while (i1 < n1 && !((x1 = key(newValues[i1])) >= x1)) ++i1;
+
+            // While new keys remain…
+            while (i1 < n1) {
+
+              // Determine the lesser of the two current keys; new and old.
+              // If there are no old keys remaining, then always add the new key.
+              if (g0 && x0 <= x1) {
+                g = g0, x = x0;
+
+                // Record the new index of the old group.
+                reIndex[i0] = k;
+
+                // Retrieve the next old key.
+                if (g0 = oldGroups[++i0]) x0 = g0.key;
+              } else {
+                g = {key: x1, value: initial()}, x = x1;
+              }
+
+              // Add the lesser group.
+              groups[k] = g;
+
+              // Add any selected records belonging to the added group, while
+              // advancing the new key and populating the associated group index.
+              while (!(x1 > x)) {
+                groupIndex[j = newIndex[i1] + n0] = k;
+                if (!(filters[j] & zero)) g.value = add(g.value, data[j]);
+                if (++i1 >= n1) break;
+                x1 = key(newValues[i1]);
+              }
+
+              groupIncrement();
+            }
+
+            // Add any remaining old groups that were greater than all new keys.
+            // No incremental reduce is needed; these groups have no new records.
+            // Also record the new index of the old group.
+            while (i0 < k0) {
+              groups[reIndex[i0] = k] = oldGroups[i0++];
+              groupIncrement();
+            }
+
+            // If we added any new groups before any old groups,
+            // update the group index of all the old records.
+            if (k > i0) for (i0 = 0; i0 < n0; ++i0) {
+              groupIndex[i0] = reIndex[groupIndex[i0]];
+            }
+
+            // Modify the update and reset behavior based on the cardinality.
+            // If the cardinality is less than or equal to one, then the groupIndex
+            // is not needed. If the cardinality is zero, then there are no records
+            // and therefore no groups to update or reset. Note that we also must
+            // change the registered listener to point to the new method.
+            j = filterListeners.indexOf(update);
+            if (k > 1) {
+              update = updateMany;
+              reset = resetMany;
+            } else {
+              if (!k && groupAll) {
+                k = 1;
+                groups = [{key: null, value: initial()}];
+              }
+              if (k === 1) {
+                update = updateOne;
+                reset = resetOne;
+              } else {
+                update = crossfilter_null;
+                reset = crossfilter_null;
+              }
+              groupIndex = null;
+            }
+            filterListeners[j] = update;
+
+            // Count the number of added groups,
+            // and widen the group index as needed.
+            function groupIncrement() {
+              if (++k === groupCapacity) {
+                reIndex = crossfilter_arrayWiden(reIndex, groupWidth <<= 1);
+                groupIndex = crossfilter_arrayWiden(groupIndex, groupWidth);
+                groupCapacity = crossfilter_capacity(groupWidth);
+              }
+            }
+          }
+
+          function removeData() {
+            if (k > 1) {
+              var oldK = k,
+                  oldGroups = groups,
+                  seenGroups = crossfilter_index(oldK, oldK);
+
+              // Filter out non-matches by copying matching group index entries to
+              // the beginning of the array.
+              for (var i = 0, j = 0; i < n; ++i) {
+                if (filters[i]) {
+                  seenGroups[groupIndex[j] = groupIndex[i]] = 1;
+                  ++j;
+                }
+              }
+
+              // Reassemble groups including only those groups that were referred
+              // to by matching group index entries.  Note the new group index in
+              // seenGroups.
+              groups = [], k = 0;
+              for (i = 0; i < oldK; ++i) {
+                if (seenGroups[i]) {
+                  seenGroups[i] = k++;
+                  groups.push(oldGroups[i]);
+                }
+              }
+
+              if (k > 1) {
+                // Reindex the group index using seenGroups to find the new index.
+                for (var i = 0; i < j; ++i) groupIndex[i] = seenGroups[groupIndex[i]];
+              } else {
+                groupIndex = null;
+              }
+              filterListeners[filterListeners.indexOf(update)] = k > 1
+                  ? (reset = resetMany, update = updateMany)
+                  : k === 1 ? (reset = resetOne, update = updateOne)
+                  : reset = update = crossfilter_null;
+            } else if (k === 1) {
+              if (groupAll) return;
+              for (var i = 0; i < n; ++i) if (filters[i]) return;
+              groups = [], k = 0;
+              filterListeners[filterListeners.indexOf(update)] =
+              update = reset = crossfilter_null;
+            }
+          }
+
+          // Reduces the specified selected or deselected records.
+          // This function is only used when the cardinality is greater than 1.
+          function updateMany(filterOne, added, removed) {
+            if (filterOne === one || resetNeeded) return;
+
+            var i,
+                k,
+                n,
+                g;
+
+            // Add the added values.
+            for (i = 0, n = added.length; i < n; ++i) {
+              if (!(filters[k = added[i]] & zero)) {
+                g = groups[groupIndex[k]];
+                g.value = reduceAdd(g.value, data[k]);
+              }
+            }
+
+            // Remove the removed values.
+            for (i = 0, n = removed.length; i < n; ++i) {
+              if ((filters[k = removed[i]] & zero) === filterOne) {
+                g = groups[groupIndex[k]];
+                g.value = reduceRemove(g.value, data[k]);
+              }
+            }
+          }
+
+          // Reduces the specified selected or deselected records.
+          // This function is only used when the cardinality is 1.
+          function updateOne(filterOne, added, removed) {
+            if (filterOne === one || resetNeeded) return;
+
+            var i,
+                k,
+                n,
+                g = groups[0];
+
+            // Add the added values.
+            for (i = 0, n = added.length; i < n; ++i) {
+              if (!(filters[k = added[i]] & zero)) {
+                g.value = reduceAdd(g.value, data[k]);
+              }
+            }
+
+            // Remove the removed values.
+            for (i = 0, n = removed.length; i < n; ++i) {
+              if ((filters[k = removed[i]] & zero) === filterOne) {
+                g.value = reduceRemove(g.value, data[k]);
+              }
+            }
+          }
+
+          // Recomputes the group reduce values from scratch.
+          // This function is only used when the cardinality is greater than 1.
+          function resetMany() {
+            var i,
+                g;
+
+            // Reset all group values.
+            for (i = 0; i < k; ++i) {
+              groups[i].value = reduceInitial();
+            }
+
+            // Add any selected records.
+            for (i = 0; i < n; ++i) {
+              if (!(filters[i] & zero)) {
+                g = groups[groupIndex[i]];
+                g.value = reduceAdd(g.value, data[i]);
+              }
+            }
+          }
+
+          // Recomputes the group reduce values from scratch.
+          // This function is only used when the cardinality is 1.
+          function resetOne() {
+            var i,
+                g = groups[0];
+
+            // Reset the singleton group values.
+            g.value = reduceInitial();
+
+            // Add any selected records.
+            for (i = 0; i < n; ++i) {
+              if (!(filters[i] & zero)) {
+                g.value = reduceAdd(g.value, data[i]);
+              }
+            }
+          }
+
+          // Returns the array of group values, in the dimension's natural order.
+          function all() {
+            if (resetNeeded) reset(), resetNeeded = false;
+            return groups;
+          }
+
+          // Returns a new array containing the top K group values, in reduce order.
+          function top(k) {
+            var top = select(all(), 0, groups.length, k);
+            return heap.sort(top, 0, top.length);
+          }
+
+          // Sets the reduce behavior for this group to use the specified functions.
+          // This method lazily recomputes the reduce values, waiting until needed.
+          function reduce(add, remove, initial) {
+            reduceAdd = add;
+            reduceRemove = remove;
+            reduceInitial = initial;
+            resetNeeded = true;
+            return group;
+          }
+
+          // A convenience method for reducing by count.
+          function reduceCount() {
+            return reduce(crossfilter_reduceIncrement, crossfilter_reduceDecrement, crossfilter_zero);
+          }
+
+          // A convenience method for reducing by sum(value).
+          function reduceSum(value) {
+            return reduce(crossfilter_reduceAdd(value), crossfilter_reduceSubtract(value), crossfilter_zero);
+          }
+
+          // Sets the reduce order, using the specified accessor.
+          function order(value) {
+            select = heapselect_by(valueOf);
+            heap = heap_by(valueOf);
+            function valueOf(d) { return value(d.value); }
+            return group;
+          }
+
+          // A convenience method for natural ordering by reduce value.
+          function orderNatural() {
+            return order(crossfilter_identity);
+          }
+
+          // Returns the cardinality of this group, irrespective of any filters.
+          function size() {
+            return k;
+          }
+
+          // Removes this group and associated event listeners.
+          function dispose() {
+            var i = filterListeners.indexOf(update);
+            if (i >= 0) filterListeners.splice(i, 1);
+            i = indexListeners.indexOf(add);
+            if (i >= 0) indexListeners.splice(i, 1);
+            i = removeDataListeners.indexOf(removeData);
+            if (i >= 0) removeDataListeners.splice(i, 1);
+            return group;
+          }
+
+          return reduceCount().orderNatural();
+        }
+
+        // A convenience function for generating a singleton group.
+        function groupAll() {
+          var g = group(crossfilter_null), all = g.all;
+          delete g.all;
+          delete g.top;
+          delete g.order;
+          delete g.orderNatural;
+          delete g.size;
+          g.value = function() { return all()[0].value; };
+          return g;
+        }
+
+        // Removes this dimension and associated groups and event listeners.
+        function dispose() {
+          dimensionGroups.forEach(function(group) { group.dispose(); });
+          var i = dataListeners.indexOf(preAdd);
+          if (i >= 0) dataListeners.splice(i, 1);
+          i = dataListeners.indexOf(postAdd);
+          if (i >= 0) dataListeners.splice(i, 1);
+          i = removeDataListeners.indexOf(removeData);
+          if (i >= 0) removeDataListeners.splice(i, 1);
+          m &= zero;
+          return filterAll();
+        }
+
+        return dimension;
+      }
+
+      // A convenience method for groupAll on a dummy dimension.
+      // This implementation can be optimized since it always has cardinality 1.
+      function groupAll() {
+        var group = {
+          reduce: reduce,
+          reduceCount: reduceCount,
+          reduceSum: reduceSum,
+          value: value,
+          dispose: dispose,
+          remove: dispose // for backwards-compatibility
+        };
+
+        var reduceValue,
+            reduceAdd,
+            reduceRemove,
+            reduceInitial,
+            resetNeeded = true;
+
+        // The group listens to the crossfilter for when any dimension changes, so
+        // that it can update the reduce value. It must also listen to the parent
+        // dimension for when data is added.
+        filterListeners.push(update);
+        dataListeners.push(add);
+
+        // For consistency; actually a no-op since resetNeeded is true.
+        add(data, 0);
+
+        // Incorporates the specified new values into this group.
+        function add(newData, n0) {
+          var i;
+
+          if (resetNeeded) return;
+
+          // Add the added values.
+          for (i = n0; i < n; ++i) {
+            if (!filters[i]) {
+              reduceValue = reduceAdd(reduceValue, data[i]);
+            }
+          }
+        }
+
+        // Reduces the specified selected or deselected records.
+        function update(filterOne, added, removed) {
+          var i,
+              k,
+              n;
+
+          if (resetNeeded) return;
+
+          // Add the added values.
+          for (i = 0, n = added.length; i < n; ++i) {
+            if (!filters[k = added[i]]) {
+              reduceValue = reduceAdd(reduceValue, data[k]);
+            }
+          }
+
+          // Remove the removed values.
+          for (i = 0, n = removed.length; i < n; ++i) {
+            if (filters[k = removed[i]] === filterOne) {
+              reduceValue = reduceRemove(reduceValue, data[k]);
+            }
+          }
+        }
+
+        // Recomputes the group reduce value from scratch.
+        function reset() {
+          var i;
+
+          reduceValue = reduceInitial();
+
+          for (i = 0; i < n; ++i) {
+            if (!filters[i]) {
+              reduceValue = reduceAdd(reduceValue, data[i]);
+            }
+          }
+        }
+
+        // Sets the reduce behavior for this group to use the specified functions.
+        // This method lazily recomputes the reduce value, waiting until needed.
+        function reduce(add, remove, initial) {
+          reduceAdd = add;
+          reduceRemove = remove;
+          reduceInitial = initial;
+          resetNeeded = true;
+          return group;
+        }
+
+        // A convenience method for reducing by count.
+        function reduceCount() {
+          return reduce(crossfilter_reduceIncrement, crossfilter_reduceDecrement, crossfilter_zero);
+        }
+
+        // A convenience method for reducing by sum(value).
+        function reduceSum(value) {
+          return reduce(crossfilter_reduceAdd(value), crossfilter_reduceSubtract(value), crossfilter_zero);
+        }
+
+        // Returns the computed reduce value.
+        function value() {
+          if (resetNeeded) reset(), resetNeeded = false;
+          return reduceValue;
+        }
+
+        // Removes this group and associated event listeners.
+        function dispose() {
+          var i = filterListeners.indexOf(update);
+          if (i >= 0) filterListeners.splice(i);
+          i = dataListeners.indexOf(add);
+          if (i >= 0) dataListeners.splice(i);
+          return group;
+        }
+
+        return reduceCount();
+      }
+
+      // Returns the number of records in this crossfilter, irrespective of any filters.
+      function size() {
+        return n;
+      }
+
+      return arguments.length
+          ? add(arguments[0])
+          : crossfilter;
+    }
+
+    // Returns an array of size n, big enough to store ids up to m.
+    function crossfilter_index(n, m) {
+      return (m < 0x101
+          ? crossfilter_array8 : m < 0x10001
+          ? crossfilter_array16
+          : crossfilter_array32)(n);
+    }
+
+    // Constructs a new array of size n, with sequential values from 0 to n - 1.
+    function crossfilter_range(n) {
+      var range = crossfilter_index(n, n);
+      for (var i = -1; ++i < n;) range[i] = i;
+      return range;
+    }
+
+    function crossfilter_capacity(w) {
+      return w === 8
+          ? 0x100 : w === 16
+          ? 0x10000
+          : 0x100000000;
+    }
+    })(exports || commonjsGlobal);
+    });
+
+    var crossfilter = crossfilter$1.crossfilter;
+
+    var jsonToPivotjson = function (data, options) {
+    			
+    	var ndx = crossfilter(data); 
+
+    	var pivotCol = options.column;
+    	var pivotVal = options.value;
+    	var pivotRow = options.row; 
+
+    	var out = []; 
+
+    	var pivotRowDimension = ndx.dimension(function(d){
+    		return d[pivotRow];
+    	});
+
+    	var pivotColDimension = ndx.dimension(function(d){
+    		return d[pivotCol];
+    	});
+
+    	var totalByPivotRow = pivotRowDimension.group().reduceSum(function(d){ 		
+    		return d[pivotVal]
+    	});
+
+    	var allRecs = totalByPivotRow.all();
+
+    	allRecs.forEach(function(rec){
+    		
+    		pivotRowDimension.filter();
+    		pivotRowDimension.filter(rec.key);
+    		
+    		var totalByPivotCol = pivotColDimension.group().reduceSum(function(d){ 		
+    			return d[pivotVal]
+    		});
+
+    		var data = totalByPivotCol.all(); 
+    		
+    		var doc = {}; 
+    		
+    		doc[pivotRow] = rec.key; 
+    		
+    		data.forEach(function(d){
+    			doc[d.key] = d.value; 
+    		});
+    		
+    		out.push(doc);
+    	});
+
+    	return out;
+    };
+
+
+    var jsonToPivotJson = jsonToPivotjson;
+
+    const subscriber_queue = [];
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable(value, start = noop) {
+        let stop;
+        const subscribers = new Set();
+        function set(new_value) {
+            if (safe_not_equal(value, new_value)) {
+                value = new_value;
+                if (stop) { // store is ready
+                    const run_queue = !subscriber_queue.length;
+                    for (const subscriber of subscribers) {
+                        subscriber[1]();
+                        subscriber_queue.push(subscriber, value);
+                    }
+                    if (run_queue) {
+                        for (let i = 0; i < subscriber_queue.length; i += 2) {
+                            subscriber_queue[i][0](subscriber_queue[i + 1]);
+                        }
+                        subscriber_queue.length = 0;
+                    }
+                }
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop) {
+            const subscriber = [run, invalidate];
+            subscribers.add(subscriber);
+            if (subscribers.size === 1) {
+                stop = start(set) || noop;
+            }
+            run(value);
+            return () => {
+                subscribers.delete(subscriber);
+                if (subscribers.size === 0) {
+                    stop();
+                    stop = null;
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    const race = writable([]);
+
+    const currentRace = writable(0);
+
+    const oddsCal = writable(0);
+
+    const calDate = writable(0);
+
+    const inputs = writable([]);
+
+    const roptions = writable([]);
+
+
+
+
+    function Get(theUrl) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", theUrl, false); // false for synchronous request
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
+    }
+
+
+
+
+
+    const getData = () => {
+
+        let resp = Get('https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/file/is.json');
+        let resJson = JSON.parse(resp);
+        console.log(resJson);
+        roptions.set(resJson);
+        calDate.set(resJson[0].r);
+
+    };
+
+
+    function getTData() {
+        let calendarDate;
+        calDate.subscribe(v => { calendarDate = v; });
+        let cRace;
+        currentRace.subscribe(v => cRace = v);
+        let resp = Get(`https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/odds?meet=${calendarDate}`);
+        let resJson = JSON.parse(resp);
+
+        console.log(resJson.items);
+        inputs.set(resJson.items);
+        race.set(resJson.items.map((rc, i) => {
+            return rc['race_no']
+
+        }));
+        if (cRace == 0) {
+            race.subscribe(v => {
+                currentRace.set(v[0]);
+            });
+
+        }
+
+    }
+
+    function cubicInOut(t) {
+        return t < 0.5 ? 4.0 * t * t * t : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
+    }
+    function cubicOut(t) {
+        const f = t - 1.0;
+        return f * f * f + 1.0;
+    }
+
+    function blur(node, { delay = 0, duration = 400, easing = cubicInOut, amount = 5, opacity = 0 } = {}) {
+        const style = getComputedStyle(node);
+        const target_opacity = +style.opacity;
+        const f = style.filter === 'none' ? '' : style.filter;
+        const od = target_opacity * (1 - opacity);
+        return {
+            delay,
+            duration,
+            easing,
+            css: (_t, u) => `opacity: ${target_opacity - (od * u)}; filter: ${f} blur(${u * amount}px);`
+        };
+    }
+    function fly(node, { delay = 0, duration = 400, easing = cubicOut, x = 0, y = 0, opacity = 0 } = {}) {
+        const style = getComputedStyle(node);
+        const target_opacity = +style.opacity;
+        const transform = style.transform === 'none' ? '' : style.transform;
+        const od = target_opacity * (1 - opacity);
+        return {
+            delay,
+            duration,
+            easing,
+            css: (t, u) => `
+			transform: ${transform} translate(${(1 - t) * x}px, ${(1 - t) * y}px);
+			opacity: ${target_opacity - (od * u)}`
+        };
+    }
+
+    /* src\components\buttonGroup.svelte generated by Svelte v3.43.1 */
+
+    function get_each_context$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[3] = list[i];
+    	return child_ctx;
+    }
+
+    // (42:4) {:else}
+    function create_else_block$1(ctx) {
+    	let button;
+    	let t0_value = /*item*/ ctx[3] + "";
+    	let t0;
+    	let t1;
+    	let button_class_value;
+    	let mounted;
+    	let dispose;
+
+    	return {
+    		c() {
+    			button = element("button");
+    			t0 = text(t0_value);
+    			t1 = space();
+
+    			attr(button, "class", button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " roundeds" + " svelte-16yaimb"));
+
+    			attr(button, "type", "button");
+    		},
+    		m(target, anchor) {
+    			insert(target, button, anchor);
+    			append(button, t0);
+    			append(button, t1);
+
+    			if (!mounted) {
+    				dispose = listen(button, "click", function () {
+    					if (is_function(/*setRace*/ ctx[2](/*item*/ ctx[3]))) /*setRace*/ ctx[2](/*item*/ ctx[3]).apply(this, arguments);
+    				});
+
+    				mounted = true;
+    			}
+    		},
+    		p(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*$race*/ 1 && t0_value !== (t0_value = /*item*/ ctx[3] + "")) set_data(t0, t0_value);
+
+    			if (dirty & /*$currentRace, $race*/ 3 && button_class_value !== (button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " roundeds" + " svelte-16yaimb"))) {
+    				attr(button, "class", button_class_value);
+    			}
+    		},
+    		d(detaching) {
+    			if (detaching) detach(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    // (32:30) 
+    function create_if_block_2$1(ctx) {
+    	let button;
+    	let t0_value = /*item*/ ctx[3] + "";
+    	let t0;
+    	let t1;
+    	let button_class_value;
+    	let mounted;
+    	let dispose;
+
+    	return {
+    		c() {
+    			button = element("button");
+    			t0 = text(t0_value);
+    			t1 = space();
+
+    			attr(button, "class", button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " rounded-l" + " svelte-16yaimb"));
+
+    			attr(button, "type", "button");
+    		},
+    		m(target, anchor) {
+    			insert(target, button, anchor);
+    			append(button, t0);
+    			append(button, t1);
+
+    			if (!mounted) {
+    				dispose = listen(button, "click", function () {
+    					if (is_function(/*setRace*/ ctx[2](/*item*/ ctx[3]))) /*setRace*/ ctx[2](/*item*/ ctx[3]).apply(this, arguments);
+    				});
+
+    				mounted = true;
+    			}
+    		},
+    		p(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*$race*/ 1 && t0_value !== (t0_value = /*item*/ ctx[3] + "")) set_data(t0, t0_value);
+
+    			if (dirty & /*$currentRace, $race*/ 3 && button_class_value !== (button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " rounded-l" + " svelte-16yaimb"))) {
+    				attr(button, "class", button_class_value);
+    			}
+    		},
+    		d(detaching) {
+    			if (detaching) detach(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    // (21:36) 
+    function create_if_block_1$1(ctx) {
+    	let button;
+    	let t0_value = /*item*/ ctx[3] + "";
+    	let t0;
+    	let t1;
+    	let button_class_value;
+    	let mounted;
+    	let dispose;
+
+    	return {
+    		c() {
+    			button = element("button");
+    			t0 = text(t0_value);
+    			t1 = space();
+
+    			attr(button, "class", button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " rounded-r" + " svelte-16yaimb"));
+
+    			attr(button, "type", "button");
+    		},
+    		m(target, anchor) {
+    			insert(target, button, anchor);
+    			append(button, t0);
+    			append(button, t1);
+
+    			if (!mounted) {
+    				dispose = listen(button, "click", function () {
+    					if (is_function(/*setRace*/ ctx[2](/*item*/ ctx[3]))) /*setRace*/ ctx[2](/*item*/ ctx[3]).apply(this, arguments);
+    				});
+
+    				mounted = true;
+    			}
+    		},
+    		p(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*$race*/ 1 && t0_value !== (t0_value = /*item*/ ctx[3] + "")) set_data(t0, t0_value);
+
+    			if (dirty & /*$currentRace, $race*/ 3 && button_class_value !== (button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " rounded-r" + " svelte-16yaimb"))) {
+    				attr(button, "class", button_class_value);
+    			}
+    		},
+    		d(detaching) {
+    			if (detaching) detach(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    // (12:4) {#if $race.length == 1 }
+    function create_if_block$1(ctx) {
+    	let button;
+    	let t0_value = /*item*/ ctx[3] + "";
+    	let t0;
+    	let t1;
+    	let button_class_value;
+    	let mounted;
+    	let dispose;
+
+    	return {
+    		c() {
+    			button = element("button");
+    			t0 = text(t0_value);
+    			t1 = space();
+
+    			attr(button, "class", button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " rounded" + " svelte-16yaimb"));
+
+    			attr(button, "type", "button");
+    		},
+    		m(target, anchor) {
+    			insert(target, button, anchor);
+    			append(button, t0);
+    			append(button, t1);
+
+    			if (!mounted) {
+    				dispose = listen(button, "click", function () {
+    					if (is_function(/*setRace*/ ctx[2](/*item*/ ctx[3]))) /*setRace*/ ctx[2](/*item*/ ctx[3]).apply(this, arguments);
+    				});
+
+    				mounted = true;
+    			}
+    		},
+    		p(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*$race*/ 1 && t0_value !== (t0_value = /*item*/ ctx[3] + "")) set_data(t0, t0_value);
+
+    			if (dirty & /*$currentRace, $race*/ 3 && button_class_value !== (button_class_value = "" + ((/*$currentRace*/ ctx[1] == /*item*/ ctx[3]
+    			? 'active'
+    			: '') + " rounded" + " svelte-16yaimb"))) {
+    				attr(button, "class", button_class_value);
+    			}
+    		},
+    		d(detaching) {
+    			if (detaching) detach(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    // (11:4) {#each $race as item}
+    function create_each_block$1(ctx) {
+    	let show_if;
+    	let if_block_anchor;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*$race*/ ctx[0].length == 1) return create_if_block$1;
+    		if (show_if == null || dirty & /*$race*/ 1) show_if = !!(/*$race*/ ctx[0].at(-1) == /*item*/ ctx[3]);
+    		if (show_if) return create_if_block_1$1;
+    		if (/*$race*/ ctx[0][0] == /*item*/ ctx[3]) return create_if_block_2$1;
+    		return create_else_block$1;
+    	}
+
+    	let current_block_type = select_block_type(ctx, -1);
+    	let if_block = current_block_type(ctx);
+
+    	return {
+    		c() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert(target, if_block_anchor, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			}
+    		},
+    		d(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach(if_block_anchor);
+    		}
+    	};
+    }
+
+    function create_fragment$3(ctx) {
+    	let each_1_anchor;
+    	let each_value = /*$race*/ ctx[0];
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    	}
+
+    	return {
+    		c() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		m(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert(target, each_1_anchor, anchor);
+    		},
+    		p(ctx, [dirty]) {
+    			if (dirty & /*$currentRace, $race, setRace*/ 7) {
+    				each_value = /*$race*/ ctx[0];
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach(each_1_anchor);
+    		}
+    	};
+    }
+
+    function instance$2($$self, $$props, $$invalidate) {
+    	let $race;
+    	let $currentRace;
+    	component_subscribe($$self, race, $$value => $$invalidate(0, $race = $$value));
+    	component_subscribe($$self, currentRace, $$value => $$invalidate(1, $currentRace = $$value));
+
+    	function setRace(raceNo) {
+    		currentRace.set(raceNo);
+    	}
+
+    	return [$race, $currentRace, setRace];
+    }
+
+    class ButtonGroup extends SvelteComponent {
+    	constructor(options) {
+    		super();
+    		init(this, options, instance$2, create_fragment$3, safe_not_equal, {});
+    	}
+    }
+
+    /* src\components\oddsCal.svelte generated by Svelte v3.43.1 */
+
+    function create_fragment$2(ctx) {
+    	let div;
+    	let button0;
+    	let t0;
+    	let button0_class_value;
+    	let t1;
+    	let button1;
+    	let t2;
+    	let button1_class_value;
+    	let mounted;
+    	let dispose;
+
+    	return {
+    		c() {
+    			div = element("div");
+    			button0 = element("button");
+    			t0 = text("f100");
+    			t1 = space();
+    			button1 = element("button");
+    			t2 = text("f500");
+    			attr(button0, "class", button0_class_value = "" + ((/*$oddsCal*/ ctx[0] == false ? 'active' : '') + " rounded-l" + " svelte-12qrkab"));
+    			attr(button0, "type", "button");
+    			attr(button1, "class", button1_class_value = "" + ((/*$oddsCal*/ ctx[0] == true ? 'active' : '') + " rounded-r" + " svelte-12qrkab"));
+    			attr(button1, "type", "button");
+    			attr(div, "class", "bGroup2 flex relative items-center justify-center mb-4");
+    		},
+    		m(target, anchor) {
+    			insert(target, div, anchor);
+    			append(div, button0);
+    			append(button0, t0);
+    			append(div, t1);
+    			append(div, button1);
+    			append(button1, t2);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen(button0, "click", /*click_handler*/ ctx[1]),
+    					listen(button1, "click", /*click_handler_1*/ ctx[2])
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p(ctx, [dirty]) {
+    			if (dirty & /*$oddsCal*/ 1 && button0_class_value !== (button0_class_value = "" + ((/*$oddsCal*/ ctx[0] == false ? 'active' : '') + " rounded-l" + " svelte-12qrkab"))) {
+    				attr(button0, "class", button0_class_value);
+    			}
+
+    			if (dirty & /*$oddsCal*/ 1 && button1_class_value !== (button1_class_value = "" + ((/*$oddsCal*/ ctx[0] == true ? 'active' : '') + " rounded-r" + " svelte-12qrkab"))) {
+    				attr(button1, "class", button1_class_value);
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d(detaching) {
+    			if (detaching) detach(div);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	let $oddsCal;
+    	component_subscribe($$self, oddsCal, $$value => $$invalidate(0, $oddsCal = $$value));
+    	const click_handler = () => oddsCal.set(false);
+    	const click_handler_1 = () => oddsCal.set(true);
+    	return [$oddsCal, click_handler, click_handler_1];
+    }
+
+    class OddsCal extends SvelteComponent {
+    	constructor(options) {
+    		super();
+    		init(this, options, instance$1, create_fragment$2, safe_not_equal, {});
+    	}
+    }
+
+    /* src\components\CompareOdds.svelte generated by Svelte v3.43.1 */
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[23] = list[i];
+    	child_ctx[25] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[26] = list[i];
+    	child_ctx[28] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[29] = list[i];
+    	child_ctx[28] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_3(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[31] = list[i];
+    	return child_ctx;
+    }
+
+    // (69:0) {#if show}
+    function create_if_block_6(ctx) {
+    	let div1;
+    	let div0;
+    	let h3;
+    	let h3_intro;
+    	let t1;
+    	let svg;
+    	let g0;
+    	let circle;
+    	let path0;
+    	let polygon0;
+    	let polygon1;
+    	let polygon2;
+    	let path1;
+    	let path2;
+    	let path3;
+    	let path4;
+    	let path5;
+    	let path6;
+    	let path7;
+    	let path8;
+    	let ellipse0;
+    	let polygon3;
+    	let polygon4;
+    	let polygon5;
+    	let path9;
+    	let path10;
+    	let path11;
+    	let path12;
+    	let path13;
+    	let path14;
+    	let path15;
+    	let path16;
+    	let ellipse1;
+    	let g1;
+    	let g2;
+    	let g3;
+    	let g4;
+    	let g5;
+    	let g6;
+    	let g7;
+    	let g8;
+    	let g9;
+    	let g10;
+    	let g11;
+    	let g12;
+    	let g13;
+    	let g14;
+    	let g15;
+    	let svg_intro;
+    	let t2;
+    	let h40;
+    	let t3;
+    	let h40_intro;
+    	let t4;
+    	let h41;
+    	let t5;
+    	let h41_intro;
+    	let t6;
+    	let input_1;
+    	let input_1_intro;
+    	let t7;
+    	let h50;
+    	let h50_intro;
+    	let t9;
+    	let h51;
+    	let show_if;
+    	let h51_intro;
+    	let t10;
+    	let button;
+    	let button_intro;
+    	let div0_intro;
+    	let div0_outro;
+    	let div1_intro;
+    	let div1_outro;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	function select_block_type(ctx, dirty) {
+    		if (show_if == null || dirty[0] & /*bet, selectedOdds*/ 34) show_if = !!isNaN(/*bet*/ ctx[1] * /*selectedOdds*/ ctx[5] / 100);
+    		if (show_if) return create_if_block_7;
+    		return create_else_block_5;
+    	}
+
+    	let current_block_type = select_block_type(ctx, [-1, -1]);
+    	let if_block = current_block_type(ctx);
+
+    	return {
+    		c() {
+    			div1 = element("div");
+    			div0 = element("div");
+    			h3 = element("h3");
+    			h3.textContent = "Betting Calculator";
+    			t1 = space();
+    			svg = svg_element("svg");
+    			g0 = svg_element("g");
+    			circle = svg_element("circle");
+    			path0 = svg_element("path");
+    			polygon0 = svg_element("polygon");
+    			polygon1 = svg_element("polygon");
+    			polygon2 = svg_element("polygon");
+    			path1 = svg_element("path");
+    			path2 = svg_element("path");
+    			path3 = svg_element("path");
+    			path4 = svg_element("path");
+    			path5 = svg_element("path");
+    			path6 = svg_element("path");
+    			path7 = svg_element("path");
+    			path8 = svg_element("path");
+    			ellipse0 = svg_element("ellipse");
+    			polygon3 = svg_element("polygon");
+    			polygon4 = svg_element("polygon");
+    			polygon5 = svg_element("polygon");
+    			path9 = svg_element("path");
+    			path10 = svg_element("path");
+    			path11 = svg_element("path");
+    			path12 = svg_element("path");
+    			path13 = svg_element("path");
+    			path14 = svg_element("path");
+    			path15 = svg_element("path");
+    			path16 = svg_element("path");
+    			ellipse1 = svg_element("ellipse");
+    			g1 = svg_element("g");
+    			g2 = svg_element("g");
+    			g3 = svg_element("g");
+    			g4 = svg_element("g");
+    			g5 = svg_element("g");
+    			g6 = svg_element("g");
+    			g7 = svg_element("g");
+    			g8 = svg_element("g");
+    			g9 = svg_element("g");
+    			g10 = svg_element("g");
+    			g11 = svg_element("g");
+    			g12 = svg_element("g");
+    			g13 = svg_element("g");
+    			g14 = svg_element("g");
+    			g15 = svg_element("g");
+    			t2 = space();
+    			h40 = element("h4");
+    			t3 = text(/*selectedBookie*/ ctx[4]);
+    			t4 = space();
+    			h41 = element("h4");
+    			t5 = text(/*selectedHorse*/ ctx[3]);
+    			t6 = space();
+    			input_1 = element("input");
+    			t7 = space();
+    			h50 = element("h5");
+    			h50.textContent = "Payout:";
+    			t9 = space();
+    			h51 = element("h5");
+    			if_block.c();
+    			t10 = space();
+    			button = element("button");
+    			button.textContent = "ok";
+    			attr(h3, "class", "svelte-zgdk4k");
+    			set_style(circle, "fill", "#419c2c21");
+    			attr(circle, "cx", "256");
+    			attr(circle, "cy", "256");
+    			attr(circle, "r", "256");
+    			set_style(path0, "fill", "rgba(98, 126, 105,0.5)");
+    			attr(path0, "d", "M493.297,352.061l-0.553-0.276L289.065,135.808l-96.123-48.061l-96.123,48.061V259.2\r\n   l120.909,119.711l8.54,24.94l90.788,100.772C397.348,484.961,462.74,427.459,493.297,352.061z");
+    			set_style(polygon0, "fill", "#04ad0c");
+    			attr(polygon0, "points", "289.065,135.808 192.942,183.875 96.819,135.808 192.942,87.747 \t");
+    			set_style(polygon1, "fill", "#04ad0c");
+    			attr(polygon1, "points", "192.942,306.278 96.819,259.2 96.819,135.808 192.942,183.875 \t");
+    			set_style(polygon2, "fill", "#006b05");
+    			attr(polygon2, "points", "192.942,306.278 289.065,259.2 289.065,135.808 192.942,183.875 \t");
+    			set_style(path1, "fill", "#FFFFFF");
+    			attr(path1, "d", "M153.882,221.379c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n   c0-6.733,4.029-10.706,9.001-8.873C149.852,207.703,153.882,214.646,153.882,221.379z");
+    			set_style(path2, "fill", "#FFFFFF");
+    			attr(path2, "d", "M234.813,222.74c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n   c0-6.733-4.029-10.706-9.001-8.873C238.843,209.065,234.813,216.008,234.813,222.74z");
+    			set_style(path3, "fill", "#FFFFFF");
+    			attr(path3, "d", "M205.553,205.768c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514\r\n   s-4.029-10.706-9.001-8.873S205.553,199.035,205.553,205.768z");
+    			set_style(path4, "fill", "#FFFFFF");
+    			attr(path4, "d", "M205.553,272.256c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n   s-4.029-10.706-9.001-8.873S205.553,265.523,205.553,272.256z");
+    			set_style(path5, "fill", "#FFFFFF");
+    			attr(path5, "d", "M260.465,178.693c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514\r\n   c0-6.733-4.029-10.706-9.001-8.873C264.499,165.012,260.465,171.955,260.465,178.693z");
+    			set_style(path6, "fill", "#FFFFFF");
+    			attr(path6, "d", "M260.465,245.181c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514\r\n   s-4.029-10.706-9.001-8.873S260.465,238.449,260.465,245.181z");
+    			set_style(path7, "fill", "#FFFFFF");
+    			attr(path7, "d", "M123.571,176.292c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n   c0-6.733,4.029-10.706,9.001-8.873C119.542,162.611,123.571,169.559,123.571,176.292z");
+    			set_style(path8, "fill", "#FFFFFF");
+    			attr(path8, "d", "M180.122,270.459c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514\r\n   c0-6.733,4.029-10.706,9.001-8.873C176.092,256.783,180.122,263.726,180.122,270.459z");
+    			set_style(ellipse0, "fill", "#FFFFFF");
+    			attr(ellipse0, "cx", "192.942");
+    			attr(ellipse0, "cy", "135.808");
+    			attr(ellipse0, "rx", "12.611");
+    			attr(ellipse0, "ry", "8.53");
+    			set_style(polygon3, "fill", "#009708");
+    			attr(polygon3, "points", "414.776,351.278 312.822,317.292 278.835,215.337 380.79,249.324 \t");
+    			set_style(polygon4, "fill", "#04ad0c");
+    			attr(polygon4, "points", "226.263,403.845 191.585,302.587 278.835,215.337 312.822,317.292 \t");
+    			set_style(polygon5, "fill", "#006b05");
+    			attr(polygon5, "points", "226.263,403.845 327.526,438.528 414.776,351.278 312.822,317.292 \t");
+    			set_style(path9, "fill", "#FFFFFF");
+    			attr(path9, "d", "M306.253,341.693c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641S311.014,336.932,306.253,341.693z");
+    			set_style(path10, "fill", "#FFFFFF");
+    			attr(path10, "d", "M259.236,388.705c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641C271.759,381.88,263.997,383.944,259.236,388.705z");
+    			set_style(path11, "fill", "#FFFFFF");
+    			attr(path11, "d", "M336.599,351.862c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.222,12.575,0.159,17.336-4.603\r\n   s4.721-10.419-0.092-12.641C349.123,345.037,341.361,347.1,336.599,351.862z");
+    			set_style(path12, "fill", "#FFFFFF");
+    			attr(path12, "d", "M289.582,398.879c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641S294.344,394.117,289.582,398.879z");
+    			set_style(path13, "fill", "#FFFFFF");
+    			attr(path13, "d", "M364.232,361.375c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   s4.721-10.419-0.092-12.641C376.755,354.555,368.993,356.613,364.232,361.375z");
+    			set_style(path14, "fill", "#FFFFFF");
+    			attr(path14, "d", "M317.215,408.392c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603\r\n   c4.762-4.762,4.721-10.419-0.092-12.641C329.738,401.567,321.976,403.63,317.215,408.392z");
+    			set_style(path15, "fill", "#FFFFFF");
+    			attr(path15, "d", "M269.128,262.881c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336\r\n   c4.762-4.762,10.419-4.721,12.641,0.092C275.953,250.358,273.889,258.12,269.128,262.881z");
+    			set_style(path16, "fill", "#FFFFFF");
+    			attr(path16, "d", "M242.529,369.454c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336\r\n   s10.419-4.721,12.641,0.092S247.291,364.692,242.529,369.454z");
+    			attr(ellipse1, "transform", "matrix(0.7071 -0.7071 0.7071 0.7071 -98.7293 328.1921)");
+    			set_style(ellipse1, "fill", "#FFFFFF");
+    			attr(ellipse1, "cx", "346.798");
+    			attr(ellipse1, "cy", "283.273");
+    			attr(ellipse1, "rx", "8.53");
+    			attr(ellipse1, "ry", "12.61");
+    			attr(svg, "version", "1.1");
+    			attr(svg, "id", "Layer_1");
+    			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr(svg, "xmlns:xlink", "http://www.w3.org/1999/xlink");
+    			attr(svg, "x", "0px");
+    			attr(svg, "y", "0px");
+    			attr(svg, "viewBox", "0 0 512 512");
+    			set_style(svg, "enable-background", "new 0 0 512 512");
+    			attr(svg, "xml:space", "preserve");
+    			attr(svg, "class", "svelte-zgdk4k");
+    			attr(input_1, "class", "bet svelte-zgdk4k");
+    			attr(input_1, "type", "number");
+    			attr(input_1, "placeholder", "Bet");
+    			attr(button, "class", "rounded svelte-zgdk4k");
+    			attr(button, "type", "button");
+    			attr(div0, "class", "betCalc svelte-zgdk4k");
+    			attr(div1, "class", "overlay svelte-zgdk4k");
+    		},
+    		m(target, anchor) {
+    			insert(target, div1, anchor);
+    			append(div1, div0);
+    			append(div0, h3);
+    			append(div0, t1);
+    			append(div0, svg);
+    			append(svg, g0);
+    			append(g0, circle);
+    			append(g0, path0);
+    			append(g0, polygon0);
+    			append(g0, polygon1);
+    			append(g0, polygon2);
+    			append(g0, path1);
+    			append(g0, path2);
+    			append(g0, path3);
+    			append(g0, path4);
+    			append(g0, path5);
+    			append(g0, path6);
+    			append(g0, path7);
+    			append(g0, path8);
+    			append(g0, ellipse0);
+    			append(g0, polygon3);
+    			append(g0, polygon4);
+    			append(g0, polygon5);
+    			append(g0, path9);
+    			append(g0, path10);
+    			append(g0, path11);
+    			append(g0, path12);
+    			append(g0, path13);
+    			append(g0, path14);
+    			append(g0, path15);
+    			append(g0, path16);
+    			append(g0, ellipse1);
+    			append(svg, g1);
+    			append(svg, g2);
+    			append(svg, g3);
+    			append(svg, g4);
+    			append(svg, g5);
+    			append(svg, g6);
+    			append(svg, g7);
+    			append(svg, g8);
+    			append(svg, g9);
+    			append(svg, g10);
+    			append(svg, g11);
+    			append(svg, g12);
+    			append(svg, g13);
+    			append(svg, g14);
+    			append(svg, g15);
+    			append(div0, t2);
+    			append(div0, h40);
+    			append(h40, t3);
+    			append(div0, t4);
+    			append(div0, h41);
+    			append(h41, t5);
+    			append(div0, t6);
+    			append(div0, input_1);
+    			set_input_value(input_1, /*bet*/ ctx[1]);
+    			append(div0, t7);
+    			append(div0, h50);
+    			append(div0, t9);
+    			append(div0, h51);
+    			if_block.m(h51, null);
+    			append(div0, t10);
+    			append(div0, button);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen(input_1, "input", /*input_1_input_handler*/ ctx[17]),
+    					listen(button, "click", /*click_handler_1*/ ctx[18]),
+    					listen(div0, "click", stop_propagation(/*click_handler*/ ctx[16])),
+    					listen(div1, "click", stop_propagation(prevent_default(/*click_handler_2*/ ctx[19])))
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p(ctx, dirty) {
+    			if (!current || dirty[0] & /*selectedBookie*/ 16) set_data(t3, /*selectedBookie*/ ctx[4]);
+    			if (!current || dirty[0] & /*selectedHorse*/ 8) set_data(t5, /*selectedHorse*/ ctx[3]);
+
+    			if (dirty[0] & /*bet*/ 2 && to_number(input_1.value) !== /*bet*/ ctx[1]) {
+    				set_input_value(input_1, /*bet*/ ctx[1]);
+    			}
+
+    			if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(h51, null);
+    				}
+    			}
+    		},
+    		i(local) {
+    			if (current) return;
+
+    			if (!h3_intro) {
+    				add_render_callback(() => {
+    					h3_intro = create_in_transition(h3, fly, { y: -50, duration: 2300 });
+    					h3_intro.start();
+    				});
+    			}
+
+    			if (!svg_intro) {
+    				add_render_callback(() => {
+    					svg_intro = create_in_transition(svg, fly, { y: -50, duration: 2500 });
+    					svg_intro.start();
+    				});
+    			}
+
+    			if (!h40_intro) {
+    				add_render_callback(() => {
+    					h40_intro = create_in_transition(h40, fly, { y: -50, duration: 2300 });
+    					h40_intro.start();
+    				});
+    			}
+
+    			if (!h41_intro) {
+    				add_render_callback(() => {
+    					h41_intro = create_in_transition(h41, fly, { y: 50, duration: 2300 });
+    					h41_intro.start();
+    				});
+    			}
+
+    			if (!input_1_intro) {
+    				add_render_callback(() => {
+    					input_1_intro = create_in_transition(input_1, fly, { y: 50, duration: 2300 });
+    					input_1_intro.start();
+    				});
+    			}
+
+    			if (!h50_intro) {
+    				add_render_callback(() => {
+    					h50_intro = create_in_transition(h50, fly, { y: 50, duration: 2300 });
+    					h50_intro.start();
+    				});
+    			}
+
+    			if (!h51_intro) {
+    				add_render_callback(() => {
+    					h51_intro = create_in_transition(h51, fly, { y: 50, duration: 2300 });
+    					h51_intro.start();
+    				});
+    			}
+
+    			if (!button_intro) {
+    				add_render_callback(() => {
+    					button_intro = create_in_transition(button, fly, { y: 50, duration: 2300 });
+    					button_intro.start();
+    				});
+    			}
+
+    			add_render_callback(() => {
+    				if (div0_outro) div0_outro.end(1);
+    				div0_intro = create_in_transition(div0, fly, { y: 100, duration: 1000 });
+    				div0_intro.start();
+    			});
+
+    			add_render_callback(() => {
+    				if (div1_outro) div1_outro.end(1);
+    				div1_intro = create_in_transition(div1, blur, { y: 50, duration: 1000 });
+    				div1_intro.start();
+    			});
+
+    			current = true;
+    		},
+    		o(local) {
+    			if (div0_intro) div0_intro.invalidate();
+    			div0_outro = create_out_transition(div0, fly, { y: -100, duration: 1000 });
+    			if (div1_intro) div1_intro.invalidate();
+    			div1_outro = create_out_transition(div1, blur, { y: -50, duration: 1000 });
+    			current = false;
+    		},
+    		d(detaching) {
+    			if (detaching) detach(div1);
+    			if_block.d();
+    			if (detaching && div0_outro) div0_outro.end();
+    			if (detaching && div1_outro) div1_outro.end();
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+    }
+
+    // (168:5) {:else}
+    function create_else_block_5(ctx) {
+    	let t_value = /*bet*/ ctx[1] * /*selectedOdds*/ ctx[5] / 100 + "";
+    	let t;
+
+    	return {
+    		c() {
+    			t = text(t_value);
+    		},
+    		m(target, anchor) {
+    			insert(target, t, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*bet, selectedOdds*/ 34 && t_value !== (t_value = /*bet*/ ctx[1] * /*selectedOdds*/ ctx[5] / 100 + "")) set_data(t, t_value);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(t);
+    		}
+    	};
+    }
+
+    // (165:2) {#if isNaN( (bet * selectedOdds) / 100) }
+    function create_if_block_7(ctx) {
+    	let t;
+
+    	return {
+    		c() {
+    			t = text("0");
+    		},
+    		m(target, anchor) {
+    			insert(target, t, anchor);
+    		},
+    		p: noop,
+    		d(detaching) {
+    			if (detaching) detach(t);
+    		}
+    	};
+    }
+
+    // (182:0) {#if output}
+    function create_if_block(ctx) {
+    	let div2;
+    	let select;
+    	let t0;
+    	let div0;
+    	let buttongroup;
+    	let t1;
+    	let div1;
+    	let oddscal;
+    	let t2;
+    	let div3;
+    	let table;
+    	let thead;
+    	let tr;
+    	let t3;
+    	let tbody;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	function select_block_type_1(ctx, dirty) {
+    		if (/*$roptions*/ ctx[7]) return create_if_block_5;
+    		return create_else_block_4;
+    	}
+
+    	let current_block_type = select_block_type_1(ctx);
+    	let if_block = current_block_type(ctx);
+    	buttongroup = new ButtonGroup({});
+    	oddscal = new OddsCal({});
+    	let each_value_2 = Object.keys(/*output*/ ctx[0][0]);
+    	let each_blocks_1 = [];
+
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+    	}
+
+    	let each_value = Object.values(/*output*/ ctx[0]);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	return {
+    		c() {
+    			div2 = element("div");
+    			select = element("select");
+    			if_block.c();
+    			t0 = space();
+    			div0 = element("div");
+    			create_component(buttongroup.$$.fragment);
+    			t1 = space();
+    			div1 = element("div");
+    			create_component(oddscal.$$.fragment);
+    			t2 = space();
+    			div3 = element("div");
+    			table = element("table");
+    			thead = element("thead");
+    			tr = element("tr");
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].c();
+    			}
+
+    			t3 = space();
+    			tbody = element("tbody");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr(select, "class", "selectList svelte-zgdk4k");
+    			if (/*$calDate*/ ctx[6] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[20].call(select));
+    			attr(div0, "class", "racebut svelte-zgdk4k");
+    			attr(div1, "class", "oddscal svelte-zgdk4k");
+    			attr(div2, "class", "caption svelte-zgdk4k");
+    			attr(div2, "id", "caption");
+    			attr(table, "class", "oddstable svelte-zgdk4k");
+    			attr(div3, "class", "tWrap svelte-zgdk4k");
+    		},
+    		m(target, anchor) {
+    			insert(target, div2, anchor);
+    			append(div2, select);
+    			if_block.m(select, null);
+    			select_option(select, /*$calDate*/ ctx[6]);
+    			append(div2, t0);
+    			append(div2, div0);
+    			mount_component(buttongroup, div0, null);
+    			append(div2, t1);
+    			append(div2, div1);
+    			mount_component(oddscal, div1, null);
+    			insert(target, t2, anchor);
+    			insert(target, div3, anchor);
+    			append(div3, table);
+    			append(table, thead);
+    			append(thead, tr);
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].m(tr, null);
+    			}
+
+    			append(table, t3);
+    			append(table, tbody);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tbody, null);
+    			}
+
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen(select, "change", /*select_change_handler*/ ctx[20]);
+    				mounted = true;
+    			}
+    		},
+    		p(ctx, dirty) {
+    			if (current_block_type === (current_block_type = select_block_type_1(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(select, null);
+    				}
+    			}
+
+    			if (dirty[0] & /*$calDate, $roptions*/ 192) {
+    				select_option(select, /*$calDate*/ ctx[6]);
+    			}
+
+    			if (dirty[0] & /*output*/ 1) {
+    				each_value_2 = Object.keys(/*output*/ ctx[0][0]);
+    				let i;
+
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+    					if (each_blocks_1[i]) {
+    						each_blocks_1[i].p(child_ctx, dirty);
+    						transition_in(each_blocks_1[i], 1);
+    					} else {
+    						each_blocks_1[i] = create_each_block_2(child_ctx);
+    						each_blocks_1[i].c();
+    						transition_in(each_blocks_1[i], 1);
+    						each_blocks_1[i].m(tr, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_1.length; i += 1) {
+    					each_blocks_1[i].d(1);
+    				}
+
+    				each_blocks_1.length = each_value_2.length;
+    			}
+
+    			if (dirty[0] & /*output, jockey, horse, show, selectedBookie, selectedOdds, selectedHorse, $oddsCal*/ 1853) {
+    				each_value = Object.values(/*output*/ ctx[0]);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(tbody, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(buttongroup.$$.fragment, local);
+    			transition_in(oddscal.$$.fragment, local);
+
+    			for (let i = 0; i < each_value_2.length; i += 1) {
+    				transition_in(each_blocks_1[i]);
+    			}
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(buttongroup.$$.fragment, local);
+    			transition_out(oddscal.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			if (detaching) detach(div2);
+    			if_block.d();
+    			destroy_component(buttongroup);
+    			destroy_component(oddscal);
+    			if (detaching) detach(t2);
+    			if (detaching) detach(div3);
+    			destroy_each(each_blocks_1, detaching);
+    			destroy_each(each_blocks, detaching);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    // (190:1) {:else}
+    function create_else_block_4(ctx) {
+    	let option;
+
+    	return {
+    		c() {
+    			option = element("option");
+    			option.textContent = "No Meetings";
+    			option.__value = "";
+    			option.value = option.__value;
+    		},
+    		m(target, anchor) {
+    			insert(target, option, anchor);
+    		},
+    		p: noop,
+    		d(detaching) {
+    			if (detaching) detach(option);
+    		}
+    	};
+    }
+
+    // (186:2) {#if $roptions}
+    function create_if_block_5(ctx) {
+    	let each_1_anchor;
+    	let each_value_3 = /*$roptions*/ ctx[7];
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_3.length; i += 1) {
+    		each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
+    	}
+
+    	return {
+    		c() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		m(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert(target, each_1_anchor, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*$roptions*/ 128) {
+    				each_value_3 = /*$roptions*/ ctx[7];
+    				let i;
+
+    				for (i = 0; i < each_value_3.length; i += 1) {
+    					const child_ctx = get_each_context_3(ctx, each_value_3, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block_3(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value_3.length;
+    			}
+    		},
+    		d(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach(each_1_anchor);
+    		}
+    	};
+    }
+
+    // (187:1) {#each $roptions as opt}
+    function create_each_block_3(ctx) {
+    	let option;
+    	let t_value = /*opt*/ ctx[31].race_date + "";
+    	let t;
+    	let option_value_value;
+
+    	return {
+    		c() {
+    			option = element("option");
+    			t = text(t_value);
+    			option.__value = option_value_value = /*opt*/ ctx[31].r;
+    			option.value = option.__value;
+    		},
+    		m(target, anchor) {
+    			insert(target, option, anchor);
+    			append(option, t);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*$roptions*/ 128 && t_value !== (t_value = /*opt*/ ctx[31].race_date + "")) set_data(t, t_value);
+
+    			if (dirty[0] & /*$roptions*/ 128 && option_value_value !== (option_value_value = /*opt*/ ctx[31].r)) {
+    				option.__value = option_value_value;
+    				option.value = option.__value;
+    			}
+    		},
+    		d(detaching) {
+    			if (detaching) detach(option);
+    		}
+    	};
+    }
+
+    // (208:14) {:else}
+    function create_else_block_3(ctx) {
+    	let th;
+    	let t_value = /*columnHeading*/ ctx[29] + "";
+    	let t;
+    	let th_intro;
+
+    	return {
+    		c() {
+    			th = element("th");
+    			t = text(t_value);
+    			attr(th, "class", "py-3 px-6 text-center svelte-zgdk4k");
+    		},
+    		m(target, anchor) {
+    			insert(target, th, anchor);
+    			append(th, t);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*output*/ 1 && t_value !== (t_value = /*columnHeading*/ ctx[29] + "")) set_data(t, t_value);
+    		},
+    		i(local) {
+    			if (!th_intro) {
+    				add_render_callback(() => {
+    					th_intro = create_in_transition(th, blur, {});
+    					th_intro.start();
+    				});
+    			}
+    		},
+    		o: noop,
+    		d(detaching) {
+    			if (detaching) detach(th);
+    		}
+    	};
+    }
+
+    // (206:14) {#if i == 0}
+    function create_if_block_4(ctx) {
+    	let th;
+    	let th_intro;
+
+    	return {
+    		c() {
+    			th = element("th");
+    			th.textContent = "Horse";
+    			attr(th, "class", "py-3 px-6 text-center svelte-zgdk4k");
+    		},
+    		m(target, anchor) {
+    			insert(target, th, anchor);
+    		},
+    		p: noop,
+    		i(local) {
+    			if (!th_intro) {
+    				add_render_callback(() => {
+    					th_intro = create_in_transition(th, blur, {});
+    					th_intro.start();
+    				});
+    			}
+    		},
+    		o: noop,
+    		d(detaching) {
+    			if (detaching) detach(th);
+    		}
+    	};
+    }
+
+    // (204:8) {#each Object.keys(output[0]) as columnHeading , i}
+    function create_each_block_2(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type_2(ctx, dirty) {
+    		if (/*i*/ ctx[28] == 0) return create_if_block_4;
+    		return create_else_block_3;
+    	}
+
+    	let current_block_type = select_block_type_2(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	return {
+    		c() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert(target, if_block_anchor, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if_block.p(ctx, dirty);
+    		},
+    		i(local) {
+    			transition_in(if_block);
+    		},
+    		o: noop,
+    		d(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach(if_block_anchor);
+    		}
+    	};
+    }
+
+    // (239:14) {:else}
+    function create_else_block(ctx) {
+    	let td;
+    	let div;
+    	let span;
+    	let span_intro;
+    	let mounted;
+    	let dispose;
+
+    	function select_block_type_4(ctx, dirty) {
+    		if (/*$oddsCal*/ ctx[8] == true) return create_if_block_2;
+    		return create_else_block_2;
+    	}
+
+    	let current_block_type = select_block_type_4(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	function click_handler_3() {
+    		return /*click_handler_3*/ ctx[21](/*i*/ ctx[28], /*cell*/ ctx[26], /*ii*/ ctx[25]);
+    	}
+
+    	return {
+    		c() {
+    			td = element("td");
+    			div = element("div");
+    			span = element("span");
+    			if_block.c();
+    			attr(span, "class", "font-medium ");
+    			attr(div, "class", "block items-center");
+    			attr(td, "class", "py-3 px-6 text-right whitespace-nowrap cursor-pointer hover:bg-gray-300 svelte-zgdk4k");
+    		},
+    		m(target, anchor) {
+    			insert(target, td, anchor);
+    			append(td, div);
+    			append(div, span);
+    			if_block.m(span, null);
+
+    			if (!mounted) {
+    				dispose = listen(td, "click", click_handler_3);
+    				mounted = true;
+    			}
+    		},
+    		p(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (current_block_type === (current_block_type = select_block_type_4(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(span, null);
+    				}
+    			}
+    		},
+    		i(local) {
+    			if (!span_intro) {
+    				add_render_callback(() => {
+    					span_intro = create_in_transition(span, blur, {});
+    					span_intro.start();
+    				});
+    			}
+    		},
+    		o: noop,
+    		d(detaching) {
+    			if (detaching) detach(td);
+    			if_block.d();
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+    }
+
+    // (218:14) {#if i == 0}
+    function create_if_block_1(ctx) {
+    	let th;
+    	let div2;
+    	let div0;
+    	let div0_intro;
+    	let t0;
+    	let div1;
+    	let span0;
+    	let t1_value = /*cell*/ ctx[26] + "";
+    	let t1;
+    	let t2;
+    	let t3_value = /*horse*/ ctx[9](/*cell*/ ctx[26]) + "";
+    	let t3;
+    	let span0_intro;
+    	let t4;
+    	let span1;
+    	let t5_value = /*jockey*/ ctx[10](/*cell*/ ctx[26]) + "";
+    	let t5;
+    	let span1_intro;
+
+    	return {
+    		c() {
+    			th = element("th");
+    			div2 = element("div");
+    			div0 = element("div");
+    			t0 = space();
+    			div1 = element("div");
+    			span0 = element("span");
+    			t1 = text(t1_value);
+    			t2 = text(". ");
+    			t3 = text(t3_value);
+    			t4 = space();
+    			span1 = element("span");
+    			t5 = text(t5_value);
+    			attr(div0, "class", "mr-2");
+    			attr(span0, "class", "font-medium svelte-zgdk4k");
+    			attr(span1, "class", "font-black text-xs mx-4 svelte-zgdk4k");
+    			attr(div1, "class", "horse svelte-zgdk4k");
+    			attr(div2, "class", "flex items-center");
+    			attr(th, "class", "relative py-3 px-6 text-left whitespace-nowrap drop-shadow-lg svelte-zgdk4k");
+    		},
+    		m(target, anchor) {
+    			insert(target, th, anchor);
+    			append(th, div2);
+    			append(div2, div0);
+    			append(div2, t0);
+    			append(div2, div1);
+    			append(div1, span0);
+    			append(span0, t1);
+    			append(span0, t2);
+    			append(span0, t3);
+    			append(div1, t4);
+    			append(div1, span1);
+    			append(span1, t5);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*output*/ 1 && t1_value !== (t1_value = /*cell*/ ctx[26] + "")) set_data(t1, t1_value);
+    			if (dirty[0] & /*output*/ 1 && t3_value !== (t3_value = /*horse*/ ctx[9](/*cell*/ ctx[26]) + "")) set_data(t3, t3_value);
+    			if (dirty[0] & /*output*/ 1 && t5_value !== (t5_value = /*jockey*/ ctx[10](/*cell*/ ctx[26]) + "")) set_data(t5, t5_value);
+    		},
+    		i(local) {
+    			if (!div0_intro) {
+    				add_render_callback(() => {
+    					div0_intro = create_in_transition(div0, blur, {});
+    					div0_intro.start();
+    				});
+    			}
+
+    			if (!span0_intro) {
+    				add_render_callback(() => {
+    					span0_intro = create_in_transition(span0, blur, {});
+    					span0_intro.start();
+    				});
+    			}
+
+    			if (!span1_intro) {
+    				add_render_callback(() => {
+    					span1_intro = create_in_transition(span1, blur, {});
+    					span1_intro.start();
+    				});
+    			}
+    		},
+    		o: noop,
+    		d(detaching) {
+    			if (detaching) detach(th);
+    		}
+    	};
+    }
+
+    // (261:26) {:else}
+    function create_else_block_2(ctx) {
+    	let t_value = /*cell*/ ctx[26] + "";
+    	let t;
+
+    	return {
+    		c() {
+    			t = text(t_value);
+    		},
+    		m(target, anchor) {
+    			insert(target, t, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*output*/ 1 && t_value !== (t_value = /*cell*/ ctx[26] + "")) set_data(t, t_value);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(t);
+    		}
+    	};
+    }
+
+    // (251:27) {#if $oddsCal == true}
+    function create_if_block_2(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type_5(ctx, dirty) {
+    		if (/*cell*/ ctx[26] == 0) return create_if_block_3;
+    		return create_else_block_1;
+    	}
+
+    	let current_block_type = select_block_type_5(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	return {
+    		c() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert(target, if_block_anchor, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if (current_block_type === (current_block_type = select_block_type_5(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			}
+    		},
+    		d(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach(if_block_anchor);
+    		}
+    	};
+    }
+
+    // (256:26) {:else}
+    function create_else_block_1(ctx) {
+    	let t_value = (100 / (/*cell*/ ctx[26] / 500)).toFixed(2) + "";
+    	let t;
+
+    	return {
+    		c() {
+    			t = text(t_value);
+    		},
+    		m(target, anchor) {
+    			insert(target, t, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*output*/ 1 && t_value !== (t_value = (100 / (/*cell*/ ctx[26] / 500)).toFixed(2) + "")) set_data(t, t_value);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(t);
+    		}
+    	};
+    }
+
+    // (253:26) {#if cell == 0 }
+    function create_if_block_3(ctx) {
+    	let t_value = /*cell*/ ctx[26] + "";
+    	let t;
+
+    	return {
+    		c() {
+    			t = text(t_value);
+    		},
+    		m(target, anchor) {
+    			insert(target, t, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*output*/ 1 && t_value !== (t_value = /*cell*/ ctx[26] + "")) set_data(t, t_value);
+    		},
+    		d(detaching) {
+    			if (detaching) detach(t);
+    		}
+    	};
+    }
+
+    // (217:6) {#each Object.values(row) as cell,i}
+    function create_each_block_1(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type_3(ctx, dirty) {
+    		if (/*i*/ ctx[28] == 0) return create_if_block_1;
+    		return create_else_block;
+    	}
+
+    	let current_block_type = select_block_type_3(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	return {
+    		c() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert(target, if_block_anchor, anchor);
+    		},
+    		p(ctx, dirty) {
+    			if_block.p(ctx, dirty);
+    		},
+    		i(local) {
+    			transition_in(if_block);
+    		},
+    		o: noop,
+    		d(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach(if_block_anchor);
+    		}
+    	};
+    }
+
+    // (215:12) {#each Object.values(output) as row ,  ii }
+    function create_each_block(ctx) {
+    	let tr;
+    	let t;
+    	let each_value_1 = Object.values(/*row*/ ctx[23]);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	return {
+    		c() {
+    			tr = element("tr");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t = space();
+    			attr(tr, "class", "border-b border-gray-200 ");
+    		},
+    		m(target, anchor) {
+    			insert(target, tr, anchor);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tr, null);
+    			}
+
+    			append(tr, t);
+    		},
+    		p(ctx, dirty) {
+    			if (dirty[0] & /*jockey, output, horse, show, selectedBookie, selectedOdds, selectedHorse, $oddsCal*/ 1853) {
+    				each_value_1 = Object.values(/*row*/ ctx[23]);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(tr, t);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value_1.length;
+    			}
+    		},
+    		i(local) {
+    			for (let i = 0; i < each_value_1.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+    		},
+    		o: noop,
+    		d(detaching) {
+    			if (detaching) detach(tr);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+    }
+
+    function create_fragment$1(ctx) {
+    	let t;
+    	let if_block1_anchor;
+    	let current;
+    	let if_block0 = /*show*/ ctx[2] && create_if_block_6(ctx);
+    	let if_block1 = /*output*/ ctx[0] && create_if_block(ctx);
+
+    	return {
+    		c() {
+    			if (if_block0) if_block0.c();
+    			t = space();
+    			if (if_block1) if_block1.c();
+    			if_block1_anchor = empty();
+    		},
+    		m(target, anchor) {
+    			if (if_block0) if_block0.m(target, anchor);
+    			insert(target, t, anchor);
+    			if (if_block1) if_block1.m(target, anchor);
+    			insert(target, if_block1_anchor, anchor);
+    			current = true;
+    		},
+    		p(ctx, dirty) {
+    			if (/*show*/ ctx[2]) {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+
+    					if (dirty[0] & /*show*/ 4) {
+    						transition_in(if_block0, 1);
+    					}
+    				} else {
+    					if_block0 = create_if_block_6(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(t.parentNode, t);
+    				}
+    			} else if (if_block0) {
+    				group_outros();
+
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (/*output*/ ctx[0]) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+
+    					if (dirty[0] & /*output*/ 1) {
+    						transition_in(if_block1, 1);
+    					}
+    				} else {
+    					if_block1 = create_if_block(ctx);
+    					if_block1.c();
+    					transition_in(if_block1, 1);
+    					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+    				}
+    			} else if (if_block1) {
+    				group_outros();
+
+    				transition_out(if_block1, 1, 1, () => {
+    					if_block1 = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i(local) {
+    			if (current) return;
+    			transition_in(if_block0);
+    			transition_in(if_block1);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(if_block0);
+    			transition_out(if_block1);
+    			current = false;
+    		},
+    		d(detaching) {
+    			if (if_block0) if_block0.d(detaching);
+    			if (detaching) detach(t);
+    			if (if_block1) if_block1.d(detaching);
+    			if (detaching) detach(if_block1_anchor);
+    		}
+    	};
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let $calDate;
+    	let $roptions;
+    	let $oddsCal;
+    	component_subscribe($$self, calDate, $$value => $$invalidate(6, $calDate = $$value));
+    	component_subscribe($$self, roptions, $$value => $$invalidate(7, $roptions = $$value));
+    	component_subscribe($$self, oddsCal, $$value => $$invalidate(8, $oddsCal = $$value));
+
+    	onMount(() => {
+    		getData();
+    	});
+
+    	let calendarDate = 0;
+
+    	calDate.subscribe(value => {
+    		$$invalidate(11, calendarDate = value);
+    	});
+
+    	let input;
+    	let races;
+    	let currRace;
+    	inputs.subscribe(v => $$invalidate(12, input = v));
+    	currentRace.subscribe(v => $$invalidate(14, currRace = v));
+    	race.subscribe(v => $$invalidate(13, races = v));
+    	let tableData;
+
+    	var options = {
+    		row: "horse_no",
+    		column: "bookmaker",
+    		value: "amount"
+    	};
+
+    	let output;
+    	
+
+    	function horse(hrs_no) {
+    		let hrs = tableData.odds_compare[tableData.odds_compare.map(function (x) {
+    			return x.horse_no;
+    		}).indexOf(hrs_no)].horse;
+
+    		return hrs;
+    	}
+
+    	function jockey(hrs_no) {
+    		let jock = tableData.odds_compare[tableData.odds_compare.map(function (x) {
+    			return x.horse_no;
+    		}).indexOf(hrs_no)].jockey;
+
+    		let wght = tableData.odds_compare[tableData.odds_compare.map(function (x) {
+    			return x.horse_no;
+    		}).indexOf(hrs_no)].weight;
+
+    		return jock + " (" + wght + "kg)";
+    	}
+
+    	let bet;
+    	let show = false;
+    	let selectedHorse, selectedBookie, selectedOdds;
+
+    	function click_handler(event) {
+    		bubble.call(this, $$self, event);
+    	}
+
+    	function input_1_input_handler() {
+    		bet = to_number(this.value);
+    		$$invalidate(1, bet);
+    	}
+
+    	const click_handler_1 = () => $$invalidate(2, show = false);
+    	const click_handler_2 = () => $$invalidate(2, show = false);
+
+    	function select_change_handler() {
+    		$calDate = select_value(this);
+    		calDate.set($calDate);
+    	}
+
+    	const click_handler_3 = (i, cell, ii) => {
+    		$$invalidate(2, show = true);
+    		$$invalidate(4, selectedBookie = Object.keys(output[0])[i]);
+    		$$invalidate(5, selectedOdds = cell);
+    		$$invalidate(3, selectedHorse = output[ii].horse_no + '. ' + horse(output[ii].horse_no));
+    	};
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty[0] & /*calendarDate*/ 2048) {
+    			if (calendarDate !== 0 && calendarDate !== undefined) {
+    				getTData();
+    			}
+    		}
+
+    		if ($$self.$$.dirty[0] & /*input, races, currRace*/ 28672) {
+    			$$invalidate(15, tableData = input[races.indexOf(currRace)]);
+    		}
+
+    		if ($$self.$$.dirty[0] & /*tableData*/ 32768) {
+    			if (tableData) {
+    				$$invalidate(0, output = jsonToPivotJson(tableData.odds_compare, options));
+    				console.log(tableData);
+    			}
+    		}
+    	};
+
+    	return [
+    		output,
+    		bet,
+    		show,
+    		selectedHorse,
+    		selectedBookie,
+    		selectedOdds,
+    		$calDate,
+    		$roptions,
+    		$oddsCal,
+    		horse,
+    		jockey,
+    		calendarDate,
+    		input,
+    		races,
+    		currRace,
+    		tableData,
+    		click_handler,
+    		input_1_input_handler,
+    		click_handler_1,
+    		click_handler_2,
+    		select_change_handler,
+    		click_handler_3
+    	];
+    }
+
+    class CompareOdds extends SvelteComponent {
+    	constructor(options) {
+    		super();
+    		init(this, options, instance, create_fragment$1, safe_not_equal, {}, null, [-1, -1]);
+    	}
+    }
+
+    /* src\App.svelte generated by Svelte v3.43.1 */
+
+    function create_fragment(ctx) {
+    	let style;
+    	let t1;
+    	let compareodds;
+    	let current;
+    	compareodds = new CompareOdds({});
+
+    	return {
+    		c() {
+    			style = element("style");
+    			style.textContent = ".caption.svelte-zgdk4k.svelte-zgdk4k{position:relative;height:50px}.tWrap.svelte-zgdk4k.svelte-zgdk4k{overflow-x:scroll}.oddstable.svelte-zgdk4k.svelte-zgdk4k{table-layout:fixed;min-width:1140px;max-width:1140px}.oddstable.svelte-zgdk4k thead th.svelte-zgdk4k{position:sticky;top:0;z-index:1;background:white}.oddstable.svelte-zgdk4k td.svelte-zgdk4k{max-width:20px !important;width:20px !important;cursor:pointer}.oddstable.svelte-zgdk4k tbody th.svelte-zgdk4k{position:relative}.oddstable.svelte-zgdk4k thead th.svelte-zgdk4k:first-child{position:sticky;left:0;z-index:2;-webkit-box-shadow:10px 0px 10px rgb(57 63 72);-moz-box-shadow:10px 0px 10px rgb(57 63 72);box-shadow:10px 0px 10px rgb(57 63 72);border-right:black solid 1px }.oddstable.svelte-zgdk4k tbody th.svelte-zgdk4k{position:sticky;left:0;background:white;z-index:1;max-width:100px;-webkit-box-shadow:10px 0px 10px rgb(57 63 72);-moz-box-shadow:10px 0px 10px rgb(57 63 72);box-shadow:10px 0px 10px rgb(57 63 72);border-right:black solid 1px }.oddscal.svelte-zgdk4k.svelte-zgdk4k{position:absolute;right:1%}.racebut.svelte-zgdk4k.svelte-zgdk4k{position:absolute;left:50%;transform:translate(-50%,0%)}.selectList.svelte-zgdk4k.svelte-zgdk4k{position:absolute;appearance:none;padding:10px;border:1px   solid rgba(65, 156, 44, 0.13);border-radius:0.25rem;left:1%}.overlay.svelte-zgdk4k.svelte-zgdk4k{z-index:101;position:fixed;top:0;right:0;bottom:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0.4)}.betCalc.svelte-zgdk4k.svelte-zgdk4k{position:absolute;left:50%;top:50%;background:white;width:350px;height:400px;border-radius:10px;transform:translate(-50%,-50%);display:flex;flex-direction:column;justify-content:center;align-items:center}.horse.svelte-zgdk4k.svelte-zgdk4k{display:flex;flex-direction:column}.horse.svelte-zgdk4k span.svelte-zgdk4k{align-self:flex-start}.betCalc.svelte-zgdk4k svg.svelte-zgdk4k{width:100px}.betCalc.svelte-zgdk4k h3.svelte-zgdk4k{font-weight:bolder}.bet.svelte-zgdk4k.svelte-zgdk4k{width:100px;height:40px;border-radius:5px}.rounded.svelte-zgdk4k.svelte-zgdk4k{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:8px;padding-bottom:8px;padding-left:20px;padding-right:20px;border:none;border-radius:3px;margin-bottom:3px;cursor:pointer}.rounded.svelte-zgdk4k.svelte-zgdk4k:hover{background-color:rgb(255, 255, 255);color:rgb(104, 104, 104);background-image:linear-gradient(rgb(255, 255, 255) 95%, rgb(104, 104, 104) 20%)}.rounded-l.svelte-16yaimb{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-left-radius:4px;border-bottom-left-radius:4px;margin-bottom:4px;cursor:pointer}.rounded-r.svelte-16yaimb{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-right-radius:4px;border-bottom-right-radius:4px;margin-bottom:4px;cursor:pointer}.rounded.svelte-16yaimb{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-radius:4px;margin-bottom:4px;cursor:pointer}.roundeds.svelte-16yaimb{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;margin-bottom:4px;cursor:pointer}.rounded.svelte-16yaimb:hover,.rounded-l.svelte-16yaimb:hover,.rounded-r.svelte-16yaimb:hover,.roundeds.svelte-16yaimb:hover{background-color:rgb(255, 255, 255);color:rgb(104, 104, 104);background-image:linear-gradient(rgb(255, 255, 255) 95%, rgb(104, 104, 104) 20%)}.active.svelte-16yaimb{background-image:linear-gradient(#409C2C 95%, rgb(188, 247, 105) 20%);border-color:white !important}.active.svelte-12qrkab{background-image:linear-gradient(#409C2C 95%, rgb(188, 247, 105) 10%)}.rounded-r.svelte-12qrkab{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-right-radius:4px;border-bottom-right-radius:4px;margin-bottom:4px;cursor:pointer}.rounded-l.svelte-12qrkab{background-color:#409C2C;box-shadow:0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);transition-timing-function:linear;transition-duration:150ms;transition-property:all;transition-timing-function:cubic-bezier(0.4,0,0.2,1);transition-duration:150ms;color:white;text-transform:uppercase;font-weight:700;font-size:16px;line-height:20px;padding-top:12px;padding-bottom:12px;padding-left:24px;padding-right:24px;border:none;border-top-left-radius:4px;border-bottom-left-radius:4px;margin-bottom:4px;cursor:pointer}.rounded-l.svelte-12qrkab:hover,.rounded-r.svelte-12qrkab:hover{background-color:rgb(255, 255, 255);color:rgb(104, 104, 104);background-image:linear-gradient(rgb(255, 255, 255) 95%, rgb(104, 104, 104) 20%)}.overlay.svelte-4euwfi{z-index:101;position:fixed;top:0;right:0;bottom:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0.4)}.x.svelte-4euwfi{position:absolute;right:1%;font-weight:bolder;color:floralwhite;cursor:pointer;font-size:10px;text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black}.placeBet.svelte-4euwfi{background-color:#409C2C}.buttonBar.svelte-4euwfi{bottom:0;right:0;left:0}";
+    			t1 = space();
+    			create_component(compareodds.$$.fragment);
+    		},
+    		m(target, anchor) {
+    			append(document.head, style);
+    			insert(target, t1, anchor);
+    			mount_component(compareodds, target, anchor);
+    			current = true;
+    		},
+    		p: noop,
+    		i(local) {
+    			if (current) return;
+    			transition_in(compareodds.$$.fragment, local);
+    			current = true;
+    		},
+    		o(local) {
+    			transition_out(compareodds.$$.fragment, local);
+    			current = false;
+    		},
+    		d(detaching) {
+    			detach(style);
+    			if (detaching) detach(t1);
+    			destroy_component(compareodds, detaching);
+    		}
+    	};
+    }
+
+    class App extends SvelteComponent {
+    	constructor(options) {
+    		super();
+    		init(this, options, null, create_fragment, safe_not_equal, {});
+    	}
+    }
+
+    const app = new App({
+        target: document.querySelector('#odds-compare')
+    });
+
+    return app;
+
+})();
 //# sourceMappingURL=bundle.js.map

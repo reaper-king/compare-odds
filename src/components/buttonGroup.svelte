@@ -167,7 +167,7 @@ border: none;
 }
 
 
-.rounded:hover ,.rounded-l:hover ,.rounded-r:hover {
+.rounded:hover ,.rounded-l:hover ,.rounded-r:hover , .roundeds:hover {
     background-color: rgb(255, 255, 255); 
     color: rgb(104, 104, 104);
     

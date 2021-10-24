@@ -67,8 +67,8 @@ let selectedHorse , selectedBookie , selectedOdds
 
 </script>
 {#if show}
-<div class="overlay"  on:click|stopPropagation|preventDefault={()=>show = false} in:blur="{{ y: 50, duration: 1000 }}">
-  <div class="betCalc" in:fly="{{ y: 100, duration: 1000 }}" on:click|stopPropagation>
+<div class="overlay"  on:click|stopPropagation|preventDefault={()=>show = false} in:blur={{ y: 50, duration: 1000 }} out:blur={{ y: -50, duration: 1000 }}>
+  <div class="betCalc" in:fly={{ y: 100, duration: 1000 }}  out:fly={{ y: -100, duration: 1000 }} on:click|stopPropagation>
   
 <!--  -->
 
@@ -156,12 +156,12 @@ viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="pres
 </g>
 </svg>
 
-<h4>{selectedBookie}</h4>
-<h4>{selectedHorse}</h4>
-<input class="bet" type="number" placeholder="Bet" bind:value={bet}>
-<h5>Payout:</h5>
+<h4 in:fly={{ y: -50, duration: 2300 }}>{selectedBookie}</h4>
+<h4 in:fly={{ y: 50, duration: 2300 }}>{selectedHorse}</h4>
+<input class="bet" type="number" placeholder="Bet" bind:value={bet} in:fly={{ y: 50, duration: 2300 }}>
+<h5 in:fly={{ y: 50, duration: 2300 }}>Payout:</h5>
 
-<h5>
+<h5 in:fly={{ y: 50, duration: 2300 }}>
   {#if isNaN( (bet * selectedOdds) / 100) }
      0
 
@@ -169,6 +169,8 @@ viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="pres
        {(bet * selectedOdds) / 100}
   {/if} 
 </h5>
+
+<button class="rounded" type="button" on:click={()=>show = false} in:fly={{ y: 50, duration: 2300 }}>ok</button>
   </div> 
 
 
@@ -444,5 +446,44 @@ viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="pres
     height: 40px;
     border-radius: 5px;
   }
+
+
+
+
+  
+
+.rounded {
+    background-color: #409C2C; 
+    box-shadow: 0 5px 5px -5px rgba(64, 155, 44,0.15), 0 10px 10px -5px rgba(64, 155, 44,0.15), 0 15px 15px -5px rgba(64, 155, 44,0.15), 0 20px 20px -5px rgba(64, 155, 44,0.15);
+    transition-timing-function: linear;
+    transition-duration: 150ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4,0,0.2,1);
+    transition-duration: 150ms;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+border: none;
+    border-radius:  3px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    
+
+}
+
+.rounded:hover {
+    background-color: rgb(255, 255, 255); 
+    color: rgb(104, 104, 104);
+    
+  background-image: linear-gradient(rgb(255, 255, 255) 95%, rgb(104, 104, 104) 20%);
+
+}
 
   </style>

@@ -42,31 +42,139 @@ let tableData
 let output
 
 
-$: if(tableData){ output = jsonToPivotjson(tableData.odds_compare, options)}; 
+$: if(tableData){ output = jsonToPivotjson(tableData.odds_compare, options);
+console.log(tableData)}; 
 
+function horse(hrs_no) {
 
-// function horse(hrs_no) {
-
-//   let hrs =  tableData[tableData.map(function (x) { return x.horse_no; }).indexOf(hrs_no)].horse;
-//   return hrs
+  let hrs =  tableData.odds_compare[tableData.odds_compare.map(function (x) { return x.horse_no; }).indexOf(hrs_no)].horse;
+  return hrs
    
-//    }
-//    function jockey(hrs_no) {
+   }
 
-// let jock =  tableData[tableData.map(function (x) { return x.horse_no; }).indexOf(hrs_no)].jockey;
+   function jockey(hrs_no) {
 
-// let wght =  tableData[tableData.map(function (x) { return x.horse_no; }).indexOf(hrs_no)].weight;
-// return jock+ " (" + wght + "kg)"
+let jock =  tableData.odds_compare[tableData.odds_compare.map(function (x) {return x.horse_no; }).indexOf(hrs_no)].jockey;
 
-// }
+let wght = tableData.odds_compare[tableData.odds_compare.map(function (x) { return x.horse_no; }).indexOf(hrs_no)].weight;
+return jock+ " (" + wght + "kg)"
 
+}
+
+let bet;
 let show = false;
 let selectedHorse , selectedBookie , selectedOdds
 
 </script>
 {#if show}
-<div class="overlay"  on:click={()=>show = false} in:blur="{{ y: 50, duration: 1000 }}">
-  <div class="betCalc" in:fly="{{ y: 100, duration: 1000 }}"></div> </div>
+<div class="overlay"  on:click|stopPropagation|preventDefault={()=>show = false} in:blur="{{ y: 50, duration: 1000 }}">
+  <div class="betCalc" in:fly="{{ y: 100, duration: 1000 }}" on:click|stopPropagation>
+  
+<!--  -->
+
+
+<h3 in:fly={{ y: -50, duration: 2300 }}>
+  Betting Calculator</h3>
+  
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" in:fly={{ y: -50, duration: 2500 }}>
+<g>
+<circle style="fill:#419c2c21;" cx="256" cy="256" r="256"/>
+<path style="fill:rgba(98, 126, 105,0.5);" d="M493.297,352.061l-0.553-0.276L289.065,135.808l-96.123-48.061l-96.123,48.061V259.2
+   l120.909,119.711l8.54,24.94l90.788,100.772C397.348,484.961,462.74,427.459,493.297,352.061z"/>
+<polygon style="fill:#04ad0c;" points="289.065,135.808 192.942,183.875 96.819,135.808 192.942,87.747 	"/>
+<polygon style="fill:#04ad0c;" points="192.942,306.278 96.819,259.2 96.819,135.808 192.942,183.875 	"/>
+<polygon style="fill:#006b05;" points="192.942,306.278 289.065,259.2 289.065,135.808 192.942,183.875 	"/>
+<path style="fill:#FFFFFF;" d="M153.882,221.379c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514
+   c0-6.733,4.029-10.706,9.001-8.873C149.852,207.703,153.882,214.646,153.882,221.379z"/>
+<path style="fill:#FFFFFF;" d="M234.813,222.74c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514
+   c0-6.733-4.029-10.706-9.001-8.873C238.843,209.065,234.813,216.008,234.813,222.74z"/>
+<path style="fill:#FFFFFF;" d="M205.553,205.768c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514
+   s-4.029-10.706-9.001-8.873S205.553,199.035,205.553,205.768z"/>
+<path style="fill:#FFFFFF;" d="M205.553,272.256c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514
+   s-4.029-10.706-9.001-8.873S205.553,265.523,205.553,272.256z"/>
+<path style="fill:#FFFFFF;" d="M260.465,178.693c0,6.733,4.029,10.706,9.001,8.873s9.001-8.781,9.001-15.514
+   c0-6.733-4.029-10.706-9.001-8.873C264.499,165.012,260.465,171.955,260.465,178.693z"/>
+<path style="fill:#FFFFFF;" d="M260.465,245.181c0,6.733,4.029,10.706,9.001,8.873c4.972-1.833,9.001-8.781,9.001-15.514
+   s-4.029-10.706-9.001-8.873S260.465,238.449,260.465,245.181z"/>
+<path style="fill:#FFFFFF;" d="M123.571,176.292c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514
+   c0-6.733,4.029-10.706,9.001-8.873C119.542,162.611,123.571,169.559,123.571,176.292z"/>
+<path style="fill:#FFFFFF;" d="M180.122,270.459c0,6.733-4.029,10.706-9.001,8.873c-4.972-1.833-9.001-8.781-9.001-15.514
+   c0-6.733,4.029-10.706,9.001-8.873C176.092,256.783,180.122,263.726,180.122,270.459z"/>
+<ellipse style="fill:#FFFFFF;" cx="192.942" cy="135.808" rx="12.611" ry="8.53"/>
+<polygon style="fill:#009708;" points="414.776,351.278 312.822,317.292 278.835,215.337 380.79,249.324 	"/>
+<polygon style="fill:#04ad0c;" points="226.263,403.845 191.585,302.587 278.835,215.337 312.822,317.292 	"/>
+<polygon style="fill:#006b05;" points="226.263,403.845 327.526,438.528 414.776,351.278 312.822,317.292 	"/>
+<path style="fill:#FFFFFF;" d="M306.253,341.693c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603
+   c4.762-4.762,4.721-10.419-0.092-12.641S311.014,336.932,306.253,341.693z"/>
+<path style="fill:#FFFFFF;" d="M259.236,388.705c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603
+   c4.762-4.762,4.721-10.419-0.092-12.641C271.759,381.88,263.997,383.944,259.236,388.705z"/>
+<path style="fill:#FFFFFF;" d="M336.599,351.862c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.222,12.575,0.159,17.336-4.603
+   s4.721-10.419-0.092-12.641C349.123,345.037,341.361,347.1,336.599,351.862z"/>
+<path style="fill:#FFFFFF;" d="M289.582,398.879c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603
+   c4.762-4.762,4.721-10.419-0.092-12.641S294.344,394.117,289.582,398.879z"/>
+<path style="fill:#FFFFFF;" d="M364.232,361.375c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603
+   s4.721-10.419-0.092-12.641C376.755,354.555,368.993,356.613,364.232,361.375z"/>
+<path style="fill:#FFFFFF;" d="M317.215,408.392c-4.762,4.762-4.721,10.419,0.092,12.641c4.813,2.217,12.575,0.159,17.336-4.603
+   c4.762-4.762,4.721-10.419-0.092-12.641C329.738,401.567,321.976,403.63,317.215,408.392z"/>
+<path style="fill:#FFFFFF;" d="M269.128,262.881c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336
+   c4.762-4.762,10.419-4.721,12.641,0.092C275.953,250.358,273.889,258.12,269.128,262.881z"/>
+<path style="fill:#FFFFFF;" d="M242.529,369.454c-4.762,4.762-10.419,4.721-12.641-0.092c-2.217-4.813-0.159-12.575,4.603-17.336
+   s10.419-4.721,12.641,0.092S247.291,364.692,242.529,369.454z"/>
+
+   <ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -98.7293 328.1921)" style="fill:#FFFFFF;" cx="346.798" cy="283.273" rx="8.53" ry="12.61"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+<h4>{selectedBookie}</h4>
+<h4>{selectedHorse}</h4>
+<input class="bet" type="number" placeholder="Bet" bind:value={bet}>
+<h5>Payout:</h5>
+
+<h5>
+  {#if isNaN( (bet * selectedOdds) / 100) }
+     0
+
+     {:else}
+       {(bet * selectedOdds) / 100}
+  {/if} 
+</h5>
+  </div> 
+
+
+
+<!--  -->
+</div>
 {/if}
 
 {#if output}
@@ -118,11 +226,10 @@ let selectedHorse , selectedBookie , selectedOdds
                               </g>
                               </svg> -->
                       </div>
-                      <div class="flex flex-col">
+                      <div class="horse">
                          
-                          <span class="font-medium" in:blur>  {cell}. </span>
-                            <!-- {horse(cell)}</span>
-                          <span class="font-black text-xs	mx-4" in:blur>{jockey(cell)}</span> -->
+                          <span class="font-medium" in:blur>  {cell}. {horse(cell)}</span>
+                          <span class="font-black text-xs	mx-4" in:blur>{jockey(cell)}</span> 
                       
                       </div>
                   </div>
@@ -131,9 +238,9 @@ let selectedHorse , selectedBookie , selectedOdds
               <td class="py-3 px-6 text-right whitespace-nowrap cursor-pointer hover:bg-gray-300" on:click={()=> 
                                                                                                           {
                                                                                                           show =true ; 
-                                                                                                          // selectedBookie= Object.keys(output[0])[i];
-                                                                                                          // selectedOdds = cell
-                                                                                                          // selectedHorse = output[ii].horse_no +'. ' +horse(output[ii].horse_no)
+                                                                                                          selectedBookie= Object.keys(output[0])[i];
+                                                                                                          selectedOdds = cell
+                                                                                                          selectedHorse = output[ii].horse_no +'. ' +horse(output[ii].horse_no)
                                                                                                           }
                                                                                                           }>
                   <div class="block items-center">
@@ -242,7 +349,7 @@ let selectedHorse , selectedBookie , selectedOdds
   -webkit-box-shadow: 10px 0px 10px rgb(57 63 72);
   -moz-box-shadow: 10px 0px 10px rgb(57 63 72);
   box-shadow: 10px 0px 10px rgb(57 63 72);
-  border-right:black solid 2px ;
+  border-right:black solid 1px ;
   
 }
 .oddstable tbody th {
@@ -254,7 +361,7 @@ let selectedHorse , selectedBookie , selectedOdds
   -webkit-box-shadow: 10px 0px 10px rgb(57 63 72);
   -moz-box-shadow: 10px 0px 10px rgb(57 63 72);
   box-shadow: 10px 0px 10px rgb(57 63 72);
-  border-right:black solid 2px ;
+  border-right:black solid 1px ;
 }
 
 .oddscal{
@@ -273,7 +380,7 @@ let selectedHorse , selectedBookie , selectedOdds
   position: absolute;
   appearance:none;
   padding:10px;
-  border: 1px   solid #409C2C;
+  border: 1px   solid rgba(65, 156, 44, 0.13);
   border-radius: 0.25rem;
   left: 1%;
 
@@ -299,7 +406,43 @@ let selectedHorse , selectedBookie , selectedOdds
     background: white;
     width: 350px;
     height: 400px;
-    border-radius: 20px;
+    border-radius: 10px;
     transform: translate(-50%,-50%);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
+  .horse {
+    display: flex;
+    flex-direction: column;
+  }
+  .horse span {
+    align-self: flex-start;
+  }
+
+
+  .betCalc svg {
+    /* left:50%; */
+    /* position: relative; */
+    width: 100px;
+    /* transform: translate(-50%,0); */
+  }
+  
+  .betCalc h3 {
+    /* left:50%; */
+    /* position: relative; */
+    font-weight: bolder;
+    /* transform: translate(-50%,0); */
+    /* align-self: center; */
+  }
+
+  .bet {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+  }
+
   </style>

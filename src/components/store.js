@@ -31,7 +31,6 @@ export const getData = () => {
 
     let resp = Get('https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/file/is.json');
     let resJson = JSON.parse(resp)
-    console.log(resJson)
     roptions.set(resJson)
     calDate.set(resJson[0].r)
 
@@ -45,8 +44,6 @@ export function getTData() {
     currentRace.subscribe(v => cRace = v)
     let resp = Get(`https://utxnaxbctngt41y-gra.adb.uk-london-1.oraclecloudapps.com/ords/gra/races/odds?meet=${calendarDate}`)
     let resJson = JSON.parse(resp)
-
-    console.log(resJson.items)
     inputs.set(resJson.items)
     race.set(resJson.items.map((rc, i) => {
         return rc['race_no']

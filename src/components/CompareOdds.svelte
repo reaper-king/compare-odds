@@ -42,8 +42,7 @@ let tableData
 let output
 
 
-$: if(tableData){ output = jsonToPivotjson(tableData.odds_compare, options);
-console.log(tableData)}; 
+$: if(tableData){ output = jsonToPivotjson(tableData.odds_compare, options);}; 
 
 function horse(hrs_no) {
 
@@ -348,9 +347,9 @@ viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="pres
   position: sticky;
   left: 0;
   z-index: 2;
-  -webkit-box-shadow: 10px 0px 10px rgb(57 63 72);
-  -moz-box-shadow: 10px 0px 10px rgb(57 63 72);
-  box-shadow: 10px 0px 10px rgb(57 63 72);
+  -webkit-box-shadow: 10px 0px 10px rgb(57 63 72), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 10px 0px 10px rgb(57 63 72), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 10px 0px 10px rgb(57 63 72), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   border-right:black solid 1px ;
   
 }
@@ -360,9 +359,9 @@ viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="pres
   background: white;
   z-index: 1;
   max-width: 100px;
-  -webkit-box-shadow: 10px 0px 10px rgb(57 63 72);
-  -moz-box-shadow: 10px 0px 10px rgb(57 63 72);
-  box-shadow: 10px 0px 10px rgb(57 63 72);
+  -webkit-box-shadow: 10px 0px 10px rgb(57 63 72), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 10px 0px 10px rgb(57 63 72), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 10px 0px 10px rgb(57 63 72), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   border-right:black solid 1px ;
 }
 

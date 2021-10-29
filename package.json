@@ -23,6 +23,7 @@
     "crossfilter2": "^1.5.4",
     "json-to-pivot-json": "^1.0.1",
     "sirv-cli": "^1.0.0",
+    "svelte-tiny-linked-charts": "^1.0.6",
     "tailwindcss": "^2.2.16"
   }
 }

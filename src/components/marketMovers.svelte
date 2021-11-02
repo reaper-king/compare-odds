@@ -36,7 +36,7 @@ $:  o = oddsData.reduce( (a,b) => {
 $: a = Object.keys(o).map(function(k) {
                             return {bookie : k, horse : Object.assign.apply({},o[k])};
                         });
-$: console.log(oddsData)
+$: console.log(a)
 
 $: oddsCounts = oddsData.map( item => {return item.odds_count}).reduce((a,b)=>a+b)
 
@@ -50,9 +50,10 @@ $: duration = 1*oddsCounts + 's';
           
                 
                 {#each a as item, bk}
-                {#if  item.horse["odds_count"] >=2 }
-           
+                {#if  item.horse["odds_count"] >=1 }
+
                     {#each Object.keys(item.horse) as horse , i}
+                    {#if horse != 'odds_count' } 
                     <div class="ticker__item"> <strong>{item.bookie} : </strong> {horse} 
                     {#if (Object.values(item.horse[horse]).at(-1)) > (Object.values(item.horse[horse]).at(-2)) }
                          <!-- INCREASE -->
@@ -66,6 +67,8 @@ $: duration = 1*oddsCounts + 's';
                     {/if}
                                        
                 </div>
+                    {/if}
+                   
                     {/each}
                 {/if}
                 
@@ -78,19 +81,19 @@ $: duration = 1*oddsCounts + 's';
 <style>
     @-webkit-keyframes ticker {
   0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(50%, 0, 0);
+    transform: translate3d(50%, 0, 0);
     visibility: visible;
   }
   100% {
-    -webkit-transform: translate3d(-100%, 0, 0);
+    -webkit-transform: translate3d(-70%, 0, 0);
     transform: translate3d(-100%, 0, 0);
   }
 }
 @keyframes ticker {
   0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(50%, 0, 0);
+    transform: translate3d(50%, 0, 0);
     visibility: visible;
   }
   100% {
@@ -125,6 +128,7 @@ $: duration = 1*oddsCounts + 's';
   display: inline-block;
   padding: 0 2rem;
   font-size: 16px;
+  cursor: pointer;
 }
 .ticker-wrap .ticker:hover {
   -webkit-animation-play-state: paused;
